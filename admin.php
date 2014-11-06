@@ -37,15 +37,115 @@
         <!-- undercover option 1 -->
         <div class="container">
             <div id="undercover_option_02">
-                <div>
-                    <button class="btn btn-primary"><span><img src="images/31.png"></span> Back</button>
-                    <p>Admin Tools</p>
-                    <button class="btn btn-warning"><span><img src="images/30.png"></span> Change Cover Image</button>
-                </div>
                 <?php include('./includes/logout.inc.php'); ?>
+                <div id="uo2-buttons">
+                    <div class="uo2-button"><button class="btn btn-primary"><span><img src="images/31.png"></span> Back</button></div>
+                    <div class="uo2-button text-center"><p>Admin Tools</p></div>
+                    <div class="uo2-button"><button class="btn btn-warning"><span><img src="images/30.png"></span> Change Cover Image</button></div>
+                    <div class="clear"></div>
+                </div>
             </div>
         </div><!-- end of undercover option 2 -->
         <?php include('./includes/edit.profile.inc.php'); ?>
+        <div class="container">
+            <div class="admin-divide"></div>
+            <div class="admin-col-little">
+                <div class="admin-title">Waiting for approve</div>
+                <div class="clear"></div>
+            </div>
+            <div class="admin-col-medium">
+                <div class="admin-user-module">
+                    <div class="user-module-photo"><img src="images/35.png"></div>
+                    <div class="user-module-text">
+                            <p class="user-module-name">Usuário da Silva</p>
+                            <p class="user-module-place">Brasília - DF</p>
+                            <p class="user-module-infos">Diretor de Arte</p>
+                            <p class="user-module-infos">Racionalize Comunicação</p>
+                    </div>
+                    <div class="user-module-close"><img src="images/34.png"></div>
+                    <div class="user-module-decline"><img src="images/32.png" width="100%"></div>
+                    <div class="user-module-accept"><img src="images/33.png" width="100%"></div>
+                    <div class="clear"></div>
+                </div><!-- end of user module -->
+                <div class="clear"></div>
+            </div><!-- end of little column -->
+            <div class="admin-col-medium">
+                <div class="admin-user-module">
+                    <div class="user-module-photo"><img src="images/35.png"></div>
+                    <div class="user-module-text">
+                            <p class="user-module-name">Usuário da Silva</p>
+                            <p class="user-module-place">Brasília - DF</p>
+                            <p class="user-module-infos">Diretor de Arte</p>
+                            <p class="user-module-infos">Racionalize Comunicação</p>
+                    </div>
+                    <div class="user-module-close"><img src="images/34.png"></div>
+                    <div class="user-module-decline"><img src="images/32.png" width="100%"></div>
+                    <div class="user-module-accept"><img src="images/33.png" width="100%"></div>
+                    <div class="clear"></div>
+                </div><!-- end of user module -->
+                <div class="clear"></div>
+            </div><!-- end of medium column -->
+            <div class="admin-divide"></div>
+            <div class="admin-col-little">
+                <div class="admin-title">Waiting for approve</div>
+            </div>
+            <div class="admin-col-medium">
+                <div class="admin-user-module">
+                    <div class="user-module-photo"><img src="images/35.png"></div>
+                    <div class="user-module-text">
+                            <p class="user-module-name">Usuário da Silva</p>
+                            <p class="user-module-place">Brasília - DF</p>
+                            <p class="user-module-infos">Diretor de Arte</p>
+                            <p class="user-module-infos">Racionalize Comunicação</p>
+                    </div>
+                    <div class="user-module-close"><img src="images/34.png"></div>
+                    <div class="user-module-decline"><img src="images/32.png" width="100%"></div>
+                    <div class="user-module-accept"><img src="images/33.png" width="100%"></div>
+                    <div class="clear"></div>
+                </div><!-- end of user module -->
+                <div class="admin-user-module">
+                    <div class="user-module-photo"><img src="images/35.png"></div>
+                    <div class="user-module-text">
+                            <p class="user-module-name">Usuário da Silva</p>
+                            <p class="user-module-place">Brasília - DF</p>
+                            <p class="user-module-infos">Diretor de Arte</p>
+                            <p class="user-module-infos">Racionalize Comunicação</p>
+                    </div>
+                    <div class="user-module-close"><img src="images/34.png"></div>
+                    <div class="user-module-decline"><img src="images/32.png" width="100%"></div>
+                    <div class="user-module-accept"><img src="images/33.png" width="100%"></div>
+                    <div class="clear"></div>
+                </div><!-- end of user module -->
+            </div><!-- end of little column -->
+            <div class="admin-col-medium">
+                <div class="admin-user-module">
+                    <div class="user-module-photo"><img src="images/35.png"></div>
+                    <div class="user-module-text">
+                            <p class="user-module-name">Usuário da Silva</p>
+                            <p class="user-module-place">Brasília - DF</p>
+                            <p class="user-module-infos">Diretor de Arte</p>
+                            <p class="user-module-infos">Racionalize Comunicação</p>
+                    </div>
+                    <div class="user-module-close"><img src="images/34.png"></div>
+                    <div class="user-module-decline"><img src="images/32.png" width="100%"></div>
+                    <div class="user-module-accept"><img src="images/33.png" width="100%"></div>
+                    <div class="clear"></div>
+                </div><!-- end of user module -->
+                <div class="admin-user-module">
+                    <div class="user-module-photo"><img src="images/35.png"></div>
+                    <div class="user-module-text">
+                            <p class="user-module-name">Usuário da Silva</p>
+                            <p class="user-module-place">Brasília - DF</p>
+                            <p class="user-module-infos">Diretor de Arte</p>
+                            <p class="user-module-infos">Racionalize Comunicação</p>
+                    </div>
+                    <div class="user-module-close"><img src="images/34.png"></div>
+                    <div class="user-module-decline"><img src="images/32.png" width="100%"></div>
+                    <div class="user-module-accept"><img src="images/33.png" width="100%"></div>
+                    <div class="clear"></div>
+                </div><!-- end of user module -->
+            </div><!-- end of medium column -->
+        </div><!-- end of container -->
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -53,12 +153,4 @@
         <script src="js/jquery.autosize.min.js"></script>
         <script src="js/script.js"></script>
     </body>
-</html></title>
-</head>
-
-<body>
-
-
-
-</body>
 </html>

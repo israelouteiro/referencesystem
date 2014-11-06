@@ -19,8 +19,8 @@ class conexao
  
  $cxn = new conexao;
  $cxn-> host= "localhost";
- $cxn-> user= "referencesystem";
- $cxn-> senha= "rtacs12#$";
+ $cxn-> user= "root";
+ $cxn-> senha= "";
  $cxn-> banco= "referencesystem";
  $cxn->conecta_banco(); 
  

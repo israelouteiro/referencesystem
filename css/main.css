@@ -5,25 +5,32 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 300;
     color: #717171;
-    /* color: #cfcfcf; */
 }
 p, h1 {
     margin: 0;
     padding: 0;
 }
-h1 { font-size: 30px; }
-p { font-size: 13px; }
+h1 {
+    font-size: 30px;
+}
+p {
+    font-size: 13px;
+}
 
 /* BOOTSTRAP elements */
 
-.container { max-width: 992px; }
+.container {
+    max-width: 992px;
+}
 .modal-dialog {
     max-width: 380px;
 }
 
 /* PLATAFORMA Columns and Styles*/
 
-.clear { clear: both; }
+.clear {
+    clear: both;
+}
 .plataforma-col {
     position: relative;
     margin-top: 20px;
@@ -323,7 +330,7 @@ p { font-size: 13px; }
     max-width: 80%;
 }
 #admin-title-input {
-    width: 80%;
+    width: 90%;
     font-size: 32px;
     margin: 3px;
     background: none;
@@ -331,11 +338,104 @@ p { font-size: 13px; }
     resize: none;
 }
 #admin-text-input {
-    width: 80%;
+    width: 90%;
     margin: 3px;
     background: none;
     border: 1px dashed white;
     resize: none;
+}
+.admin-divide {
+    position: relative;
+    height: 30px;
+    border-bottom: 1px solid #dbdedf;
+    margin-bottom: 20px;
+}
+.admin-col-little {
+    position: relative;
+    float: left;
+    width: 184px;
+    height: auto;
+    overflow: auto;
+    background: #f0f;
+}
+.admin-col-medium {
+    position: relative;
+    float: left;
+    width: 320px;
+    height: auto;
+    overflow: auto;
+    background: #0ff;
+}
+.admin-title {
+    position: relative;
+    float: left;
+    /* width: 184px; */
+}
+.admin-user-module {
+    position: relative;
+    float: left;
+    width: 254px;
+    min-height: 116px;
+    margin-left: 66px;
+    margin-bottom: 30px;
+    background: #f00;
+}
+.user-module-photo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 70px;
+    height: 70px;
+}
+.user-module-text {
+    position: absolute;
+    top: 0px;
+    left: 80px;
+    width: 146px;
+    height: auto;
+    overflow: hidden;
+    /* background: #0ff; */
+}
+.user-module-text p {
+    font-size: 12px;
+}
+.user-module-name {
+    font-size: 14px !important;
+    color: #39a0c9;
+    cursor: pointer;
+}
+.user-module-name:hover {
+    text-decoration: underline;
+}
+.user-module-place {
+    color: #747474;
+}
+.user-module-infos {
+    color: #a2a2a2;
+}
+.user-module-close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+.user-module-decline {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 88px;
+    height: 26px;
+    cursor: pointer;
+}
+.user-module-accept {
+    position: absolute;
+    bottom: 0px;
+    left: 98px;
+    width: 88px;
+    height: 26px;
+    cursor: pointer;
 }
 #undercover_option_01, #undercover_option_02 {
     position: relative;
@@ -364,6 +464,32 @@ p { font-size: 13px; }
     display: block;
     float: left;
     max-width: 60px;
+}
+#uo2-buttons {
+    position: relative;
+    float: left;
+    margin-top: 12px;
+    width: 67%;
+    /* margin-left: 15px; */
+    /* text-align: center; */
+    /* background: #f00; */
+}
+.uo2-button {
+    position: relative;
+    float: left;
+    /* border: 1px solid black; */
+    /* font-size: 20px; */
+    width: 28%;
+    margin-left: 15px;
+    margin-bottom: 12px;
+    /* background: #00f; */
+}
+.uo2-button .btn {
+    max-width: 240px;
+}
+.uo2-button p {
+    font-size: 20px;
+    /* margin: 0px 70px; */
 }
 #uo-option {
     position: relative;
@@ -442,14 +568,6 @@ p { font-size: 13px; }
 #edit-profile-col-right table tr td {
     padding-bottom: 9px;
 }
-/*
-#edit-profile-col-right table tr td input[type="email"] {
-    text-align: center;
-}
-#edit-profile-col-right table tr td input[type="text"] {
-    text-align: center;
-}
-*/
 #edit-profile-col-right table tr td textarea {
     width: 100%;
     resize: none;
@@ -633,6 +751,9 @@ p { font-size: 13px; }
     #uo-option {
         float: left;
     }
+    #uo2-buttons {
+        width: 98%;
+    }
 }
 
 /* PHONE */
@@ -640,8 +761,18 @@ p { font-size: 13px; }
     #uo-option {
         float: left;
     }
+    #uo2-buttons {
+        text-align: center;
+        width: 98%;
+    }
+    .uo2-button {
+        width: 93%;
+    }
     .modal-dialog {
         max-width: 768px;
+    }
+    .admin-user-module {
+        margin-left: 0px;
     }
     #post-area-top {
         font-size: 16px;
