@@ -1,0 +1,657 @@
+/* HTML elements */
+
+body {
+    background: #f2f2f2;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    color: #717171;
+    /* color: #cfcfcf; */
+}
+p, h1 {
+    margin: 0;
+    padding: 0;
+}
+h1 { font-size: 30px; }
+p { font-size: 13px; }
+
+/* BOOTSTRAP elements */
+
+.container { max-width: 992px; }
+.modal-dialog {
+    max-width: 380px;
+}
+
+/* PLATAFORMA Columns and Styles*/
+
+.clear { clear: both; }
+.plataforma-col {
+    position: relative;
+    margin-top: 20px;
+}
+.plataforma-col-left {
+    float: left;
+    width: 65.7%;
+}
+.plataforma-col-right {
+    float: right;
+    width: 32.3%;
+}
+.plataforma-search {
+    position: relative;
+    width: 100%;
+    height: 53px;
+    margin-bottom: 27px;
+    background: #fff;
+}
+.plataforma-search form {
+    display: inline-block;
+    width: 100%;
+    height: 53px;
+}
+.plataforma-search input[type="text"] {
+    border: none;
+    height: 53px;
+    float: left;
+    margin: 0;
+    width: 75%;
+    color: #717171;
+    padding: 0px 16px;
+}
+.plataforma-search input[type="image"] {
+    float: right;
+}
+.plataforma-hottest-posts {
+    position: relative;
+    width: 100%;
+    /* background: #ff0; */
+}
+.plataforma-hottest-posts header {
+    text-align: center;
+}
+.plataforma-hottest-posts header ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.plataforma-hottest-posts header ul li {
+    display: inline-block;
+    margin: 0px 5px;
+}
+.hottest-posts-module {
+    margin: 16px 0px 20px 0px;
+    background: #fff;
+}
+.hottest-posts-module-text {
+    padding: 20px 15px 0px 15px;
+}
+.hottest-posts-module-text ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    padding-bottom: 15px;
+}
+.hottest-posts-module-text ul li {
+    display: inline-block;
+    margin: 0px 5px;
+    color: #39a0c9;
+}
+.hottest-posts-module-link ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    padding-bottom: 15px;
+}
+
+.hottest-posts-module-link ul li {
+    display: inline-block;
+    margin: 0px 5px;
+    color: #39a0c9;
+    cursor: pointer;
+}
+.hottest-posts-module-link li:hover {
+    text-decoration: underline;
+}
+
+.hottest-posts-module-text p {
+    margin-bottom: 25px;
+}
+.hottest-posts-module-image {
+    cursor: pointer;
+}
+.plataforma-post {
+    margin: 20px 0px;
+    background: #fff;
+}
+.plataforma-post-content {
+    padding: 12px;
+    /* background: #fff; */
+}
+.plataforma-post-profile {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+}
+.post-profile-image {
+    position: relative;
+    float: left;
+    margin-right: 12px;
+}
+.post-profile-infos {
+    position: relative;
+    float: left;
+    width: auto;
+}
+.post-profile-infos .uo-name {
+    cursor: pointer;
+}
+.post-profile-infos .uo-name:hover {
+    text-decoration: underline;
+}
+.post-profile-infos-popup {
+    position: absolute;
+    width: 320px;
+    padding: 20px;
+    min-height: 292px;
+    border: 1px solid #e6e8e9;
+    background: #fff;
+    z-index: 998;
+}
+.infos-popup-image {
+    position: relative;
+    float: left;
+    margin-right: 12px;
+}
+.infos-popup-infos {
+    position: relative;
+    width: 100%;
+}
+.infos-popup-infos table tr td {
+    padding: 1px;
+    /* border: 1px solid black; */
+}
+.infos-popup-text {
+    position: relative;
+    width: 100%;
+    margin-top: 21px;
+}
+.infos-popup-title {
+    font-size: 14px;
+    color: #39a0c9;
+    /* font-weight: bold; */
+}
+.post-profile-flag {
+    position: relative;
+    float: right;
+    width: auto;
+    height: auto;
+}
+.post-profile-bigimage {
+    position: relative;
+    width: 100%;
+    margin: 15px 0px;
+}
+.plataforma-post-liked {
+    position: relative;
+    width: 100%;
+    height: auto;
+    font-size: 12px;
+    font-weight: bold;
+    color: #39a0c9;
+    /* background: #f00; */
+}
+.post-liked-left {
+    position: relative;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    /* background: #0f0; */
+}
+.post-liked-right {
+    position: relative;
+    float: right;
+    margin-bottom: 20px;
+    /* background: #0f0; */
+}
+.post-liked-left img {
+    position: relative;
+    float: left;
+    margin-right: 10px;
+}
+.post-liked-right img {
+    position: relative;
+    float: left;
+    margin-right: 10px;
+}
+.post-liked-left p {
+    position: relative;
+    float: left;
+}
+.post-liked-right p {
+    float: left;
+}
+.post-liked-hearth {
+    cursor: pointer;
+    max-width: 88px;
+}
+.plataforma-post-comment {
+    position: relative;
+    width: 100%;
+}
+.post-comment-image {
+    position: relative;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    float: left;
+}
+.post-comment-text {
+    position: relative;
+    width: 85%;
+    min-height: 50px;
+    /* background: #0f0; */
+    float: right;
+}
+.post-comment-text textarea {
+    min-height: 50px;
+    padding: 10px;
+    border: 1px solid #e6e8e9;
+    resize: none;
+    width: 100%;
+    font-size: 12px;
+}
+.more-comment {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+.more-comment-container {
+    position: relative;
+    width: 100%;
+}
+.more-comment-modulo {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.more-comment-modulo-image {
+    position: relative;
+    float: left;
+    margin-right: 10px;
+}
+.more-comment-modulo-text {
+    position: relative;
+}
+.reference {
+    border: 2px solid #39a0c9;
+}
+.request {
+    border: 2px solid #ee943c;
+}
+.coverImage {
+    min-height: 350px;
+    overflow: auto;
+    background: url('../images/01.jpg') no-repeat top center;
+    background-size: cover;
+    color: #fff;
+    padding: 0px 28px;
+}
+.coverImageText {
+    position: relative;
+    /* margin-top: 244px; */
+    margin-top: 27%;
+    margin-bottom: 32px;
+    width: 100%;
+}
+.coverImageText table {
+    width: 100%;
+}
+.coverImageText img {
+    float: right;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.coverImageText h1 {
+    max-width: 70%;
+}
+.coverImageText p {
+    margin-top: 20px;
+    max-width: 80%;
+}
+#admin-title-input {
+    width: 80%;
+    font-size: 32px;
+    margin: 3px;
+    background: none;
+    border: 1px dashed white;
+    resize: none;
+}
+#admin-text-input {
+    width: 80%;
+    margin: 3px;
+    background: none;
+    border: 1px dashed white;
+    resize: none;
+}
+#undercover_option_01, #undercover_option_02 {
+    position: relative;
+    width: 100%;
+    min-height: 60px;
+    overflow: auto;
+    background: #ff0;
+    /* margin-bottom: 20px; */
+}
+#uo1_photos {
+    position: relative;
+    float: left;
+    background: #0f0;
+    /* left: controlled by js; */
+    /* top: 0px; */
+}
+#uo1_photos ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#uo1_photos ul li {
+    display: block;
+    float: left;
+    max-width: 60px;
+}
+#uo-option {
+    position: relative;
+    /* right: 0px; */
+    float: right;
+    max-width: 300px;
+}
+#uo-option table {
+    width: 100%;
+}
+#logOutButton {
+    cursor: pointer;
+}
+.uo-name {
+    font-size: 14px;
+    color: #39a0c9;
+}
+.uo-edit {
+    font-size: 12px;
+    cursor: pointer;
+}
+.uo-edit:hover {
+    text-decoration: underline;
+}
+#edit-profile-wrapper {
+    position: absolute;
+    max-width: 460px;
+    margin-left: 15px;
+    height: auto;
+    z-index: 999;
+}
+#edit-profile-img {
+    
+}
+#edit-profile-img-wrap {
+    margin: 0px auto;
+    width: 16px;
+}
+#edit-profile-img-wrap img {
+    float: left;
+}
+#edit-profile-form {
+    padding: 20px;
+    background:  #fbfbfb;
+}
+#edit-profile-form-file {
+    display: none;
+}
+#edit-profile-form-button {
+    cursor: pointer;
+}
+#edit-profile-col-left {
+    max-width: 95px;
+    margin-right: 22px;
+    float: left;
+}
+#edit-profile-col-left table {
+    width: 100%;
+}
+#edit-profile-col-left table tr td {
+    max-width: 95px;
+    padding-bottom: 9px;
+}
+#edit-profile-col-right {
+    min-width: 250px;
+    float: right;
+}
+#edit-profile-col-right-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+#edit-profile-col-right table {
+    width: 100%;
+    text-align: center;
+}
+#edit-profile-col-right table tr td {
+    padding-bottom: 9px;
+}
+/*
+#edit-profile-col-right table tr td input[type="email"] {
+    text-align: center;
+}
+#edit-profile-col-right table tr td input[type="text"] {
+    text-align: center;
+}
+*/
+#edit-profile-col-right table tr td textarea {
+    width: 100%;
+    resize: none;
+    padding: 12px;
+    border: 1px solid #e6e8e9;
+    border-radius: 4px;
+}
+#top-button-01 {
+    position: relative;
+    width: auto;
+    height: auto;
+    background: #f00;
+    cursor: pointer;
+}
+#post-area-top {
+    position: relative;
+    width: 100%;
+    padding: 9px 0px;
+    height: auto;
+    background: #fff;
+}
+#post-area-top-left {
+    position: relative;
+    /* float: left; */
+    /* margin-left: 14px; */
+    /* background: #f00; */
+}
+#post-area-top-right {
+    position: relative;
+    /* float: right; */
+    /* margin-left: 14px; */
+    /* margin-right: 14px; */
+    /* background: #ff0; */
+}
+#post-area-middle {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-top: 1px solid #e6e8e9;
+}
+#post-area-middle textarea {
+    float: left;
+    border: none;
+    resize: none;
+    width: 100%;
+    height: 124px;
+    padding: 18px;
+}
+#post-area-bottom {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background: #fff;
+    padding: 10px 10px 0px 10px;
+    border-top: 1px solid #e6e8e9;
+}
+#post-area-bottom table {
+    width: 100%;
+}
+#bottom-button-01 {
+    position: relative;
+    float: left;
+    width: auto;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+#bottom-button-02 {
+    position: relative;
+    float: left;
+    width: 140px;
+    height: 34px;
+    background: url('../images/13.png') no-repeat top left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+#bottom-button-02 input[type="text"] {
+    position: absolute;
+    top: 1px;
+    left: 32px;
+    width: 96px;
+    height: 32px;
+    color: #39a0c9;
+    border: none;
+}
+#bottom-button-03 {
+    position: relative;
+    float: right;
+    margin-bottom: 10px;
+}
+#all-posts-container {
+    position: relative;
+    padding: 20px 0px;
+    text-align: center;
+}
+#all-posts-container .btn {
+    padding: 6px 70px;
+}
+#all-posts-container .btn-default {
+    color: #39a0c9;
+    font-size: 12px;
+    font-weight: bold;
+}
+#post-area-top-form {
+    display: none;
+}
+.selectPictureButton {
+    cursor: pointer;
+}
+.selectFileButton {
+    cursor: pointer;
+}
+.postReference {
+    cursor: pointer;
+}
+.postRequest {
+    cursor: pointer;
+}
+.login-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 270px;
+    padding: 42px 15px;
+    margin-bottom: 10px;
+    background: #fff;
+}
+.login-form {
+    position: relative;
+    max-width: 300px;
+    margin: 0 auto;
+}
+.login-form .forgot {
+    padding: 6px 12px !important;
+}
+.login-title {
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.login-title p {
+    font-size: 20px;
+}
+#login-text-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 30px 0px;
+    /* background: #f00; */
+}
+#login-text {
+    position: relative;
+    max-width: 240px;
+    margin: 0 auto;
+    /* background: #ff0; */
+}
+.enjoy-group-modal {
+    position: relative;
+    max-width: 250px;
+    margin: 0 auto;
+}
+.group-modal-middle {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #e8eaea;
+    margin: 20px 0px;
+}
+.group-modal-facebook {
+    position: relative;
+    margin-top: 30px;
+    width: 100%;
+    cursor: pointer;
+}
+#modal-textarea {
+    resize: none;
+}
+
+/* @MEDIA QUERIES section */
+
+@media all and (max-width: 767px) {
+    .modal-dialog {
+        max-width: 768px;
+    }
+    #post-area-top {
+        font-size: 16px;
+    }
+    .post-profile-infos-popup {
+        width: auto;
+    }
+    .post-liked-right {
+        float: left;
+    }
+    .post-comment-text {
+        float: left;
+        width: 100%;
+    }
+    .plataforma-col-left {
+        position: relative;
+        float: left;
+        width: 100%;
+    }
+    .plataforma-col-right {
+        display: none;
+    }
+    #bottom-button-03 {
+        float: left;
+    }
+    #edit-profile-col-right {
+        min-width: 0px;
+        width: 100%;
+    }
+}

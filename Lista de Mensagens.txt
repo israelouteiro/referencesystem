@@ -1,0 +1,31 @@
+Lista de Mensagens do sistema
+
+//Login.php
+$error = "A senha digitada está incorreta"; 
+$error = "Conta não ativa, contacte o administrador do grupo"; 
+$error = "Email não cadastrado no grupo"; 
+"Congratulations you have been invited to participate in the trading system of references to go and do the registration:"
+"Click Here"
+"Congratulations you have been invited to reference system",
+$success = "The invitation was sent to the email: ".$emailConvite;
+$error_new = "Password and confirmation password do not match";
+$error_new = "Already registered mail";
+$successo_new = "Email successfully registered, contact the group administrator to request its activation";
+$error_new = "Error, please try again later";
+
+
+///// forgot.php;
+$error = "Conta não ativa, contacte o administrador do grupo";
+$error = "Email não cadastrado no grupo";
+"Visit for registering a new password"
+"Click Here"
+"Recover your password on Refence System"
+$success = "Instructions to recover your password have been sent to your email";
+
+
+
+//// recover.php
+"This hash already used or invalid";
+'If you quit now your hash will expire'
+$success = "Password changed";
+$error = "Error, try forgot again";
