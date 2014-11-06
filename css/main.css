@@ -283,6 +283,9 @@ p { font-size: 13px; }
 .more-comment-modulo-text {
     position: relative;
 }
+#morePhotosButton {
+    cursor: pointer;
+}
 .reference {
     border: 2px solid #39a0c9;
 }
@@ -339,13 +342,16 @@ p { font-size: 13px; }
     width: 100%;
     min-height: 60px;
     overflow: auto;
-    background: #ff0;
+    background: #fff;
     /* margin-bottom: 20px; */
 }
 #uo1_photos {
     position: relative;
     float: left;
-    background: #0f0;
+    width: auto;
+    height: auto;
+    /* background: #0f0; */
+    /* max-width: 70%; */
     /* left: controlled by js; */
     /* top: 0px; */
 }
@@ -622,7 +628,18 @@ p { font-size: 13px; }
 
 /* @MEDIA QUERIES section */
 
-@media all and (max-width: 767px) {
+/* TABLET */
+@media all and (max-width: 1024px) {
+    #uo-option {
+        float: left;
+    }
+}
+
+/* PHONE */
+@media all and (max-width: 768px) {
+    #uo-option {
+        float: left;
+    }
     .modal-dialog {
         max-width: 768px;
     }

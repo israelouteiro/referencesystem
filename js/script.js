@@ -1,7 +1,7 @@
 // var myWidth = $('#undercover_option_01').width();
 
-var UO_OPTION_WIDTH = 300;
-var UO1_PHOTOS_WIDTH = 660;
+// var UO_OPTION_WIDTH = 300;
+// var UO1_PHOTOS_WIDTH = 660;
 var changeReferenceState = false;
 var editProfileState = true;
 var showProfileInfos = false;
@@ -10,7 +10,7 @@ $(document).ready(function() {
     
     changeReference();
     setEditProfile();
-    setPhotosLeft();
+    // setPhotosLeft();
     setPostMenu();
     setProfileRight();
     
@@ -59,7 +59,7 @@ $(document).ready(function() {
 
 $(window).resize(function() {
     var plataformaWindow = $(window).width();
-    setPhotosLeft();
+    // setPhotosLeft();
     setPostMenu();
     setProfileRight();
 });
@@ -86,11 +86,12 @@ function setPostMenu() {
     }
 }
 
-function setPhotosLeft() {
+/* No float left photos, overflow hidden on left size when resize */
+/* function setPhotosLeft() {
     undercoverWidth = $('#undercover_option_01').width() - 2;
     uo1_photosLeft = UO1_PHOTOS_WIDTH - (undercoverWidth - UO_OPTION_WIDTH);
     $('#uo1_photos').css('left', -(uo1_photosLeft));
-}
+} */
 
 function changeReference() {
     if (changeReferenceState == true) {
