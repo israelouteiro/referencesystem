@@ -1,3 +1,20 @@
+<?php
+        
+        #######     OBJ USUARIO
+
+
+      #  $user_nome
+      #  $user_email
+      #  $user_foto
+      #  $user_cargo 
+      #  $user_pais
+      #  $user_estado 
+      #  $user_cidade 
+      #  $user_empresa 
+      #  $user_sobre 
+      #  $user_idFacebook
+
+?>
 <div id="edit-profile-wrapper"><!-- candidate to object -->
     <div id="edit-profile-img">
         <div id="edit-profile-img-wrap">
@@ -9,8 +26,8 @@
         <div id="edit-profile-col-left">
             <table>
                 <tr>
-                    <td>
-                        <img src="images/09.jpg">
+                    <td style="background:url(<?php echo $foto_user; ?>) no-repeat center center;background-size:cover;">
+                        <img src="images/09.jpg" style="visibility:hidden;">
                     </td>
                 </tr>
                 <tr>
@@ -24,17 +41,23 @@
             <input type="file" class="edit-profile-form-photo">
         </form>
         <div id="edit-profile-col-right">
-            <table>
-                <tr><td id="edit-profile-col-right-title">Edit Profile</td></tr>
-                <tr><td><input type="email" class="form-control" id="" placeholder="Email"></td></tr>
-                <tr><td><input type="text" class="form-control" id="" placeholder="Country"></td></tr>
-                <tr><td><input type="text" class="form-control" id="" placeholder="State"></td></tr>
-                <tr><td><input type="text" class="form-control" id="" placeholder="City"></td></tr>
-                <tr><td><input type="text" class="form-control" id="" placeholder="Company"></td></tr>
-                <tr><td><input type="text" class="form-control" id="" placeholder="Occupation"></td></tr>
-                <tr><td><textarea placeholder="Write something about you..." id="edit-profile-col-right-textarea"></textarea></td></tr>
-                <tr><td><button class="btn btn-info">Save</button></td></tr>
-            </table>
+
+            <form id="" action="" method="post">
+            <input type="hidden" name="eFoto" value="<?php $user_foto; ?>">
+                <table>
+                    <tr><td id="edit-profile-col-right-title">Edit Profile</td></tr>
+                    <tr><td><input name="eEmail" type="email" class="form-control" id="" placeholder="Email" value="<?php echo $user_email; ?>" required></td></tr>
+                    <tr><td><input name="ePais" type="text" class="form-control" id="" placeholder="Country" value="<?php echo $user_pais; ?>" required></td></tr>
+                    <tr><td><input name="eEstado" type="text" class="form-control" id="" placeholder="State" value="<?php echo $user_estado; ?>" required></td></tr>
+                    <tr><td><input name="eCidade" type="text" class="form-control" id="" placeholder="City" value="<?php echo $user_cidade; ?>" required></td></tr>
+                    <tr><td><input name="eEmpresa" type="text" class="form-control" id="" placeholder="Company" value="<?php echo $user_empresa; ?>" required></td></tr>
+                    <tr><td><input name="eCargo" type="text" class="form-control" id="" placeholder="Occupation" value="<?php echo $user_cargo; ?>" required></td></tr>
+                    <tr><td><textarea name="eSobre" placeholder="Write something about you..." id="edit-profile-col-right-textarea" required><?php echo $user_sobre; ?></textarea></td></tr>
+                    <tr><td><button type="submit" class="btn btn-info">Save</button></td></tr>
+                </table>
+
+            </form>
+
         </div>
         <div class="clear"></div>
     </div><!-- end of edit profile form -->
