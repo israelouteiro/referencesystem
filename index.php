@@ -112,7 +112,7 @@
                         </div>
                     </div>
                     <div id="bottom-button-02">
-                        <form><input type="text" placeholder="New tag..."></form>
+                        <form onsubmit="addTag();return false;"><input type="text" placeholder="New tag..." id="valorTags"></form>
                     </div>
                     <div id="bottom-button-03">
                         <button type="button" class="btn btn-primary btn-block">Publish</button>
@@ -339,5 +339,6 @@
         <script src="js/jquery.autosize.min.js"></script>
         <script src="js/script.js"></script>
         <script src="js/asyncUpload.js"></script>
+        <script src="js/controlTags.js"></script>
     </body>
 </html>
