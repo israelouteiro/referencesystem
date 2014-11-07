@@ -344,12 +344,7 @@ p {
     border: 1px dashed white;
     resize: none;
 }
-.admin-divide {
-    position: relative;
-    height: 30px;
-    border-bottom: 1px solid #dbdedf;
-    margin-bottom: 20px;
-}
+/*
 .admin-col-little {
     position: relative;
     float: left;
@@ -357,7 +352,8 @@ p {
     height: auto;
     overflow: auto;
     background: #f0f;
-}
+} */
+/*
 .admin-col-medium {
     position: relative;
     float: left;
@@ -366,10 +362,32 @@ p {
     overflow: auto;
     background: #0ff;
 }
+*/
+.admin-divide {
+    position: relative;
+    flaot: left;
+    width: 100%;
+    height: 30px;
+    border-bottom: 1px solid #dbdedf;
+    margin-bottom: 20px;
+    /* background: #f00; */
+}
 .admin-title {
     position: relative;
     float: left;
-    /* width: 184px; */
+    color: #39a0c9;
+    font-size: 14px;
+    font-weight: bold;
+    /* background: #0f0; */
+    width: 184px;
+    margin-bottom: 15px;
+}
+.admin-module-wrapper {
+    position: relative;
+    float: left;
+    max-width: 640px;
+    height: auto;
+    /* background: #ff0; */
 }
 .admin-user-module {
     position: relative;
@@ -378,7 +396,7 @@ p {
     min-height: 116px;
     margin-left: 66px;
     margin-bottom: 30px;
-    background: #f00;
+    /* background: #f00; */
 }
 .user-module-photo {
     position: absolute;
@@ -754,6 +772,10 @@ p {
     #uo2-buttons {
         width: 98%;
     }
+    .admin-title {
+        width: 100%;
+        margin-bottom: 15px;
+    }
 }
 
 /* PHONE */
@@ -773,6 +795,11 @@ p {
     }
     .admin-user-module {
         margin-left: 0px;
+        margin-right: 15px;
+    }
+    .admin-title {
+        width: 100%;
+        margin-bottom: 15px;
     }
     #post-area-top {
         font-size: 16px;

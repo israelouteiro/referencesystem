@@ -49,11 +49,8 @@
         <?php include('./includes/edit.profile.inc.php'); ?>
         <div class="container">
             <div class="admin-divide"></div>
-            <div class="admin-col-little">
-                <div class="admin-title">Waiting for approve</div>
-                <div class="clear"></div>
-            </div>
-            <div class="admin-col-medium">
+            <div class="admin-title"><p>Waiting for Approve</p></div>
+            <div class="admin-module-wrapper">
                 <div class="admin-user-module">
                     <div class="user-module-photo"><img src="images/35.png"></div>
                     <div class="user-module-text">
@@ -65,11 +62,7 @@
                     <div class="user-module-close"><img src="images/34.png"></div>
                     <div class="user-module-decline"><img src="images/32.png" width="100%"></div>
                     <div class="user-module-accept"><img src="images/33.png" width="100%"></div>
-                    <div class="clear"></div>
                 </div><!-- end of user module -->
-                <div class="clear"></div>
-            </div><!-- end of little column -->
-            <div class="admin-col-medium">
                 <div class="admin-user-module">
                     <div class="user-module-photo"><img src="images/35.png"></div>
                     <div class="user-module-text">
@@ -81,70 +74,45 @@
                     <div class="user-module-close"><img src="images/34.png"></div>
                     <div class="user-module-decline"><img src="images/32.png" width="100%"></div>
                     <div class="user-module-accept"><img src="images/33.png" width="100%"></div>
-                    <div class="clear"></div>
                 </div><!-- end of user module -->
                 <div class="clear"></div>
-            </div><!-- end of medium column -->
+            </div><!-- end of waiting for approve wrapper -->
+            <div class="clear"></div>
             <div class="admin-divide"></div>
-            <div class="admin-col-little">
-                <div class="admin-title">Waiting for approve</div>
-            </div>
-            <div class="admin-col-medium">
+            <div class="admin-title"><p>Active Users</p></div>
+             <div class="admin-module-wrapper">
                 <div class="admin-user-module">
                     <div class="user-module-photo"><img src="images/35.png"></div>
                     <div class="user-module-text">
-                            <p class="user-module-name">Usuário da Silva</p>
-                            <p class="user-module-place">Brasília - DF</p>
-                            <p class="user-module-infos">Diretor de Arte</p>
-                            <p class="user-module-infos">Racionalize Comunicação</p>
+                        <p class="user-module-name">Usuário da Silva</p>
+                        <p class="user-module-place">Brasília - DF</p>
+                        <p class="user-module-infos">Diretor de Arte</p>
+                        <p class="user-module-infos">Racionalize Comunicação</p>
                     </div>
                     <div class="user-module-close"><img src="images/34.png"></div>
-                    <div class="user-module-decline"><img src="images/32.png" width="100%"></div>
-                    <div class="user-module-accept"><img src="images/33.png" width="100%"></div>
-                    <div class="clear"></div>
                 </div><!-- end of user module -->
                 <div class="admin-user-module">
                     <div class="user-module-photo"><img src="images/35.png"></div>
                     <div class="user-module-text">
-                            <p class="user-module-name">Usuário da Silva</p>
-                            <p class="user-module-place">Brasília - DF</p>
-                            <p class="user-module-infos">Diretor de Arte</p>
-                            <p class="user-module-infos">Racionalize Comunicação</p>
+                        <p class="user-module-name">Usuário da Silva</p>
+                        <p class="user-module-place">Brasília - DF</p>
+                        <p class="user-module-infos">Diretor de Arte</p>
+                        <p class="user-module-infos">Racionalize Comunicação</p>
                     </div>
                     <div class="user-module-close"><img src="images/34.png"></div>
-                    <div class="user-module-decline"><img src="images/32.png" width="100%"></div>
-                    <div class="user-module-accept"><img src="images/33.png" width="100%"></div>
-                    <div class="clear"></div>
                 </div><!-- end of user module -->
-            </div><!-- end of little column -->
-            <div class="admin-col-medium">
-                <div class="admin-user-module">
+                 <div class="admin-user-module">
                     <div class="user-module-photo"><img src="images/35.png"></div>
                     <div class="user-module-text">
-                            <p class="user-module-name">Usuário da Silva</p>
-                            <p class="user-module-place">Brasília - DF</p>
-                            <p class="user-module-infos">Diretor de Arte</p>
-                            <p class="user-module-infos">Racionalize Comunicação</p>
+                        <p class="user-module-name">Usuário da Silva</p>
+                        <p class="user-module-place">Brasília - DF</p>
+                        <p class="user-module-infos">Diretor de Arte</p>
+                        <p class="user-module-infos">Racionalize Comunicação</p>
                     </div>
                     <div class="user-module-close"><img src="images/34.png"></div>
-                    <div class="user-module-decline"><img src="images/32.png" width="100%"></div>
-                    <div class="user-module-accept"><img src="images/33.png" width="100%"></div>
-                    <div class="clear"></div>
                 </div><!-- end of user module -->
-                <div class="admin-user-module">
-                    <div class="user-module-photo"><img src="images/35.png"></div>
-                    <div class="user-module-text">
-                            <p class="user-module-name">Usuário da Silva</p>
-                            <p class="user-module-place">Brasília - DF</p>
-                            <p class="user-module-infos">Diretor de Arte</p>
-                            <p class="user-module-infos">Racionalize Comunicação</p>
-                    </div>
-                    <div class="user-module-close"><img src="images/34.png"></div>
-                    <div class="user-module-decline"><img src="images/32.png" width="100%"></div>
-                    <div class="user-module-accept"><img src="images/33.png" width="100%"></div>
-                    <div class="clear"></div>
-                </div><!-- end of user module -->
-            </div><!-- end of medium column -->
+                <div class="clear"></div>
+            </div><!-- end of active users wrapper -->
         </div><!-- end of container -->
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
