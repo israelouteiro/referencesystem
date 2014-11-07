@@ -33,7 +33,11 @@
                         <tr>
                             <td><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet</p></td>
                             <td width="10">&nbsp;</td>
-                            <td valign="top"><img src="images/03.png" class="adminToolButton" alt="Admin Tools"></td><!-- only for admin -->
+                            <td valign="top">
+                                <?php if($_SESSION['loggedU']['permissao']=='admin'){ ?>
+                                    <img src="images/03.png" class="adminToolButton" alt="Admin Tools">
+                                <?php }else{echo '&nbsp;';} ?>
+                            </td><!-- only for admin -->
                         </tr>
                     </table>
                 </div>

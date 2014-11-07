@@ -1,3 +1,11 @@
+<?php 
+    
+    include "includes/isLogged.php";
+    include "includes/isLoggedAdmin.php";
+    include "includes/conexao.php";
+    include "includes/queryUsuario.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>

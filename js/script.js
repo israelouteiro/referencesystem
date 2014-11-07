@@ -56,7 +56,9 @@ $(document).ready(function() {
     });
     $('.adminToolButton').bind('click', function() {
         //alert('Admin Tools'); // replace this code
-        location.href=('admin.php');
+        if('<?php echo $_SESSION["loggedU"]["permissao"]; ?>'=='admin'){
+            location.href=('admin.php');
+        }
     });
     $('#morePhotosButton').bind('click', function() {
         alert('Load More Photos'); // replace this code
