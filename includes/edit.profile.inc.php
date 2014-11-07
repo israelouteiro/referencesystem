@@ -31,6 +31,9 @@
                     </td>
                 </tr>
                 <tr>
+                    <td height="9"></td>
+                </tr>
+                <tr>
                     <td onclick="$('.edit-profile-form-photo').click();">
                         <img src="images/22.png" width="100%" id="edit-profile-form-button">
                     </td>

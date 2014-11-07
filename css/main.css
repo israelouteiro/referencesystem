@@ -570,7 +570,7 @@ p {
 }
 #edit-profile-col-left table tr td {
     max-width: 95px;
-    padding-bottom: 9px;
+    /*padding-bottom: 9px;*/
 }
 #edit-profile-col-right {
     min-width: 250px;
