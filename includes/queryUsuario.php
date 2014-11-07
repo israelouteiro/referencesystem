@@ -51,7 +51,7 @@
 
 	}
 							if(!empty($user_foto)){
-                                $foto_user = "".$user_foto;
+                                $foto_user = "arquivos/".$user_foto;
                             }else{
                                 if(!empty($user_idFacebook)){
                                     $foto_user = "http://graph.facebook.com/".$user_idFacebook."/picture?type=large";

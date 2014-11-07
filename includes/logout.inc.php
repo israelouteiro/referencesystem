@@ -2,7 +2,7 @@
 <div id="uo-option"><!-- candidate to object -->
     <table>
         <tr>
-            <td width="60" style="background:url(<?php echo $foto_user; ?>) no-repeat center center; background-size:cover;"><img src="images/02.png" style="visibility:hidden;"></td>
+            <td width="60" style="background:url(<?php echo $foto_user; ?>) no-repeat center center; background-size:cover;"  class="userPhotoProfile"><img src="images/02.png" style="visibility:hidden;"></td>
             <td width="12">&nbsp;</td>
             <td width="158">
                 <p class="uo-name"><?php echo $user_nome; ?></p>

@@ -26,7 +26,7 @@
         <div id="edit-profile-col-left">
             <table>
                 <tr>
-                    <td style="background:url(<?php echo $foto_user; ?>) no-repeat center center;background-size:cover;">
+                    <td style="background:url(<?php echo $foto_user; ?>) no-repeat center center;background-size:cover;" class="userPhotoProfile">
                         <img src="images/09.jpg" style="visibility:hidden;">
                     </td>
                 </tr>
@@ -38,7 +38,7 @@
             </table>
         </div>
         <form id="edit-profile-form-file">
-            <input type="file" class="edit-profile-form-photo">
+            <input type="file" class="edit-profile-form-photo" id="editProfilePhoto">
         </form>
         <div id="edit-profile-col-right">
 
