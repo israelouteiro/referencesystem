@@ -108,10 +108,8 @@
                     <div id="bottom-button-01">
                         <div class="btn-group">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Select tag <span class="caret"></span></button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Tag One</a></li>
-                                <li><a href="#">Tag Two</a></li>
-                                <li><a href="#">Tag Three</a></li>
+                            <ul class="dropdown-menu" role="menu" id="listaTags">
+                                
                             </ul>
                         </div>
                     </div>
@@ -336,6 +334,10 @@
                 </div>
             </aside>
         </div>
+        <form id="formEnvios">
+            <input type="hidden" name="fe_tags" id="fe_tags" value="">
+        </form>
+        
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -346,3 +348,4 @@
         <script src="js/controlTags.js"></script>
     </body>
 </html>
+
