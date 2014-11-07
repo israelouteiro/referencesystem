@@ -8,9 +8,10 @@ ob_start();
 		session_set_cookie_params((60*30*1024),'/','.'.str_replace('www','',$_SERVER['HTTP_HOST']),true,true);
 			if(isset($_SESSION['loggedU']['id']) && !empty($_SESSION['loggedU']['id']) && $_SESSION['loggedU']['id'] != ''){
 				//Maybe Good login
-					if($_SESSION['loggedU']['permissao'] != 'admin'){
+					if($_SESSION['loggedU']['permissao'] == 'admin'){
 					//Good login
 					}else{
+						echo 
 							header("Location:login.php");
 							exit();
 					}
