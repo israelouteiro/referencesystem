@@ -39,6 +39,17 @@ $(document).ready(function() {
         }
     });
     
+    /* Show profile popup infos */
+    $('.user-module-name').bind('click', function() {
+        if (showProfileInfos == false) {
+            $(this).parent().next('.post-profile-infos-popup').show();
+            showProfileInfos = true;
+        } else {
+            $(this).parent().next('.post-profile-infos-popup').hide();
+            showProfileInfos = false;
+        }
+    });
+    
     /* change src image from 17.png to 18.png */
     $('.post-liked-hearth').bind('click', function() {
         $(this).attr('src','images/18.png');

@@ -157,6 +157,7 @@ p {
 }
 .post-profile-infos-popup {
     position: absolute;
+    top: 20px;
     width: 320px;
     padding: 20px;
     min-height: 292px;

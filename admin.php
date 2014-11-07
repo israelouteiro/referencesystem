@@ -54,10 +54,33 @@
                 <div class="admin-user-module">
                     <div class="user-module-photo"><img src="images/35.png"></div>
                     <div class="user-module-text">
-                            <p class="user-module-name">Usuário da Silva</p>
-                            <p class="user-module-place">Brasília - DF</p>
-                            <p class="user-module-infos">Diretor de Arte</p>
-                            <p class="user-module-infos">Racionalize Comunicação</p>
+                        <p class="user-module-name">Usuário da Silva</p>
+                        <p class="user-module-place">Brasília - DF</p>
+                        <p class="user-module-infos">Diretor de Arte</p>
+                        <p class="user-module-infos">Racionalize Comunicação</p>
+                    </div>
+                    <div class="post-profile-infos-popup">
+                        <div class="infos-popup-image">
+                            <img src="images/10.jpg">
+                        </div>
+                        <div class="infos-popup-infos">
+                            <p class="infos-popup-title">Juliana Almeida Silveira</p>
+                            <table>
+                                <tr>
+                                    <td rowspan="2"><img src="images/26.png"></td>
+                                    <td><p>Brasília - DF</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p>Brasil</p></td>
+                                </tr>
+                            </table>
+                            <p>Diretor de Arte</p>
+                            <p>Racionalize Comunicação</p>
+                        </div>
+                        <div class="infos-popup-text">
+                            <p class="infos-popup-title">About me:</p>
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                        </div>
                     </div>
                     <div class="user-module-close"><img src="images/34.png"></div>
                     <div class="user-module-decline"><img src="images/32.png" width="100%"></div>
@@ -66,10 +89,10 @@
                 <div class="admin-user-module">
                     <div class="user-module-photo"><img src="images/35.png"></div>
                     <div class="user-module-text">
-                            <p class="user-module-name">Usuário da Silva</p>
-                            <p class="user-module-place">Brasília - DF</p>
-                            <p class="user-module-infos">Diretor de Arte</p>
-                            <p class="user-module-infos">Racionalize Comunicação</p>
+                        <p class="user-module-name">Usuário da Silva</p>
+                        <p class="user-module-place">Brasília - DF</p>
+                        <p class="user-module-infos">Diretor de Arte</p>
+                        <p class="user-module-infos">Racionalize Comunicação</p>
                     </div>
                     <div class="user-module-close"><img src="images/34.png"></div>
                     <div class="user-module-decline"><img src="images/32.png" width="100%"></div>
