@@ -1,8 +1,9 @@
 function addTag(){
 	var nTag = $('#valorTags').val();
 	if(nTag!=''){
-		$.post('',{}).done(function(r){
-			
-		});
+		alert('vou add '+nTag);
+		/*$.post('', { nome: nTag }).done(function(r){
+			alert(r);
+		});*/
 	}
 }

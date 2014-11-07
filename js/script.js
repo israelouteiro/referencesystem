@@ -55,16 +55,16 @@ $(document).ready(function() {
         $(this).attr('src','images/18.png');
     });
     $('.adminToolButton').bind('click', function() {
-        alert('Admin Tools'); // replace this code
+        //alert('Admin Tools'); // replace this code
     });
     $('#morePhotosButton').bind('click', function() {
         alert('Load More Photos'); // replace this code
     });
     $('#logOutButton').bind('click', function() {
-        alert('Log Out'); // replace this code
+        //alert('Log Out'); // replace this code
     });
     $('.uo_edit').bind('click', function() {
-        alert('Edit Profile'); // replace this code
+       // alert('Edit Profile'); // replace this code
     })
 });
 
