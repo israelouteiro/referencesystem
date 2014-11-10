@@ -41,3 +41,11 @@ function garregaPosts(inic){
 		numEPo = inic +6;
 	});
 }
+
+function carregaPosts(){
+	$('#allPosts').html('');
+	$.get('includes/generatePosts.php?in='+inic).done(function(alm){
+		$('#allPosts').html(alm);
+		numEPo = inic +6;
+	});
+}

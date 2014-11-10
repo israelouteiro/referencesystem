@@ -108,8 +108,7 @@
 									changeReferenceState=false;changeReference();
 									$('#post-area-middle-textarea').val('');
 									carregaTags();
-									//recarregaPostagens da pagina;
-									//alert('Sucesso no post');
+									carregaPosts();
 								} else {
 									alert(data);
 								}
@@ -117,4 +116,32 @@
 			}else{
 				alert('Digite algo em sua postagem');
 			}
+		}
+
+
+		function postComment(idPoste){
+				if($('#textos_comentarios'+idPoste).val()!=''){
+					$.post('includes/saveComento.php',{ texto: $('#textos_comentarios'+idPoste).val(), fk_poste : idPoste }, function (foiz){
+						ds = foiz.split(':');
+						if(ds[1]=='successfully'){
+							recarregaComentarios(idPoste);
+							$('#textos_comentarios'+idPoste).val('');
+						}else{
+							alert(foiz);
+						}
+					});
+				}
+		}
+
+		function recarregaComentarios(id){
+			$.get('includes/generateComentes.php?id='+id).done(function(susexo){
+				$('#lista_comentartio'+id).html(susexo);
+				recarregaBadgeComentos(id);
+			});
+		}
+
+		function recarregaBadgeComentos(id){
+			$.get('includes/generateBComentes.php?id='+id).done(function(susexo){
+				$('#bComm'+id).html(susexo+' comments');
+			});
 		}

@@ -34,7 +34,7 @@ p {
 .plataforma-col {
     position: relative;
     margin-top: 20px;
-    background: #f00;
+  /*  background: #f00; */
 }
 .plataforma-col-left {
     float: left;
@@ -667,6 +667,30 @@ p {
     list-style: none;
 }
 #post-area-attaches ul li {
+    float: left;
+    display: block;
+    cursor: pointer !important;
+    padding: 7px 9px;
+    font-weight: bold;
+    color: #39a0c9;
+    background: #fff;
+    border: 1px solid #cfcfcf;
+    margin: 5px 8px;
+    border-radius: 4px;
+}
+.post-area-attaches {
+    position: relative;
+    float: left;
+    width: 100%;
+    height: auto;
+    background: #fff;
+}
+.post-area-attaches ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+.post-area-attaches ul li {
     float: left;
     display: block;
     cursor: pointer !important;

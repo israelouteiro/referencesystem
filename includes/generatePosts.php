@@ -46,6 +46,42 @@ ob_start();
 
 
 
+
+        $luzer = mysql_query("SELECT * FROM usuarios WHERE id='$post_fk_usuario' ");
+        if(haveResults($luzer)){
+
+            $luzer_nome = mysql_result($luzer,0,"nome");
+            $luzer_email = mysql_result($luzer,0,"email");
+            $luzer_foto = mysql_result($luzer,0,"foto");
+            $luzer_cargo = mysql_result($luzer,0,"cargo");
+            $luzer_pais = mysql_result($luzer,0,"pais");
+            $luzer_estado = mysql_result($luzer,0,"estado");
+            $luzer_cidade = mysql_result($luzer,0,"cidade");
+            $luzer_empresa = mysql_result($luzer,0,"empresa");
+            $luzer_sobre = mysql_result($luzer,0,"sobre");
+            $luzer_idFacebook = mysql_result($luzer,0,"id_facebook");
+
+
+
+                            if(!empty($luzer_foto)){
+                                $luzer_foto = "arquivos/".$luzer_foto;
+                            }else{
+                                if(!empty($luzer_idFacebook)){
+                                    $luzer_foto = "http://graph.facebook.com/".$luzer_foto."/picture?type=large";
+                                }else{
+                                    $luzer_foto = "images/02.png";
+                                }
+                            }
+
+        }
+
+        $suCom = mysql_query("SELECT * FROM comentarios WHERE fk_poste='$post_id' ");
+        if(haveResults($suCom)){
+            $numComentos = mysql_num_rows($suCom);
+        }else{
+            $numComentos = 0;
+        }
+
         if($post_tipo=='reference'){
 
 ?>
@@ -119,6 +155,15 @@ ob_start();
                             </ul>
                         </div>
                         <p><?php echo $post_texto; ?></p>
+
+                        <div class="post-area-attaches">
+                            <ul>
+                                <li><img src="images/37.png"> file_file.jpg </li>
+                                <li><img src="images/37.png"> file_file.jpg </li>
+                                <li><img src="images/37.png"> file_image.jpg </li>
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
                     </div>
                     <div class="post-profile-bigimage">
                         
@@ -166,44 +211,34 @@ ob_start();
                     <div class="plataforma-post-content">
                         <div class="plataforma-post-liked">
                             <div class="post-liked-left">
-                                <img src="images/17.png" class="post-liked-hearth">
+                                <img src="images/18.png" class="post-liked-hearth">
                                 <p>53 users liked</p>
                             </div>
                             <div class="post-liked-right">
                                 <img src="images/16.png">
-                                <p>15 comments</p>
+                                <p id="bComm<?php echo $post_id; ?>"><?php echo $numComentos; ?> comments</p>
                             </div>
                             <div class="clear"></div>
                         </div>
                         <div class="plataforma-post-comment">
-                            <div class="post-comment-image">
-                                <img src="images/08.jpg">
+                            <div class="post-comment-image userPhotoProfile" style="background:url(<?php echo $luzer_foto; ?>) no-repeat center center; background-size:cover;">
+                                <img src="images/08.jpg" style="visibility:hidden;">
                             </div>
                             <div class="post-comment-text">
-                                <textarea placeholder="Write a comment..." class="post-comment-textarea"></textarea>
+                                <textarea placeholder="Write a comment..." class="post-comment-textarea" onkeyup="if(event.keyCode==13){postComment('<?php echo $post_id; ?>'); }" id="textos_comentarios<?php echo $post_id; ?>"></textarea>
                             </div>
                             <div class="clear"></div>
                             <div class="more-comment">
                                 <button class="btn btn-link more-comment-expand" onclick="$(this).parent().next('.more-comment-container').slideToggle();">View comments <span class="caret"></span></button>
                             </div>
-                            <div class="more-comment-container" style="display:none;">
-                                <div class="more-comment-modulo">
-                                    <div class="more-comment-modulo-image"><img src="images/08.jpg"></div>
-                                    <div class="more-comment-modulo-text"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p></div>
-                                </div>
-                                <div class="more-comment-modulo">
-                                    <div class="more-comment-modulo-image"><img src="images/08.jpg"></div>
-                                    <div class="more-comment-modulo-text"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p></div>
-                                </div>
-                                <div class="more-comment-modulo">
-                                    <div class="more-comment-modulo-image"><img src="images/08.jpg"></div>
-                                    <div class="more-comment-modulo-text"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p></div>
-                                </div>
+                            <div class="more-comment-container" style="display:none;" id="lista_comentartio<?php echo $post_id; ?>">
+
+                                
                             </div>
                         </div>
                     </div>
                 </div><!-- end of REFERENCE POST -->
-
+                <script>recarregaComentarios(<?php echo $post_id; ?>);</script>
 
 
 
@@ -266,6 +301,17 @@ ob_start();
                             </ul>
                         </div>
                         <p><?php echo $post_texto; ?></p>
+
+                        <div class="post-area-attaches">
+                            <ul>
+                                <li><img src="images/37.png"> file_file.jpg </li>
+                                <li><img src="images/37.png"> file_file.jpg </li>
+                                <li><img src="images/37.png"> file_image.jpg </li>
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
+
+
                     </div>
                     <div class="post-profile-bigimage">
                         <?php $fotosDestePost = mysql_query("SELECT * FROM anexos WHERE fk_poste='$post_id' AND tipo='imagem' ");
@@ -305,43 +351,33 @@ ob_start();
                     <div class="plataforma-post-content">
                         <div class="plataforma-post-liked">
                             <div class="post-liked-left">
-                                <img src="images/17.png" class="post-liked-hearth">
+                                <img src="images/18.png" class="post-liked-hearth">
                                 <p>53 users liked</p>
                             </div>
                             <div class="post-liked-right">
                                 <img src="images/16.png">
-                                <p>15 comments</p>
+                                <p id="bComm<?php echo $post_id; ?>"><?php echo $numComentos; ?> comments</p>
                             </div>
                             <div class="clear"></div>
                         </div>
                         <div class="plataforma-post-comment">
-                            <div class="post-comment-image">
-                                <img src="images/08.jpg">
+                            <div class="post-comment-image userPhotoProfile" style="background:url(<?php echo $luzer_foto; ?>) no-repeat center center; background-size:cover;">
+                                <img src="images/08.jpg" style="visibility:hidden;">
                             </div>
                             <div class="post-comment-text">
-                                <textarea placeholder="Write a comment..." class="post-comment-textarea"></textarea>
+                                <textarea placeholder="Write a comment..." class="post-comment-textarea" onkeyup="if(event.keyCode==13){postComment('<?php echo $post_id; ?>'); }" id="textos_comentarios<?php echo $post_id; ?>"></textarea>
                             </div>
                             <div class="clear"></div>
                             <div class="more-comment">
                                 <button class="btn btn-link more-comment-expand" onclick="$(this).parent().next('.more-comment-container').slideToggle();">View comments <span class="caret"></span></button>
                             </div>
-                            <div class="more-comment-container" style="display:none;">
-                                <div class="more-comment-modulo">
-                                    <div class="more-comment-modulo-image"><img src="images/08.jpg"></div>
-                                    <div class="more-comment-modulo-text"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p></div>
-                                </div>
-                                <div class="more-comment-modulo">
-                                    <div class="more-comment-modulo-image"><img src="images/08.jpg"></div>
-                                    <div class="more-comment-modulo-text"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p></div>
-                                </div>
-                                <div class="more-comment-modulo">
-                                    <div class="more-comment-modulo-image"><img src="images/08.jpg"></div>
-                                    <div class="more-comment-modulo-text"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p></div>
-                                </div>
+                            <div class="more-comment-container" style="display:none;" id="lista_comentartio<?php echo $post_id; ?>">
+                                
                             </div>
                         </div>
                     </div>
                 </div><!-- end of post request -->
+                <script>recarregaComentarios(<?php echo $post_id; ?>);</script>
 
 
 <? }}} //n tem resultados ainda; ?>
