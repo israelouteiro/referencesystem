@@ -95,8 +95,10 @@
                         </table>
                     </div>
                     <div class="clear"></div>
-                    <form id="post-area-top-form">
-                        <input type="file" id="selectPicture">
+                    <form class="post-area-top-form" enctype="multipart/form-data" onsubmit="return false;">
+                        <input type="file" id="selectPicture" accept="image/*">
+                    </form>
+                    <form class="post-area-top-form" enctype="multipart/form-data" onsubmit="return false;">
                         <input type="file" id="selectFile">
                     </form>
                 </div><!-- end of post area top -->
@@ -337,7 +339,7 @@
         <form id="formEnvios">
             <input type="hidden" name="fe_tags" id="fe_tags" value="">
         </form>
-        
+
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->

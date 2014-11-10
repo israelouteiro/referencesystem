@@ -689,7 +689,7 @@ p {
     font-size: 12px;
     font-weight: bold;
 }
-#post-area-top-form {
+.post-area-top-form {
     display: none;
 }
 .selectPictureButton {
