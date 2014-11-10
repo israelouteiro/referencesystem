@@ -34,6 +34,7 @@ p {
 .plataforma-col {
     position: relative;
     margin-top: 20px;
+    background: #f00;
 }
 .plataforma-col-left {
     float: left;
@@ -616,29 +617,72 @@ p {
 }
 #post-area-top {
     position: relative;
+    float: left;
     width: 100%;
     padding: 9px 0px;
     height: auto;
     background: #fff;
+    border-bottom: 1px solid #e6e8e9;
 }
 #post-area-top-left {
     position: relative;
-    /* float: left; */
-    /* margin-left: 14px; */
-    /* background: #f00; */
 }
 #post-area-top-right {
     position: relative;
-    /* float: right; */
-    /* margin-left: 14px; */
-    /* margin-right: 14px; */
-    /* background: #ff0; */
+}
+#post-area-tags {
+    position: relative;
+    float: left;
+    width: 100%;
+    height: auto;
+    background: #fff;
+}
+#post-area-tags ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+#post-area-tags ul li {
+    float: left;
+    display: block;
+    cursor: pointer !important;
+    padding: 7px 9px;
+    font-weight: bold;
+    color: #39a0c9;
+    background: #fff;
+    border: 1px solid #cfcfcf;
+    margin: 5px 8px;
+    border-radius: 4px;
+}
+#post-area-attaches {
+    position: relative;
+    float: left;
+    width: 100%;
+    height: auto;
+    background: #fff;
+}
+#post-area-attaches ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+#post-area-attaches ul li {
+    float: left;
+    display: block;
+    cursor: pointer !important;
+    padding: 7px 9px;
+    font-weight: bold;
+    color: #39a0c9;
+    background: #fff;
+    border: 1px solid #cfcfcf;
+    margin: 5px 8px;
+    border-radius: 4px;
 }
 #post-area-middle {
     position: relative;
     width: 100%;
     height: auto;
-    border-top: 1px solid #e6e8e9;
+    /* border-top: 1px solid #e6e8e9; */
 }
 #post-area-middle textarea {
     float: left;
@@ -650,11 +694,13 @@ p {
 }
 #post-area-bottom {
     position: relative;
+    float: left;
     width: 100%;
     height: auto;
     background: #fff;
     padding: 10px 10px 0px 10px;
     border-top: 1px solid #e6e8e9;
+    /* margin-bottom: 20px; */
 }
 #post-area-bottom table {
     width: 100%;
@@ -691,6 +737,9 @@ p {
 }
 #all-posts-container {
     position: relative;
+    width: 100%;
+    height: auto;
+    /* float: left; */
     padding: 20px 0px;
     text-align: center;
 }

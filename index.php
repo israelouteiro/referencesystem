@@ -94,7 +94,6 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="clear"></div>
                     <form class="post-area-top-form" enctype="multipart/form-data" onsubmit="return false;">
                         <input type="file" id="selectPicture" accept="image/*">
                     </form>
@@ -102,16 +101,35 @@
                         <input type="file" id="selectFile">
                     </form>
                 </div><!-- end of post area top -->
+                <div id="post-area-tags">
+                    <ul>
+                        <li>#taggoeshere <img src="images/36.png"></li>
+                        <li>#taggoeshere <img src="images/36.png"></li>
+                        <li>#taggoeshere <img src="images/36.png"></li>
+                        <li>#taggoeshere <img src="images/36.png"></li>
+                        <li>#taggoeshere <img src="images/36.png"></li>
+                        <li>#taggoeshere <img src="images/36.png"></li>
+                    </ul>
+                </div>
                 <div id="post-area-middle">
                     <textarea placeholder="Write something..." id="post-area-middle-textarea"></textarea>
-                    <div class="clear"></div>
+                </div>
+                <div id="post-area-attaches">
+                    <ul>
+                        <li><img src="images/38.png"> image_image.jpg</li>
+                        <li><img src="images/38.png"> image_image.jpg</li>
+                        <li><img src="images/38.png"> image_image.jpg</li>
+                        <li><img src="images/37.png"> file_file.jpg</li>
+                        <li><img src="images/37.png"> file_file.jpg</li>
+                        <li><img src="images/37.png"> file_image.jpg</li>
+                    </ul>
                 </div>
                 <div id="post-area-bottom">
                     <div id="bottom-button-01">
                         <div class="btn-group">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Select tag <span class="caret"></span></button>
                             <ul class="dropdown-menu" role="menu" id="listaTags">
-                                
+                                    
                             </ul>
                         </div>
                     </div>
@@ -121,11 +139,11 @@
                     <div id="bottom-button-03">
                         <button type="button" class="btn btn-primary btn-block" onclick="submitPost();">Publish</button>
                     </div>
-                    <div class="clear"></div>
                 </div>
+                <div class="clear"></div>
                 <div id="all-posts-container">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">All posts <span class="caret"></span></button>
+                        <div class="text-center"><button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">All posts <span class="caret"></span></button></div>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#">Reference</a></li>
                             <li><a href="#">Request</a></li>
@@ -135,16 +153,7 @@
                         </ul>
                     </div>
                 </div>
-
-
-
-
-
                 <div id="allPosts"></div>
-
-
-
-
             </div><!-- end of left column -->
             <aside class="plataforma-col plataforma-col-right">
                 <div class="plataforma-search">
