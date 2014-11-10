@@ -8,10 +8,15 @@
             </ul>
         </div>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam fringilla enim ut mi vulputate rhoncus. In at maximus eros...</p>
-        <ul>
-            <li><img src="images/07.png"></li>
-            <li>53 Users liked</li>
-        </ul>
-        <div><img src="images/27.png"></div>
+        <div class="posts-module-liked">
+            <ul>
+                <li><img src="images/07.png"></li>
+                <li>53 Users liked</li>
+            </ul>
+        </div>
+        <div class="posts-module-button">
+            <img src="images/27.png" width="100%">
+        </div>
+        <div class="clear"></div>
     </div>
 </section>

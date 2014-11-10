@@ -108,7 +108,6 @@ p {
     list-style: none;
     padding-bottom: 15px;
 }
-
 .hottest-posts-module-link ul li {
     display: inline-block;
     margin: 0px 5px;
@@ -124,6 +123,20 @@ p {
 }
 .hottest-posts-module-image {
     cursor: pointer;
+}
+.posts-module-liked {
+    position: relative;
+    float: left;
+    width: auto;
+    margin-bottom: 10px;
+    /* background: #f00; */
+}
+.posts-module-button {
+    position: relative;
+    float: right;
+    max-width: 114px;
+    cursor: pointer;
+    margin-bottom: 10px;
 }
 .plataforma-post {
     margin: 20px 0px;
@@ -776,6 +789,12 @@ p {
     .admin-title {
         width: 100%;
         margin-bottom: 15px;
+    }
+    .posts-module-liked {
+        width: 100%;
+    }
+    .posts-module-button {
+        float: left;
     }
 }
 
