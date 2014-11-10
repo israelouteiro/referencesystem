@@ -1,0 +1,7 @@
+function postNewFiles(){
+
+}
+
+function postNewPhoto(){
+	
+}

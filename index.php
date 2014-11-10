@@ -96,10 +96,10 @@
                     </div>
                     <div class="clear"></div>
                     <form class="post-area-top-form" enctype="multipart/form-data" onsubmit="return false;">
-                        <input type="file" id="selectPicture" accept="image/*">
+                        <input type="file" id="selectPicture" accept="image/*" onchange="postNewPhoto();">
                     </form>
                     <form class="post-area-top-form" enctype="multipart/form-data" onsubmit="return false;">
-                        <input type="file" id="selectFile">
+                        <input type="file" id="selectFile" onchange="postNewFiles();">
                     </form>
                 </div><!-- end of post area top -->
                 <div id="post-area-middle">
@@ -338,6 +338,7 @@
         </div>
         <form id="formEnvios">
             <input type="hidden" name="fe_tags" id="fe_tags" value="">
+            <input type="hidden" name="fe_anexos" id="fe_anexos" value="">
         </form>
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -348,6 +349,7 @@
         <script src="js/script.js"></script>
         <script src="js/asyncUpload.js"></script>
         <script src="js/controlTags.js"></script>
+        <script src="js/controlFormPost.js"></script>
     </body>
 </html>
 
