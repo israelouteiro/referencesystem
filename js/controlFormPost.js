@@ -145,3 +145,15 @@
 				$('#bComm'+id).html(susexo+' comments');
 			});
 		}
+
+		function curtiu(id){
+			$.get('includes/curtiuLikes.php?id='+id).done(function(susexo){
+				susexo = susexo.split(':');
+				if(susexo[0]=='curtiu'){
+					$('#likesObj'+id+' img').attr('src','images/17.png');
+				}else{
+					$('#likesObj'+id+' img').attr('src','images/18.png');
+				}
+				$('#likesObj'+id+' p').html(susexo[1]+' users liked');
+			});
+		}

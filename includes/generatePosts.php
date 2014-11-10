@@ -44,10 +44,12 @@ ob_start();
 
         }
 
+         $idUx = $_SESSION['loggedU']['id'];
+    
 
 
 
-        $luzer = mysql_query("SELECT * FROM usuarios WHERE id='$post_fk_usuario' ");
+        $luzer = mysql_query("SELECT * FROM usuarios WHERE id='$idUx' ");
         if(haveResults($luzer)){
 
             $luzer_nome = mysql_result($luzer,0,"nome");
@@ -156,13 +158,22 @@ ob_start();
                         </div>
                         <p><?php echo $post_texto; ?></p>
 
+                        <?php $arAnIt = mysql_query("SELECT * FROM anexos WHERE fk_poste='$post_id' AND tipo='arquivo' ");
+                            if(haveResults($arAnIt)){
+                         ?>
                         <div class="post-area-attaches">
-                            <ul>
-                                <li><img src="images/37.png"> file_file.jpg </li>
-                                <li><img src="images/37.png"> file_file.jpg </li>
-                                <li><img src="images/37.png"> file_image.jpg </li>
+                            <ul>   
+                                <?php for($z=0;$z<mysql_num_rows($arAnIt);$z++){
+
+                                    $ss = mysql_result($arAnIt,$z,"source");
+                                    $source = explode('/',$ss);$source = $source[1];
+                                    ?>
+                                <li onclick="window.open('arquivos/<?php echo $ss; ?>','_new<?php echo $post_id; ?>')"><img src="images/37.png"> <?php echo $source; ?> </li>
+                                <?php } ?>
                             </ul>
                         </div>
+                        <?php } ?>
+
                         <div class="clear"></div>
                     </div>
                     <div class="post-profile-bigimage">
@@ -210,10 +221,23 @@ ob_start();
                     </div>
                     <div class="plataforma-post-content">
                         <div class="plataforma-post-liked">
-                            <div class="post-liked-left">
-                                <img src="images/18.png" class="post-liked-hearth">
-                                <p>53 users liked</p>
+
+                            <div class="post-liked-left" id="likesObj<?php echo $post_id; ?>">
+                             
+
+                                <?php 
+    $jCurti = mysql_query("SELECT * FROM likes WHERE fk_poste='$post_id' AND fk_usuario='$idUx' ");
+    if(haveResults($jCurti)){ $img_lik = 'images/17.png'; }else{ $img_lik = 'images/18.png'; }?>
+
+                                <img src="<?php echo $img_lik; ?>" class="post-liked-hearth" onclick="curtiu('<?php echo $post_id; ?>');">
+
+                                <?php $likes = mysql_query("SELECT * FROM likes WHERE fk_poste='$post_id' ");
+                                    $numLikes = haveResults($likes) ? mysql_num_rows($likes) : 0 ;
+                                 ?>
+                                <p><?php echo $numLikes; ?> users liked</p>
+
                             </div>
+
                             <div class="post-liked-right">
                                 <img src="images/16.png">
                                 <p id="bComm<?php echo $post_id; ?>"><?php echo $numComentos; ?> comments</p>
@@ -302,13 +326,23 @@ ob_start();
                         </div>
                         <p><?php echo $post_texto; ?></p>
 
+
+                        <?php $arAnIt = mysql_query("SELECT * FROM anexos WHERE fk_poste='$post_id' AND tipo='arquivo' ");
+                            if(haveResults($arAnIt)){
+                         ?>
                         <div class="post-area-attaches">
-                            <ul>
-                                <li><img src="images/37.png"> file_file.jpg </li>
-                                <li><img src="images/37.png"> file_file.jpg </li>
-                                <li><img src="images/37.png"> file_image.jpg </li>
+                            <ul>   
+                                <?php for($z=0;$z<mysql_num_rows($arAnIt);$z++){
+
+                                    $ss = mysql_result($arAnIt,$z,"source");
+                                    $source = explode('/',$ss);$source = $source[1];
+                                    ?>
+                                <li onclick="window.open('arquivos/<?php echo $ss; ?>','_new<?php echo $post_id; ?>')"><img src="images/37.png"> <?php echo $source; ?> </li>
+                                <?php } ?>
                             </ul>
                         </div>
+                        <?php } ?>
+
                         <div class="clear"></div>
 
 
@@ -350,9 +384,20 @@ ob_start();
                     </div>
                     <div class="plataforma-post-content">
                         <div class="plataforma-post-liked">
-                            <div class="post-liked-left">
-                                <img src="images/18.png" class="post-liked-hearth">
-                                <p>53 users liked</p>
+                            <div class="post-liked-left" id="likesObj<?php echo $post_id; ?>">
+
+                            <?php 
+    $jCurti = mysql_query("SELECT * FROM likes WHERE fk_poste='$post_id' AND fk_usuario='$idUx' ");
+    if(haveResults($jCurti)){ $img_lik = 'images/17.png'; }else{ $img_lik = 'images/18.png'; }?>
+
+                                <img src="<?php echo $img_lik; ?>" class="post-liked-hearth" onclick="curtiu('<?php echo $post_id; ?>');">
+
+
+                                <?php $likes = mysql_query("SELECT * FROM likes WHERE fk_poste='$post_id' ");
+                                    $numLikes = haveResults($likes) ? mysql_num_rows($likes) : 0 ;
+                                 ?>
+                                <p><?php echo $numLikes; ?> users liked</p>
+
                             </div>
                             <div class="post-liked-right">
                                 <img src="images/16.png">
