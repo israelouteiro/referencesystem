@@ -26,10 +26,9 @@
             	$n_cidade =  addslashes($_POST['eCidade']);
             	$n_empresa =  addslashes($_POST['eEmpresa']);
             	$n_cargo =  addslashes($_POST['eCargo']);
-            	$n_sobre =  addslashes($_POST['eSobre']);
-            	$n_foto =  addslashes($_POST['eFoto']);
+            	$n_sobre =  addslashes(str_replace('\n','<br>',$_POST['eSobre']));
 
-            	$atualizou_user = mysql_query("UPDATE usuarios SET email='$n_email', pais='$n_pais', estado='$n_estado', cidade='$n_cidade', empresa='$n_empresa', cargo='$n_cargo', sobre='$n_sobre', foto='$n_foto' WHERE id='$idUx' ");
+            	$atualizou_user = mysql_query("UPDATE usuarios SET email='$n_email', pais='$n_pais', estado='$n_estado', cidade='$n_cidade', empresa='$n_empresa', cargo='$n_cargo', sobre='$n_sobre' WHERE id='$idUx' ");
             }
 
     ////

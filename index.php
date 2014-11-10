@@ -96,10 +96,10 @@
                     </div>
                     <div class="clear"></div>
                     <form class="post-area-top-form" enctype="multipart/form-data" onsubmit="return false;">
-                        <input type="file" id="selectPicture" accept="image/*" onchange="postNewPhoto();">
+                        <input type="file" id="selectPicture" accept="image/*">
                     </form>
                     <form class="post-area-top-form" enctype="multipart/form-data" onsubmit="return false;">
-                        <input type="file" id="selectFile" onchange="postNewFiles();">
+                        <input type="file" id="selectFile">
                     </form>
                 </div><!-- end of post area top -->
                 <div id="post-area-middle">
@@ -119,7 +119,7 @@
                         <form onsubmit="addTag();return false;"><input type="text" placeholder="New tag..." id="valorTags"></form>
                     </div>
                     <div id="bottom-button-03">
-                        <button type="button" class="btn btn-primary btn-block">Publish</button>
+                        <button type="button" class="btn btn-primary btn-block" onclick="submitPost();">Publish</button>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -135,188 +135,16 @@
                         </ul>
                     </div>
                 </div>
-                <!-- Start of REFERENCE POST -->
-                <div class="plataforma-post reference">
-                    <div class="plataforma-post-content">
-                        <div class="plataforma-post-profile">
-                            <div class="post-profile-image"><img src="images/07.jpg"></div>
-                            <div class="post-profile-infos">
-                                <p class="uo-name">Juliana Almeida</p>
-                                <!-- Profile infos POPUP -->
-                                <div class="post-profile-infos-popup">
-                                    <div class="infos-popup-image">
-                                        <img src="images/10.jpg">
-                                    </div>
-                                    <div class="infos-popup-infos">
-                                        <p class="infos-popup-title">Juliana Almeida Silveira</p>
-                                        <table>
-                                            <tr>
-                                                <td rowspan="2"><img src="images/26.png"></td>
-                                                <td><p>Brasília - DF</p></td>
-                                            </tr>
-                                            <tr>
-                                                <td><p>Brasil</p></td>
-                                            </tr>
-                                        </table>
-                                        <p>Diretor de Arte</p>
-                                        <p>Racionalize Comunicação</p>
-                                    </div>
-                                    <div class="infos-popup-text">
-                                        <p class="infos-popup-title">About me:</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                                    </div>
-                                </div>
-                                <!-- END of popup -->
-                                <p>Brasília - DF</p>
-                                <p>&nbsp;</p>
-                                <p>20 de Outubro - 2014</p>
-                            </div>
-                            <div class="post-profile-flag"><img src="images/14.png"></div>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="hottest-posts-module-link">
-                            <ul>
-                                <li>#lifeatyle</li>
-                                <li>#design</li>
-                                <li>#culture</li>
-                            </ul>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                    </div>
-                    <div class="post-profile-bigimage">
-                        <img src="images/06.jpg" width="100%">
-                    </div>
-                    <div class="plataforma-post-content">
-                        <div class="plataforma-post-liked">
-                            <div class="post-liked-left">
-                                <img src="images/17.png" class="post-liked-hearth">
-                                <p>53 users liked</p>
-                            </div>
-                            <div class="post-liked-right">
-                                <img src="images/16.png">
-                                <p>15 comments</p>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="plataforma-post-comment">
-                            <div class="post-comment-image">
-                                <img src="images/08.jpg">
-                            </div>
-                            <div class="post-comment-text">
-                                <textarea placeholder="Write a comment..." class="post-comment-textarea"></textarea>
-                            </div>
-                            <div class="clear"></div>
-                            <div class="more-comment">
-                                <button class="btn btn-link more-comment-expand">View comments <span class="caret"></span></button>
-                            </div>
-                            <div class="more-comment-container">
-                                <div class="more-comment-modulo">
-                                    <div class="more-comment-modulo-image"><img src="images/08.jpg"></div>
-                                    <div class="more-comment-modulo-text"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p></div>
-                                </div>
-                                <div class="more-comment-modulo">
-                                    <div class="more-comment-modulo-image"><img src="images/08.jpg"></div>
-                                    <div class="more-comment-modulo-text"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p></div>
-                                </div>
-                                <div class="more-comment-modulo">
-                                    <div class="more-comment-modulo-image"><img src="images/08.jpg"></div>
-                                    <div class="more-comment-modulo-text"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- end of REFERENCE POST -->
-                <!-- Start of REQUEST POST -->
-                <div class="plataforma-post request">
-                    <div class="plataforma-post-content">
-                        <div class="plataforma-post-profile">
-                            <div class="post-profile-image"><img src="images/07.jpg"></div>
-                            <div class="post-profile-infos">
-                                <p class="uo-name">Juliana Almeida</p>
-                                <!-- Profile infos POPUP -->
-                                <div class="post-profile-infos-popup">
-                                    <div class="infos-popup-image">
-                                        <img src="images/10.jpg">
-                                    </div>
-                                    <div class="infos-popup-infos">
-                                        <p class="infos-popup-title">Juliana Almeida Silveira</p>
-                                        <table>
-                                            <tr>
-                                                <td rowspan="2"><img src="images/26.png"></td>
-                                                <td><p>Brasília - DF</p></td>
-                                            </tr>
-                                            <tr>
-                                                <td><p>Brasil</p></td>
-                                            </tr>
-                                        </table>
-                                        <p>Diretor de Arte</p>
-                                        <p>Racionalize Comunicação</p>
-                                    </div>
-                                    <div class="infos-popup-text">
-                                        <p class="infos-popup-title">About me:</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                                    </div>
-                                </div>
-                                <!-- END of popup -->
-                                <p>Brasília - DF</p>
-                                <p>&nbsp;</p>
-                                <p>20 de Outubro - 2014</p>
-                            </div>
-                            <div class="post-profile-flag"><img src="images/15.png"></div>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="hottest-posts-module-link">
-                            <ul>
-                                <li>#lifeatyle</li>
-                                <li>#design</li>
-                                <li>#culture</li>
-                            </ul>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                    </div>
-                    <div class="post-profile-bigimage">
-                        <img src="images/06.jpg" width="100%">
-                    </div>
-                    <div class="plataforma-post-content">
-                        <div class="plataforma-post-liked">
-                            <div class="post-liked-left">
-                                <img src="images/17.png" class="post-liked-hearth">
-                                <p>53 users liked</p>
-                            </div>
-                            <div class="post-liked-right">
-                                <img src="images/16.png">
-                                <p>15 comments</p>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="plataforma-post-comment">
-                            <div class="post-comment-image">
-                                <img src="images/08.jpg">
-                            </div>
-                            <div class="post-comment-text">
-                                <textarea placeholder="Write a comment..." class="post-comment-textarea"></textarea>
-                            </div>
-                            <div class="clear"></div>
-                            <div class="more-comment">
-                                <button class="btn btn-link more-comment-expand">View comments <span class="caret"></span></button>
-                            </div>
-                            <div class="more-comment-container">
-                                <div class="more-comment-modulo">
-                                    <div class="more-comment-modulo-image"><img src="images/08.jpg"></div>
-                                    <div class="more-comment-modulo-text"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p></div>
-                                </div>
-                                <div class="more-comment-modulo">
-                                    <div class="more-comment-modulo-image"><img src="images/08.jpg"></div>
-                                    <div class="more-comment-modulo-text"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p></div>
-                                </div>
-                                <div class="more-comment-modulo">
-                                    <div class="more-comment-modulo-image"><img src="images/08.jpg"></div>
-                                    <div class="more-comment-modulo-text"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- end of post request -->
+
+
+
+
+
+                <div id="allPosts"></div>
+
+
+
+
             </div><!-- end of left column -->
             <aside class="plataforma-col plataforma-col-right">
                 <div class="plataforma-search">
@@ -339,6 +167,8 @@
         <form id="formEnvios">
             <input type="hidden" name="fe_tags" id="fe_tags" value="">
             <input type="hidden" name="fe_anexos" id="fe_anexos" value="">
+            <input type="hidden" name="fe_type" id="fe_type" value="">
+            <input type="hidden" name="fe_texto" id="fe_texto" value="">
         </form>
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

@@ -1,0 +1,14 @@
+UTILIZANDO O MYSQL
+
+para acessar o painel mysql: mysql -u root -p
+digite o password
+
+já dentro do painel:
+
+mysql> create database novabase_exemplo;
+
+mysql> grant all privileges on novabase_exemplo.* to 'usuarioexemplo'@'localhost' identified by 'senha_exemplo';
+
+mysql> exit;
+
+para sair

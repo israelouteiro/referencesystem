@@ -1,0 +1,29 @@
+UTILIZANDO O VIM 
+
+#Editar
+
+entre no arquivo e aperte a letra "i" , e vai entrar em mode de inserção
+
+#Salvar
+
+Após as alterações aperte ESC e depois
+:w! (para salvar)
+
+#Sair
+
+:q! (para sair sem salvar)
+
+#Sair e Salvar
+
+:wq!
+
+#############
+Para sem VIM ficar colorido e bonito
+encontre o arquivo "vimrc" e adcione a seguinte linha no final no arquivo
+
+syn on
+
+
+para procurar digite
+#find / -name "vimrc" -print
+

@@ -20,16 +20,18 @@ $(document).ready(function() {
     $('#modal-textarea').autosize();
     
     /* more comments */
-    $('.more-comment-container').hide();
+   // $('.more-comment-container').hide();
     $('.post-profile-infos-popup').hide();
     
     /* show comments when click on 'View Comments' */
-    $('.more-comment-expand').bind('click', function() {
+/*    $('.more-comment-expand').bind('click', function() {
         $(this).parent().next('.more-comment-container').show();
     })
+*/
+
     
     /* Show profile popup infos */
-    $('.uo-name').bind('click', function() {
+   /* $('.uo-name').bind('click', function() {
         if (showProfileInfos == false) {
             $(this).next('.post-profile-infos-popup').show();
             showProfileInfos = true;
@@ -37,7 +39,7 @@ $(document).ready(function() {
             $(this).next('.post-profile-infos-popup').hide();
             showProfileInfos = false;
         }
-    });
+    });*/
     
     /* Show profile popup infos */
     $('.user-module-name').bind('click', function() {
@@ -49,6 +51,9 @@ $(document).ready(function() {
             showProfileInfos = false;
         }
     });
+
+
+
     
     /* change src image from 17.png to 18.png */
     $('.post-liked-hearth').bind('click', function() {

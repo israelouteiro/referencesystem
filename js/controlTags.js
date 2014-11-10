@@ -28,6 +28,16 @@ function selecionaTag(idx){
 	carregaTags();
 }
 
+var numEPo = 0;
+
 $(document).ready(function(e){
 	carregaTags();
+	garregaPosts(numEPo);
 });
+
+function garregaPosts(inic){
+	$.get('includes/generatePosts.php?in='+inic).done(function(alm){
+		$('#allPosts').append(alm);
+		numEPo = inic +6;
+	});
+}

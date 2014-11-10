@@ -126,4 +126,55 @@ function locationHref($url){
 		}
 		return json_encode($rows);
 	}
+
+
+ function nmes2tmes($mes){
+	 if(floor($mes)==1){
+		 return "Janeiro";
+	 }
+	 if(floor($mes)==2){
+		 return "Fevereiro";
+	 }
+	 if(floor($mes)==3){
+		 return "Março";
+	 }
+	 if(floor($mes)==4){
+		 return "Abril";
+	 }
+	 if(floor($mes)==5){
+		 return "Maio";
+	 }
+	 if(floor($mes)==6){
+		 return "Junho";
+	 }
+	 if(floor($mes)==7){
+		 return "Julho";
+	 }
+	 if(floor($mes)==8){
+		 return "Agosto";
+	 }
+	 if(floor($mes)==9){
+		 return "Setembro";
+	 }
+	 if(floor($mes)==10){
+		 return "Outubro";
+	 }
+	 if(floor($mes)==11){
+		 return "Novembro";
+	 }
+	 if(floor($mes)==12){
+		 return "Dezembro";
+	 }
+	 return "";
+ }
+
+	function getTag($id){
+		$q = mysql_query("SELECT * FROM tags WHERE id='$id' ");
+		if(haveResults($q)){
+			return mysql_result($q,0,"nome");
+		}
+		return false;
+	} 
+
+
 ?>
