@@ -16,11 +16,11 @@ ob_start();
 			$nome = mysql_result($cueri,$i,'nome');
 			if(podeAdd($idv,$jaTags)){
 				$coloquei++;
-				echo '<li><a onclick="selecionaTag(\''.$idv.'\')">'.$nome.'</a></li>';
+				echo '<li><a style="cursor:pointer;" onclick="selecionaTag(\''.$idv.'\',\''.$nome.'\')">'.$nome.'</a></li>';
 			}
 		}
 		if($coloquei==0){
-			echo '<li><a href="#">Acabaram as Tags</a></li>';
+			echo '<li><a style="cursor:pointer;" >Acabaram as Tags</a></li>';
 		}
 	}
 

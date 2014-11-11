@@ -1,0 +1,7 @@
+Para criar novo usuario, e adionar no ftp
+
+# adduser novo_usuario
+
+Vai pedir a nova senha
+
+# usermod -d /var/www/pasta_usuario

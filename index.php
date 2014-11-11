@@ -49,15 +49,30 @@
                 <?php include('./includes/logout.inc.php'); ?>
                 <div id="uo1_photos">
                     <ul>
-                        <li><img src="images/02.jpg" width="100%"></li>
-                        <li><img src="images/03.jpg" width="100%"></li>
-                        <li><img src="images/04.jpg" width="100%"></li>
-                        <li><img src="images/02.jpg" width="100%"></li>
-                        <li><img src="images/03.jpg" width="100%"></li>
-                        <li><img src="images/04.jpg" width="100%"></li>
-                        <li><img src="images/02.jpg" width="100%"></li>
-                        <li><img src="images/03.jpg" width="100%"></li>
-                        <li><img src="images/01.png" id="morePhotosButton"></li>
+                        <?php
+                        # $quser = mysql_query("SELECT * FROM ( SELECT * FROM usuarios ORDER BY rand() LIMIT 8 ) T1 ORDER BY nome ");
+                        $quser = mysql_query(" SELECT * FROM usuarios ORDER BY nome ASC LIMIT 8 ");
+                         if(haveResults($quser)){
+                            for($i=0;$i<mysql_num_rows($quser);$i++){ 
+                                $fu = mysql_result($quser,$i,'foto');
+                                $udfid = mysql_result($quser,$i,'id_facebook');
+                                if(!empty($fu)){
+                                    $fu = "arquivos/".$fu;
+                                }else{
+                                    if(!empty($udfid)){
+                                        $fu = "http://graph.facebook.com/".$udfid."/picture?type=large";
+                                    }else{
+                                        $fu = "images/02.png";
+                                    }
+                                }
+
+                                ?>
+                                <li style="background:url(<?php echo $fu; ?>) no-repeat center center; background-size:cover;">
+                                    <img src="images/02.jpg" width="100%" style="visibility:hidden;">
+                                </li>
+                            <?php }}?>
+
+                        <li><img src="images/01.png" id="morePhotosButton" onclick="morePeople();"></li>
                     </ul>
                 </div>
             </div>
@@ -103,12 +118,7 @@
                 </div><!-- end of post area top -->
                 <div id="post-area-tags">
                     <ul>
-                        <li>#taggoeshere <img src="images/36.png"></li>
-                        <li>#taggoeshere <img src="images/36.png"></li>
-                        <li>#taggoeshere <img src="images/36.png"></li>
-                        <li>#taggoeshere <img src="images/36.png"></li>
-                        <li>#taggoeshere <img src="images/36.png"></li>
-                        <li>#taggoeshere <img src="images/36.png"></li>
+
                     </ul>
                 </div>
                 <div id="post-area-middle">
@@ -116,12 +126,7 @@
                 </div>
                 <div id="post-area-attaches">
                     <ul>
-                        <li><img src="images/38.png"> image_image.jpg</li>
-                        <li><img src="images/38.png"> image_image.jpg</li>
-                        <li><img src="images/38.png"> image_image.jpg</li>
-                        <li><img src="images/37.png"> file_file.jpg</li>
-                        <li><img src="images/37.png"> file_file.jpg</li>
-                        <li><img src="images/37.png"> file_image.jpg</li>
+
                     </ul>
                 </div>
                 <div id="post-area-bottom">
@@ -141,18 +146,34 @@
                     </div>
                 </div>
                 <div class="clear"></div>
+
+
                 <div id="all-posts-container">
-                    <div class="btn-group">
-                        <div class="text-center"><button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">All posts <span class="caret"></span></button></div>
+                    <div class="btn-group text-center">
+                  
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="textoFiltro">
+                                All posts <span class="caret"></span>
+                            </button>
+                      
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Reference</a></li>
-                            <li><a href="#">Request</a></li>
-                            <li><a href="#">Post One</a></li>
-                            <li><a href="#">Post Twoo</a></li>
-                            <li><a href="#">Post Three</a></li>
+                            <li><a style="cursor:pointer;" onclick="filtraPostes('reference','');">Reference</a></li>
+                            <li><a style="cursor:pointer;" onclick="filtraPostes('request','');">Request</a></li>
+
+                            <?php $tagsAtuais = mysql_query("SELECT * FROM tags");
+                            if(haveResults($tagsAtuais)){ 
+                                for($asd=0;$asd<mysql_num_rows($tagsAtuais);$asd++){
+                                    $nome_tagvs = mysql_result($tagsAtuais,$asd,'nome');
+                                    $id_tagvs = mysql_result($tagsAtuais,$asd,'id');
+                                    ?>
+                            <li><a  style="cursor:pointer;" onclick="filtraPostes('<?php echo $id_tagvs; ?>','<?php echo $nome_tagvs; ?>');"><?php echo $nome_tagvs; ?></a></li>
+                            <?php }} ?>
+                            <li><a style="cursor:pointer;" onclick="filtraPostes('all','');">All posts</a></li>
                         </ul>
                     </div>
                 </div>
+
+
+
                 <div id="allPosts"></div>
             </div><!-- end of left column -->
             <aside class="plataforma-col plataforma-col-right">
@@ -179,6 +200,36 @@
             <input type="hidden" name="fe_type" id="fe_type" value="">
             <input type="hidden" name="fe_texto" id="fe_texto" value="">
         </form>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <!--
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+              </div>
+            -->
+              <div class="modal-body">
+                <img src="" width="100%">
+              </div>
+              <!--   
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+              -->
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

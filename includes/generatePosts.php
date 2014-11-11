@@ -5,8 +5,43 @@ ob_start();
 
     include "conexao.php";
     $inicio = !empty($_GET['in']) ? $_GET['in'] : 0;
-    $final =  $inicio + 6;
-    $posts = mysql_query("SELECT * FROM postes ORDER BY dataHora DESC LIMIT $inicio,$final ");
+    $final =  $inicio + 12;
+
+    $filtro = $_POST['filtro'];
+    if(empty($filtro)){
+        $posts = mysql_query("SELECT * FROM postes ORDER BY dataHora DESC LIMIT $inicio,$final ");
+    }else{
+
+                            if($filtro=='reference'){
+                                $posts = mysql_query("SELECT * FROM postes WHERE tipo='reference' ORDER BY dataHora DESC LIMIT $inicio,$final ");
+                            }else{
+                                if($filtro=='request'){
+                                   $posts = mysql_query("SELECT * FROM postes WHERE tipo='request' ORDER BY dataHora DESC LIMIT $inicio,$final ");
+                                }else{
+                                    if($filtro=='all'){
+                                        $posts = mysql_query("SELECT * FROM postes ORDER BY dataHora DESC LIMIT $inicio,$final ");
+                                    }else{
+                                        $tags4T =mysql_query("SELECT * FROM tags_postes WHERE fk_tag='$filtro' ");
+                                        $likeTag = "";
+                                        if(haveResults($tags4T)){
+                                            $likeTag .= "WHERE ";
+                                            for($ff=0;$ff<mysql_num_rows($tags4T);$ff++){
+                                               $idPos = mysql_result($tags4T,$ff,'fk_poste');
+                                               if(($ff+1)<mysql_num_rows($tags4T)){
+                                                    $likeTag .= "id='$idPos' OR "; 
+                                               }else{
+                                                    $likeTag .= "id='$idPos' "; 
+                                               }
+                                            }
+                                            $posts = mysql_query("SELECT * FROM postes $likeTag ORDER BY dataHora DESC LIMIT $inicio,$final ");
+                                        }else{
+                                            //Nada
+                                        }
+                                    }
+                                }
+                            }
+
+    }
 
     if(haveResults($posts)){
     for($ii=0;$ii <mysql_num_rows($posts); $ii++){
@@ -142,8 +177,27 @@ ob_start();
 
 
                             </div>
-                            <div class="post-profile-flag"><img src="images/14.png"></div>
+
+
+                            <!-- 
+
+                            Alternar esta flag com a lixeira se o camarada for administrador ou o dono do post...
+                            
+                            images/34.png 
+
+                            -->
+                            <?php 
+
+                            $havePower = $idUx == $post_fk_usuario ? true : $_SESSION['loggedU']['permissao'] == 'admin' ? true : false;
+
+                            ?>
+                            <div class="post-profile-flag">
+                                <img src="images/14.png" <?php if($havePower){ ?>style="cursor:pointer;"  
+                                onmouseover="$(this).attr('src','images/34.png');" 
+                                onmouseout="$(this).attr('src','images/14.png');" onclick="removePost('<?php echo $post_id; ?>');" <?php } ?>>
+                            </div>
                             <div class="clear"></div>
+
                         </div>
                         <div class="hottest-posts-module-link">
                             <ul>
@@ -151,9 +205,10 @@ ob_start();
                                         for($i=0;$i<mysql_num_rows($q_tags);$i++){
                                             $idtag = mysql_result($q_tags,$i,"fk_tag");
                                             $vtag = getTag($idtag);
+                                            if(!empty($vtag)){
                                         ?>
                                         <li>#<?php echo $vtag; ?></li>
-                                    <?php }} ?>
+                                    <?php }}} ?>
                             </ul>
                         </div>
                         <p><?php echo $post_texto; ?></p>
@@ -184,7 +239,7 @@ ob_start();
                         <?php $fotosDestePost = mysql_query("SELECT * FROM anexos WHERE fk_poste='$post_id' AND tipo='imagem' ");
                             if(haveResults($fotosDestePost)){
                          ?>
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <div id="carousel-example-generic<?php echo $post_id; ?>" class="carousel slide" data-ride="carousel">
 
                           <!-- Wrapper for slides -->
                           <div class="carousel-inner" role="listbox">
@@ -193,22 +248,21 @@ ob_start();
                                 $srcPhoto = mysql_result($fotosDestePost,$a,"source");
 
                             ?>
-                                <div class="item <?php if($a==0){echo 'active';}?>">
-                                  <img src="arquivos/<?php echo $srcPhoto; ?>" alt="" width="100%">
-                                  <div class="carousel-caption">
-                                  </div>
+                                <div class="item <?php if($a==0){echo 'active';}?>" style="background:url(arquivos/<?php echo $srcPhoto; ?>) no-repeat center center;background-size:cover; cursor:pointer;"
+                                onclick="$('#myModal img').attr('src','arquivos/<?php echo $srcPhoto; ?>');" data-toggle="modal" data-target="#myModal">
+                                  <img src="images/06.jpg" alt="" width="100%" style="visibility:hidden;">
                                 </div>
                             <?php } ?>
 
                           </div>
                                 <?php if(mysql_num_rows($fotosDestePost)>1){ ?>
                                 <!-- Controls -->
-                              <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                              <a class="left carousel-control" href="#carousel-example-generic<?php echo $post_id; ?>" role="button" data-slide="prev">
                                 <span class="glyphicon glyphicon-chevron-left"></span>
                                 <span class="sr-only">Previous</span>
                               </a>
 
-                              <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                              <a class="right carousel-control" href="#carousel-example-generic<?php echo $post_id; ?>" role="button" data-slide="next">
                                 <span class="glyphicon glyphicon-chevron-right"></span>
                                 <span class="sr-only">Next</span>
                               </a>
@@ -310,7 +364,25 @@ ob_start();
                                 <?php $data = explode(' ',$post_dataHora);$data = $data[0];$data = explode('-',$data); ?>
                                 <p><?php echo $data[2];?> de <?php echo nmes2tmes($data[1]);?> - <?php echo $data[0]; ?></p>
                             </div>
-                            <div class="post-profile-flag"><img src="images/15.png"></div>
+
+                            <!-- 
+
+                            Alternar esta flag com a lixeira se o camarada for administrador ou o dono do post...
+
+                            images/34.png 
+
+                            -->
+
+                            <?php 
+
+                            $havePower = $idUx == $post_fk_usuario ? true : $_SESSION['loggedU']['permissao'] == 'admin' ? true : false;
+
+                            ?>
+                            <div class="post-profile-flag">
+                                <img src="images/15.png" <?php if($havePower){ ?>style="cursor:pointer;"  
+                                onmouseover="$(this).attr('src','images/34.png');" 
+                                onmouseout="$(this).attr('src','images/15.png');" onclick="removePost('<?php echo $post_id; ?>');" <?php } ?>>
+                            </div>
                             <div class="clear"></div>
                         </div>
                         <div class="hottest-posts-module-link">
@@ -319,9 +391,10 @@ ob_start();
                                         for($i=0;$i<mysql_num_rows($q_tags);$i++){
                                             $idtag = mysql_result($q_tags,$i,"fk_tag");
                                             $vtag = getTag($idtag);
+                                            if(!empty($vtag)){
                                         ?>
                                         <li>#<?php echo $vtag; ?></li>
-                                    <?php }} ?>
+                                    <?php }}} ?>
                             </ul>
                         </div>
                         <p><?php echo $post_texto; ?></p>
@@ -351,7 +424,7 @@ ob_start();
                         <?php $fotosDestePost = mysql_query("SELECT * FROM anexos WHERE fk_poste='$post_id' AND tipo='imagem' ");
                             if(haveResults($fotosDestePost)){
                          ?>
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <div id="carousel-example-generic<?php echo $post_id; ?>" class="carousel slide" data-ride="carousel">
 
                           <!-- Wrapper for slides -->
                           <div class="carousel-inner" role="listbox">
@@ -360,21 +433,21 @@ ob_start();
                                 $srcPhoto = mysql_result($fotosDestePost,$a,"source");
 
                             ?>
-                                <div class="item <?php if($a==0){echo 'active';}?>">
-                                  <img src="arquivos/<?php echo $srcPhoto; ?>" alt="">
-                                  <div class="carousel-caption"></div>
+                                <div class="item <?php if($a==0){echo 'active';}?>" style="background:url(arquivos/<?php echo $srcPhoto; ?>) no-repeat center center;background-size:cover; cursor:pointer;"
+                                onclick="$('#myModal img').attr('src','arquivos/<?php echo $srcPhoto; ?>');" data-toggle="modal" data-target="#myModal">
+                                  <img src="images/06.jpg" alt="" width="100%" style="visibility:hidden;">
                                 </div>
                             <?php } ?>
 
                           </div>
                                 <?php if(mysql_num_rows($fotosDestePost)>1){ ?>
                                 <!-- Controls -->
-                              <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                              <a class="left carousel-control" href="#carousel-example-generic<?php echo $post_id; ?>" role="button" data-slide="prev">
                                 <span class="glyphicon glyphicon-chevron-left"></span>
                                 <span class="sr-only">Previous</span>
                               </a>
 
-                              <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                              <a class="right carousel-control" href="#carousel-example-generic<?php echo $post_id; ?>" role="button" data-slide="next">
                                 <span class="glyphicon glyphicon-chevron-right"></span>
                                 <span class="sr-only">Next</span>
                               </a>

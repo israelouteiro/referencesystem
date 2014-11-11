@@ -8,5 +8,7 @@ ob_start();
     $suCom = mysql_query("SELECT * FROM comentarios WHERE fk_poste='$idPost' ");
     if(haveResults($suCom)){
     	echo mysql_num_rows($suCom);
+    }else{
+    	echo '0';
     }
 ?>

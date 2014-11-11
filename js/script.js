@@ -21,7 +21,7 @@ $(document).ready(function() {
     
     /* more comments */
    // $('.more-comment-container').hide();
-    $('.post-profile-infos-popup').hide();
+   // $('.post-profile-infos-popup').hide();
     
     /* show comments when click on 'View Comments' */
 /*    $('.more-comment-expand').bind('click', function() {
@@ -42,6 +42,7 @@ $(document).ready(function() {
     });*/
     
     /* Show profile popup infos */
+    /*
     $('.user-module-name').bind('click', function() {
         if (showProfileInfos == false) {
             $(this).parent().next('.post-profile-infos-popup').show();
@@ -51,22 +52,25 @@ $(document).ready(function() {
             showProfileInfos = false;
         }
     });
-
+    */
 
 
     
     /* change src image from 17.png to 18.png */
+    /*
     $('.post-liked-hearth').bind('click', function() {
         $(this).attr('src','images/18.png');
     });
+    */
     $('.adminToolButton').bind('click', function() {
         //alert('Admin Tools'); // replace this code
        
             location.href=('admin.php');
         
     });
+    /*
     $('#morePhotosButton').bind('click', function() {
-        alert('Load More Photos'); // replace this code
+      //  alert('Load More Photos'); // replace this code
     });
     $('#logOutButton').bind('click', function() {
         //alert('Log Out'); // replace this code
@@ -74,6 +78,7 @@ $(document).ready(function() {
     $('.uo_edit').bind('click', function() {
        // alert('Edit Profile'); // replace this code
     })
+    */
 });
 
 $(window).resize(function() {
