@@ -470,7 +470,7 @@ p {
     height: 26px;
     cursor: pointer;
 }
-#undercover_option_01, #undercover_option_02 {
+#undercover_option_01, #undercover_option_02, #undercover_option_03 {
     position: relative;
     width: 100%;
     min-height: 60px;
@@ -503,19 +503,34 @@ p {
     float: left;
     margin-top: 12px;
     width: 67%;
-    /* margin-left: 15px; */
-    /* text-align: center; */
-    /* background: #f00; */
+}
+#uo3-buttons {
+    position: relative;
+    float: left;
+    margin-top: 12px;
+    width: 68%;
 }
 .uo2-button {
     position: relative;
     float: left;
-    /* border: 1px solid black; */
-    /* font-size: 20px; */
     width: 28%;
     margin-left: 15px;
     margin-bottom: 12px;
-    /* background: #00f; */
+}
+.uo3-button {
+    position: relative;
+    float: left;
+    width: auto;
+    margin-left: 15px;
+    margin-bottom: 12px;
+}
+.uo3-button-r {
+    position: relative;
+    float: right;
+    width: auto;
+    margin-left: 15px;
+    margin-bottom: 12px;
+    color: #3cb878;
 }
 .uo2-button .btn {
     max-width: 240px;
@@ -523,6 +538,16 @@ p {
 .uo2-button p {
     font-size: 20px;
     /* margin: 0px 70px; */
+}
+.uo3-button-r p {
+    font-size: 16px;
+    /* margin: 0px 70px; */
+}
+.search-header p {
+    font-size: 20px;
+}
+.search-header-result {
+    color: #39a0c9;
 }
 #uo-option {
     position: relative;
@@ -921,5 +946,8 @@ p {
     #edit-profile-col-right {
         min-width: 0px;
         width: 100%;
+    }
+    .uo3-button-r {
+        float: left;
     }
 }
