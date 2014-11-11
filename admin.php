@@ -13,6 +13,20 @@
         }
     }
 
+                if(isset($_POST['confirma_pe'])){
+                    $idcp = addslashes($_POST['confirma_pe']);
+                    mysql_query("UPDATE usuarios SET ativo='sim' WHERE id='$idcp' ");
+                }
+
+                if(isset($_POST['remove_pe'])){
+                    $idcp = addslashes($_POST['remove_pe']);
+                    mysql_query("UPDATE usuarios SET ativo='naaaa' WHERE id='$idcp' ");
+                }
+
+                if(isset($_POST['deonfirma_pe'])){
+                    $idcp = addslashes($_POST['deonfirma_pe']);
+                    mysql_query("UPDATE usuarios SET ativo='nao' WHERE id='$idcp' ");
+                }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,89 +81,173 @@
             <div class="admin-divide"></div>
             <div class="admin-title"><p>Waiting for Approve</p></div>
             <div class="admin-module-wrapper">
+
+            <?php $userWaiting = mysql_query("SELECT * FROM usuarios WHERE ativo='nao' "); 
+            if(haveResults($userWaiting)){
+                for($i=0;$i<mysql_num_rows($userWaiting);$i++){
+                    $fuser_nome = mysql_result($userWaiting,$i,"nome");
+                    $fuser_email = mysql_result($userWaiting,$i,"email");
+                    $fuser_foto = mysql_result($userWaiting,$i,"foto");
+                    $fuser_cargo = mysql_result($userWaiting,$i,"cargo");
+                    $fuser_pais = mysql_result($userWaiting,$i,"pais");
+                    $fuser_estado = mysql_result($userWaiting,$i,"estado");
+                    $fuser_cidade = mysql_result($userWaiting,$i,"cidade");
+                    $fuser_empresa = mysql_result($userWaiting,$i,"empresa");
+                    $fuser_sobre = mysql_result($userWaiting,$i,"sobre");
+                    $fuser_idFacebook = mysql_result($userWaiting,$i,"id_facebook");
+                    $fuser_id = mysql_result($userWaiting,$i,"id");
+
+
+                            if(!empty($fuser_foto)){
+                                $fuser_foto = "arquivos/".$fuser_foto;
+                            }else{
+                                if(!empty($fuser_idFacebook)){
+                                    $fuser_foto = "http://graph.facebook.com/".$fuser_idFacebook."/picture?type=large";
+                                }else{
+                                    $fuser_foto = "images/02.png";
+                                }
+                            }
+            ?>
+
                 <div class="admin-user-module">
-                    <div class="user-module-photo"><img src="images/35.png"></div>
-                    <div class="user-module-text">
-                        <p class="user-module-name">Usuário da Silva</p>
-                        <p class="user-module-place">Brasília - DF</p>
-                        <p class="user-module-infos">Diretor de Arte</p>
-                        <p class="user-module-infos">Racionalize Comunicação</p>
+                    <div class="user-module-photo" style="background:url(<?php echo $fuser_foto; ?>) no-repeat center center;background-size:cover;">
+                        <img src="images/35.png" style="visibility:hidden;">
                     </div>
-                    <div class="post-profile-infos-popup">
-                        <div class="infos-popup-image">
-                            <img src="images/10.jpg">
+                    <div class="user-module-text">
+                        <p class="user-module-name" onclick="$('#prof<?php echo $fuser_id; ?>').toggle();"><?php echo $fuser_nome; ?></p>
+                        <p class="user-module-place"><?php echo $fuser_cidade; ?> - <?php echo $fuser_estado; ?></p>
+                        <p class="user-module-infos"><?php echo $fuser_cargo; ?></p>
+                        <p class="user-module-infos"><?php echo $fuser_empresa; ?></p>
+                    </div>
+                    
+
+                    <!-- PERFIL DA PESSOA -->
+
+                    <div class="post-profile-infos-popup" style="display:none;" id="prof<?php echo $fuser_id; ?>">
+                        <div class="infos-popup-image" style="background:url(<?php echo $fuser_foto; ?>) no-repeat center center;background-size:cover;">
+                            <img src="images/10.jpg" style="visibility:hidden;">
                         </div>
-                        <div class="infos-popup-infos">
-                            <p class="infos-popup-title">Juliana Almeida Silveira</p>
+                        <div class="infos-popup-infos" >
+                            <p class="infos-popup-title"><?php echo $fuser_nome; ?></p>
                             <table>
                                 <tr>
-                                    <td rowspan="2"><img src="images/26.png"></td>
-                                    <td><p>Brasília - DF</p></td>
+                                    <td rowspan="2">
+                                        <img src="images/26.png">
+                                    </td>
+                                    <td><p><?php echo $fuser_cidade; ?> - <?php echo $fuser_estado; ?></p></td>
                                 </tr>
                                 <tr>
-                                    <td><p>Brasil</p></td>
+                                    <td><p><?php echo $fuser_pais; ?></p></td>
                                 </tr>
                             </table>
-                            <p>Diretor de Arte</p>
-                            <p>Racionalize Comunicação</p>
+                            <p><?php echo $fuser_cargo; ?></p>
+                            <p><?php echo $fuser_empresa; ?></p>
                         </div>
                         <div class="infos-popup-text">
                             <p class="infos-popup-title">About me:</p>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                            <p><?php echo $fuser_sobre; ?></p>
                         </div>
                     </div>
-                    <div class="user-module-close"><img src="images/34.png"></div>
-                    <div class="user-module-decline"><img src="images/32.png" width="100%"></div>
-                    <div class="user-module-accept"><img src="images/33.png" width="100%"></div>
+
+
+                    <!-- FINAL PERFIL DA PESSOA -->
+
+                    <div class="user-module-close" onclick="fexa(<?php echo $fuser_id; ?>)"><img src="images/34.png"></div>
+                    <div class="user-module-decline" onclick="fexa(<?php echo $fuser_id; ?>)"><img src="images/32.png" width="100%"></div>
+                    <div class="user-module-accept"  onclick="aceita(<?php echo $fuser_id; ?>)"><img src="images/33.png" width="100%"></div>
                 </div><!-- end of user module -->
-                <div class="admin-user-module">
-                    <div class="user-module-photo"><img src="images/35.png"></div>
-                    <div class="user-module-text">
-                        <p class="user-module-name">Usuário da Silva</p>
-                        <p class="user-module-place">Brasília - DF</p>
-                        <p class="user-module-infos">Diretor de Arte</p>
-                        <p class="user-module-infos">Racionalize Comunicação</p>
-                    </div>
-                    <div class="user-module-close"><img src="images/34.png"></div>
-                    <div class="user-module-decline"><img src="images/32.png" width="100%"></div>
-                    <div class="user-module-accept"><img src="images/33.png" width="100%"></div>
-                </div><!-- end of user module -->
+                <?php } } ?>
+
+
                 <div class="clear"></div>
             </div><!-- end of waiting for approve wrapper -->
             <div class="clear"></div>
             <div class="admin-divide"></div>
             <div class="admin-title"><p>Active Users</p></div>
              <div class="admin-module-wrapper">
+
+             <?php $userWaiting = mysql_query("SELECT * FROM usuarios WHERE ativo='sim' "); 
+                    if(haveResults($userWaiting)){
+                        for($i=0;$i<mysql_num_rows($userWaiting);$i++){
+                            $fuser_nome = mysql_result($userWaiting,$i,"nome");
+                            $fuser_email = mysql_result($userWaiting,$i,"email");
+                            $fuser_foto = mysql_result($userWaiting,$i,"foto");
+                            $fuser_cargo = mysql_result($userWaiting,$i,"cargo");
+                            $fuser_pais = mysql_result($userWaiting,$i,"pais");
+                            $fuser_estado = mysql_result($userWaiting,$i,"estado");
+                            $fuser_cidade = mysql_result($userWaiting,$i,"cidade");
+                            $fuser_empresa = mysql_result($userWaiting,$i,"empresa");
+                            $fuser_sobre = mysql_result($userWaiting,$i,"sobre");
+                            $fuser_idFacebook = mysql_result($userWaiting,$i,"id_facebook");
+                            $fuser_id = mysql_result($userWaiting,$i,"id");
+
+
+                                    if(!empty($fuser_foto)){
+                                        $fuser_foto = "arquivos/".$fuser_foto;
+                                    }else{
+                                        if(!empty($fuser_idFacebook)){
+                                            $fuser_foto = "http://graph.facebook.com/".$fuser_idFacebook."/picture?type=large";
+                                        }else{
+                                            $fuser_foto = "images/02.png";
+                                        }
+                                    }
+                    ?>
+
+
+
                 <div class="admin-user-module">
-                    <div class="user-module-photo"><img src="images/35.png"></div>
-                    <div class="user-module-text">
-                        <p class="user-module-name">Usuário da Silva</p>
-                        <p class="user-module-place">Brasília - DF</p>
-                        <p class="user-module-infos">Diretor de Arte</p>
-                        <p class="user-module-infos">Racionalize Comunicação</p>
+                    <div class="user-module-photo" style="background:url(<?php echo $fuser_foto; ?>) no-repeat center center;background-size:cover;">
+                        <img src="images/35.png" style="visibility:hidden;">
                     </div>
-                    <div class="user-module-close"><img src="images/34.png"></div>
-                </div><!-- end of user module -->
-                <div class="admin-user-module">
-                    <div class="user-module-photo"><img src="images/35.png"></div>
                     <div class="user-module-text">
-                        <p class="user-module-name">Usuário da Silva</p>
-                        <p class="user-module-place">Brasília - DF</p>
-                        <p class="user-module-infos">Diretor de Arte</p>
-                        <p class="user-module-infos">Racionalize Comunicação</p>
+                        <p class="user-module-name" onclick="$('#prof<?php echo $fuser_id; ?>').toggle();"><?php echo $fuser_nome; ?></p>
+                        <p class="user-module-place"><?php echo $fuser_cidade; ?> - <?php echo $fuser_estado; ?></p>
+                        <p class="user-module-infos"><?php echo $fuser_cargo; ?></p>
+                        <p class="user-module-infos"><?php echo $fuser_empresa; ?></p>
                     </div>
-                    <div class="user-module-close"><img src="images/34.png"></div>
-                </div><!-- end of user module -->
-                 <div class="admin-user-module">
-                    <div class="user-module-photo"><img src="images/35.png"></div>
-                    <div class="user-module-text">
-                        <p class="user-module-name">Usuário da Silva</p>
-                        <p class="user-module-place">Brasília - DF</p>
-                        <p class="user-module-infos">Diretor de Arte</p>
-                        <p class="user-module-infos">Racionalize Comunicação</p>
+
+
+
+                    <!-- PERFIL DA PESSOA -->
+
+                    <div class="post-profile-infos-popup" style="display:none;" id="prof<?php echo $fuser_id; ?>">
+                        <div class="infos-popup-image" style="background:url(<?php echo $fuser_foto; ?>) no-repeat center center;background-size:cover;">
+                            <img src="images/10.jpg" style="visibility:hidden;">
+                        </div>
+                        <div class="infos-popup-infos">
+                            <p class="infos-popup-title"><?php echo $fuser_nome; ?></p>
+                            <table>
+                                <tr>
+                                    <td rowspan="2">
+                                        <img src="images/26.png">
+                                    </td>
+                                    <td><p><?php echo $fuser_cidade; ?> - <?php echo $fuser_estado; ?></p></td>
+                                </tr>
+                                <tr>
+                                    <td><p><?php echo $fuser_pais; ?></p></td>
+                                </tr>
+                            </table>
+                            <p><?php echo $fuser_cargo; ?></p>
+                            <p><?php echo $fuser_empresa; ?></p>
+                        </div>
+                        <div class="infos-popup-text">
+                            <p class="infos-popup-title">About me:</p>
+                            <p><?php echo $fuser_sobre; ?></p>
+                        </div>
                     </div>
-                    <div class="user-module-close"><img src="images/34.png"></div>
+
+
+                    <!-- FINAL PERFIL DA PESSOA -->
+
+
+                    <div class="user-module-close" onclick="desaceita(<?php echo $fuser_id; ?>)"><img src="images/34.png"></div>
                 </div><!-- end of user module -->
+
+
+                <?php } } ?>
+
+
+
                 <div class="clear"></div>
             </div><!-- end of active users wrapper -->
         </div><!-- end of container -->
@@ -186,8 +284,30 @@
                 }
             }
 
-                            
-                            
+            function fexa(idx){
+                $('#remove_pe').val(idx);
+                $('#confirma_pe').val('');
+                $('#deonfirma_pe').val('');
+                $('#formControl').submit();
+            }    
+            function aceita(idx){
+                $('#confirma_pe').val(idx);
+                $('#deonfirma_pe').val('');
+                $('#remove_pe').val('');
+                $('#formControl').submit();
+            }
+            function desaceita(idx){
+                $('#deonfirma_pe').val(idx);
+                $('#remove_pe').val('');
+                $('#confirma_pe').val('');
+                $('#formControl').submit();
+            }
+               
         </script>
+        <form method="post" action="" id="formControl">
+            <input type="hidden" name="remove_pe" id="remove_pe">
+            <input type="hidden" name="confirma_pe" id="confirma_pe">
+            <input type="hidden" name="deonfirma_pe" id="deonfirma_pe">
+        </form>
     </body>
 </html>
