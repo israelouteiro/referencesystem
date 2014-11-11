@@ -66,10 +66,10 @@ $existMail = mysql_query("SELECT * FROM usuarios WHERE hashs='$hax' AND hashs !=
                 <div class="coverImageText">
                     <table>
                         <tr>
-                            <td colspan="3"><h1>Lorem ipsum dolor sit amet consectetuer adipiscing elit</h1></td>
+                            <td colspan="3"><h1><?php if(getConfig('titulo')){echo getConfig('titulo');} ?></h1></td>
                         </tr>
                         <tr>
-                            <td><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet</p></td>
+                            <td><p><?php if(getConfig('legenda')){echo getConfig('legenda');} ?></p></td>
                             <td width="10">&nbsp;</td>
                             <td valign="top"><!-- <img src="images/03.png" class="adminToolButton" alt="Admin Tools"> --> &nbsp;</td><!-- only for admin -->
                         </tr>

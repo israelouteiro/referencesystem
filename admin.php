@@ -5,6 +5,14 @@
     include "includes/conexao.php";
     include "includes/queryUsuario.php";
 
+
+    if(isset($_FILES['fileUp']['name'])){
+        $nomeFoto = $_FILES['fileUp']['name'];
+        if(move_uploaded_file($_FILES['fileUp']['tmp_name'], 'images/01.jpg')){
+            echo '<script>alert("Imagem de capa alterada com sucesso");setTimeout(function(){location.href=("index.php");},500);</script>';
+        }
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,12 +38,12 @@
                     <table>
                         <tr>
                             <td>
-                                <textarea placeholder="Lorem ipsum dolor" id="admin-title-input"></textarea>
+                                <textarea placeholder="Lorem ipsum dolor" id="admin-title-input" onkeyup="if(event.keyCode==13){postTitulo(); }"><?php if(getConfig('titulo')){echo getConfig('titulo');} ?></textarea>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <textarea type="text" placeholder="Text" id="admin-text-input"></textarea>
+                                <textarea type="text" placeholder="Text" id="admin-text-input" onkeyup="if(event.keyCode==13){postLegenda(); }"><?php if(getConfig('legenda')){echo getConfig('legenda');} ?></textarea>
                             </td>
                         </tr>
                     </table>
@@ -47,9 +55,9 @@
             <div id="undercover_option_02">
                 <?php include('./includes/logout.inc.php'); ?>
                 <div id="uo2-buttons">
-                    <div class="uo2-button"><button class="btn btn-primary"><span><img src="images/31.png"></span> Back</button></div>
+                    <div class="uo2-button"><button class="btn btn-primary" onclick="location.href=('index.php');"><span><img src="images/31.png"></span> Back</button></div>
                     <div class="uo2-button text-center"><p>Admin Tools</p></div>
-                    <div class="uo2-button"><button class="btn btn-warning"><span><img src="images/30.png"></span> Change Cover Image</button></div>
+                    <div class="uo2-button"><button class="btn btn-warning" onclick="$('#fileUp').click();"><span><img src="images/30.png"></span> Change Cover Image</button></div>
                     <div class="clear"></div>
                 </div>
             </div>
@@ -145,11 +153,41 @@
                 <div class="clear"></div>
             </div><!-- end of active users wrapper -->
         </div><!-- end of container -->
+        <form enctype="multipart/form-data" action="" method="post" id="formUpIm">
+            <input type="file" style="visibility:hidden;" name="fileUp" id="fileUp" onchange="$('#formUpIm').submit()">            
+        </form>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.autosize.min.js"></script>
         <script src="js/script.js"></script>
+        <script>
+            
+            function postTitulo(){
+                if($('#admin-title-input').val()==''){
+                    alert('Digite algo no titulo');
+                }else{
+                    $.post('includes/gravaTitulo.php',{valor:$('#admin-title-input').val()})
+                    .done(function(retornous){
+                        location.href=('admin.php');
+                    });
+                }
+            }
+
+            function postLegenda(){
+                if($('#admin-text-input').val()==''){
+                    alert('Digite algo na legenda');
+                }else{
+                    $.post('includes/gravaLegenda.php',{valor:$('#admin-text-input').val()})
+                    .done(function(retornous){
+                        location.href=('admin.php');
+                    });
+                }
+            }
+
+                            
+                            
+        </script>
     </body>
 </html>

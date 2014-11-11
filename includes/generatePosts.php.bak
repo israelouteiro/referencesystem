@@ -10,10 +10,10 @@ ob_start();
     $inicio = !empty($_GET['in']) ? $_GET['in'] : 0;
     $final =  $inicio + 12;
     $filtro = $_POST['filtro'];
+    if( empty($filtro) ){
+        $posts = mysql_query("SELECT * FROM postes ORDER BY dataHora DESC LIMIT $inicio,$final ");
+    }else{
 
-                        if( empty($filtro) ){
-                            $posts = mysql_query("SELECT * FROM postes ORDER BY dataHora DESC LIMIT $inicio,$final ");
-                        }else{
                             if($filtro=='reference'){
                                 $posts = mysql_query("SELECT * FROM postes WHERE tipo='reference' ORDER BY dataHora DESC LIMIT $inicio,$final ");
                             }else{
@@ -42,8 +42,8 @@ ob_start();
                                     }
                                 }
                             }
-                        }
 
+    }
 
 if(haveResults($posts)){
 
@@ -84,6 +84,9 @@ if(haveResults($posts)){
 
          $idUx = $_SESSION['loggedU']['id'];
     
+
+
+
         $luzer = mysql_query("SELECT * FROM usuarios WHERE id='$idUx' ");
         if(haveResults($luzer)){
 
@@ -104,7 +107,7 @@ if(haveResults($posts)){
                                 $luzer_foto = "arquivos/".$luzer_foto;
                             }else{
                                 if(!empty($luzer_idFacebook)){
-                                    $luzer_foto = "http://graph.facebook.com/".$luzer_idFacebook."/picture?type=large";
+                                    $luzer_foto = "http://graph.facebook.com/".$luzer_foto."/picture?type=large";
                                 }else{
                                     $luzer_foto = "images/02.png";
                                 }
@@ -119,8 +122,19 @@ if(haveResults($posts)){
             $numComentos = 0;
         }
 
-        if($post_tipo=='reference'){ 
-            ?>
+        if($post_tipo=='reference'){
+
+?>
+
+
+
+
+
+
+
+
+
+
 
                 <!-- Start of REFERENCE POST -->
                 <div class="plataforma-post reference">
@@ -323,9 +337,9 @@ if(haveResults($posts)){
 
 
 
-                <?php 
-        }else { 
-            ?>
+                <?php }else{ ?>
+
+
 
                 <!-- Start of REQUEST POST -->
                 <div class="plataforma-post request">
@@ -513,11 +527,6 @@ if(haveResults($posts)){
                     </div>
                 </div><!-- end of post request -->
                 <script>recarregaComentarios(<?php echo $post_id; ?>);</script>
-            <?php
-        }
 
 
-    }
-}
-
-?>
+<? }}} //n tem resultados ainda; ?>

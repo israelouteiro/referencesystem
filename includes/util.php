@@ -176,5 +176,19 @@ function locationHref($url){
 		return false;
 	} 
 
+	function getConfig($config){
+        $tconfig = mysql_query("SELECT * FROM config WHERE config='$config' ");
+        if($tconfig&&mysql_num_rows($tconfig)>0){
+            $value = mysql_result($tconfig,0,"value");
+            return $value;
+        }else{  
+            return false;
+        }
+    }
+
+    function setConfig($config,$value){
+    	return mysql_query("UPDATE config SET value='$value' WHERE config='$config' ");
+    }
+
 
 ?>
