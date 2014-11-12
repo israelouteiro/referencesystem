@@ -77,8 +77,8 @@
                 <?php include('./includes/logout.inc.php'); ?>
                 <div id="uo3-buttons">
                     <div class="uo3-button"><button class="btn btn-primary" onclick="location.href=('index.php');"><span><img src="images/31.png"></span> Back</button></div>
-                    <div class="uo3-button-r"><button class="btn btn-success"><span><img src="images/40.png"></span> Export PDF</button></div>
-                    <div class="uo3-button-r"><p>0 Posts added</p></div>
+                    <div class="uo3-button-r"><button class="btn btn-success" onclick="exportTS();"><span><img src="images/40.png"></span> Export PDF</button></div>
+                    <div class="uo3-button-r"><p id="badgeExpost">0 Posts added</p></div>
                     <div class="clear"></div>
                 </div>
             </div>
@@ -115,7 +115,7 @@
                                     $post_fk_usuario = mysql_result($hottestPosts,$i,"fk_usuario");
 
                                 ?>
-                        <div class="col-sm-4 col-md-4">
+                        <div class="col-sm-4 col-md-4" id="export<?php echo $post_id; ?>">
                         <section class="hottest-posts-module">
                             <div class="hottest-posts-module-image">
 
@@ -183,7 +183,7 @@
                                     </ul>
                                 </div>
                                 <div class="posts-module-button">
-                                    <img src="images/27.png" width="100%">
+                                    <img src="images/27.png" width="100%" onclick="addToExport(<?php echo $post_id; ?>);" id="img_export<?php echo $post_id; ?>">
                                 </div> 
                                 <div class="clear"></div>
                             </div>
@@ -201,6 +201,9 @@
 
 
         </div>
+        <form id="formExport">
+            <input type="hidden" name="imgs_toex" id="imgs_toex">
+        </form>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -208,5 +211,114 @@
         <script src="js/jquery.autosize.min.js"></script>
         <script src="js/script.js"></script>
         <script src="js/asyncUpload.js"></script>
+        <script>
+            function addToExport(idfs){
+                //fazer lista das publicações p/ exportar
+                if($('#imgs_toex').val()==''){
+                    $('#imgs_toex').val(''+idfs);
+                }else{
+                    $('#imgs_toex').val($('#imgs_toex').val()+','+idfs);
+                }
+                //atualizar valor da lista no badge
+                atualizaBadgExpo();
+                //alterar icone do botao e evento;
+                $('#img_export'+idfs).attr('onclick','removeToExport('+idfs+');');
+                $('#img_export'+idfs).attr('src','images/28.png');
+            }
+            function removeToExport(idfs){
+                removeFromExport(idfs);
+                atualizaBadgExpo();
+                //alterar icone do botao e evento;
+                $('#img_export'+idfs).attr('onclick','addToExport('+idfs+');');
+                $('#img_export'+idfs).attr('src','images/27.png');
+            }
+            function atualizaBadgExpo(){
+                val = $('#imgs_toex').val();val = val.split(',');
+                val = val.length;
+                if($('#imgs_toex').val()==''){
+                    val --;
+                }
+                $('#badgeExpost').html(val+' Posts added');
+            }
+            function removeFromExport(idx){
+                valor = $('#imgs_toex').val();
+                ind = valor.indexOf(','+idx+',');
+                if( ind != -1 ){
+                    // no meio //
+                    valor = valor.replace(','+idx+',',',');
+                }else{
+                    ind = valor.indexOf(','+idx);
+                    if( ind != -1 ){
+                        // no final //
+                        valor = valor.replace(','+idx,'');
+                    }else{
+                        ind = valor.indexOf(idx+',');
+                        if( ind != -1 ){
+                            // no inicio //
+                            valor = valor.replace(idx+',','');
+                        }else{
+                            ind = valor.indexOf(idx);
+                            if( ind != -1 ){
+                                //só tem ele
+                                valor = valor.replace(idx,'');
+                            }
+                        }
+                    }
+                }
+                $('#imgs_toex').val(valor);
+            }
+
+            function exportTS(){
+                if($('#imgs_toex').val()==''){
+                    alert('Selecione pelo menos 1 post para exportar');
+                }else{
+                    $.post('arquivos/geraPDF.php',{imgs_toex:$('#imgs_toex').val()}).done(function(suss){
+                        $('#fakeModal').html(suss);
+                        $('#fakeButton').click();
+                    });
+                }
+            }
+        </script>
+
+
+
+
+
+
+        <span id="fakeButton" data-toggle="modal" data-target="#myModal" style="visibility:hidden;"></span>
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <!--
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+              </div>
+            -->
+              <div class="modal-body" id="fakeModal">
+
+              </div>
+              <!--   
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+              -->
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
     </body>
 </html>
