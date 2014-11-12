@@ -206,7 +206,7 @@ if(haveResults($posts)){
                                             $vtag = getTag($idtag);
                                             if(!empty($vtag)){
                                         ?>
-                                        <li>#<?php echo $vtag; ?></li>
+                                        <li onclick="location.href=('search.php?tag=<?php echo $idtag; ?>')">#<?php echo $vtag; ?></li>
                                     <?php }}} ?>
                             </ul>
                         </div>
@@ -404,7 +404,7 @@ if(haveResults($posts)){
                                             $vtag = getTag($idtag);
                                             if(!empty($vtag)){
                                         ?>
-                                        <li>#<?php echo $vtag; ?></li>
+                                        <li onclick="location.href=('search.php?tag=<?php echo $idtag; ?>')">#<?php echo $vtag; ?></li>
                                     <?php }}} ?>
                             </ul>
                         </div>

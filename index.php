@@ -179,8 +179,8 @@
             </div><!-- end of left column -->
             <aside class="plataforma-col plataforma-col-right">
                 <div class="plataforma-search">
-                    <form>
-                        <input type="text" placeholder="Content search">
+                    <form method="post" action="search.php">
+                        <input type="text" name="valorBusca" placeholder="Content search">
                         <input type="image" src="images/06.png">
                     </form>
                 </div>
@@ -267,12 +267,12 @@
                                             $tags4tpost = mysql_query("SELECT * FROM tags_postes WHERE fk_poste='$post_id' ");
                                             if(haveResults($tags4tpost)){
                                                 for($ix=0;$ix<mysql_num_rows($tags4tpost);$ix++){
-                                                    $fk_hottag = mysql_result($tagsAtuais,$ix,'fk_tag');
+                                                    $fk_hottag = mysql_result($tags4tpost,$ix,'fk_tag');
                                                     $recTag = mysql_query("SELECT * FROM tags WHERE id='$fk_hottag' ");
                                                     if(haveResults($recTag)){
                                                         $tag_nome = mysql_result($recTag,0,'nome');
                                                         $tag_id = mysql_result($recTag,0,'id');
-                                                        echo '<li>#'.$tag_nome.'</li>';
+                                                        echo '<li onclick="location.href=('."'".'search.php?tag='.$tag_id."'".');">#'.$tag_nome.'</li>';
                                                     }
                                                 }
                                             }
@@ -302,7 +302,6 @@
 
 
 
-                    <?php #include('./includes/hot.post.module.php'); ?>
 
 
 
