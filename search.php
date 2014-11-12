@@ -1,3 +1,10 @@
+<?php 
+    
+    include "includes/isLogged.php";
+    include "includes/conexao.php";
+    include "includes/queryUsuario.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -41,7 +48,7 @@
             <div id="undercover_option_03">
                 <?php include('./includes/logout.inc.php'); ?>
                 <div id="uo3-buttons">
-                    <div class="uo3-button"><button class="btn btn-primary"><span><img src="images/31.png"></span> Back</button></div>
+                    <div class="uo3-button"><button class="btn btn-primary" onclick="location.href=('index.php');"><span><img src="images/31.png"></span> Back</button></div>
                     <div class="uo3-button-r"><button class="btn btn-success"><span><img src="images/40.png"></span> Export PDF</button></div>
                     <div class="uo3-button-r"><p>3 Posts added</p></div>
                     <div class="clear"></div>
@@ -81,5 +88,6 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.autosize.min.js"></script>
         <script src="js/script.js"></script>
+        <script src="js/asyncUpload.js"></script>
     </body>
 </html>

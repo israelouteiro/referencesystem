@@ -126,12 +126,12 @@ if(haveResults($posts)){
                 <div class="plataforma-post reference">
                     <div class="plataforma-post-content">
                         <div class="plataforma-post-profile">
-                            <div class="post-profile-image"  style="background:url(<?php echo $foto_user; ?>) no-repeat center center;background-size:cover;" ><img src="images/07.jpg" style="visibility:hidden;"></div>
+                            <div class="post-profile-image <?php if($idUx==$post_fk_usuario){echo 'userPhotoProfile'; } ?>"  style="background:url(<?php echo $foto_user; ?>) no-repeat center center;background-size:cover;" ><img src="images/07.jpg" style="visibility:hidden;"></div>
                             <div class="post-profile-infos">
                                 <p class="uo-name" onclick="$(this).next('.post-profile-infos-popup').toggle();"><?php echo $user_nome; ?></p>
                                 <!-- Profile infos POPUP -->
                                 <div class="post-profile-infos-popup" style="display:none;">
-                                    <div class="infos-popup-image" style="background:url(<?php echo $foto_user; ?>) no-repeat center center;background-size:cover;">
+                                    <div class="infos-popup-image <?php if($idUx==$post_fk_usuario){echo 'userPhotoProfile'; } ?>" style="background:url(<?php echo $foto_user; ?>) no-repeat center center;background-size:cover;">
                                         <img src="images/10.jpg" style="visibility:hidden;">
                                     </div>
                                     <div class="infos-popup-infos">
@@ -331,12 +331,12 @@ if(haveResults($posts)){
                 <div class="plataforma-post request">
                     <div class="plataforma-post-content">
                         <div class="plataforma-post-profile">
-                            <div class="post-profile-image"  style="background:url(<?php echo $foto_user; ?>) no-repeat center center;background-size:cover;"><img src="images/07.jpg" style="visibility:hidden;"></div>
+                            <div class="post-profile-image <?php if($idUx==$post_fk_usuario){echo 'userPhotoProfile'; } ?>"  style="background:url(<?php echo $foto_user; ?>) no-repeat center center;background-size:cover;"><img src="images/07.jpg" style="visibility:hidden;"></div>
                             <div class="post-profile-infos">
                                 <p class="uo-name" onclick="$(this).next('.post-profile-infos-popup').toggle();"><?php echo $user_nome; ?></p>
                                 <!-- Profile infos POPUP -->
                                 <div class="post-profile-infos-popup" style="display:none;">
-                                    <div class="infos-popup-image" style="background:url(<?php echo $foto_user; ?>) no-repeat center center;background-size:cover;">
+                                    <div class="infos-popup-image <?php if($idUx==$post_fk_usuario){echo 'userPhotoProfile'; } ?>" style="background:url(<?php echo $foto_user; ?>) no-repeat center center;background-size:cover;">
                                         <img src="images/10.jpg" style="visibility:hidden;">
                                     </div>
                                     <div class="infos-popup-infos">

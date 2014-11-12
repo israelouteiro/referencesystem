@@ -110,7 +110,7 @@
             ?>
 
                 <div class="admin-user-module">
-                    <div class="user-module-photo" style="background:url(<?php echo $fuser_foto; ?>) no-repeat center center;background-size:cover;">
+                    <div class="user-module-photo <?php if($idUx==$fuser_id){echo 'userPhotoProfile'; } ?>" style="background:url(<?php echo $fuser_foto; ?>) no-repeat center center;background-size:cover;">
                         <img src="images/35.png" style="visibility:hidden;">
                     </div>
                     <div class="user-module-text">
@@ -124,7 +124,7 @@
                     <!-- PERFIL DA PESSOA -->
 
                     <div class="post-profile-infos-popup" style="display:none;" id="prof<?php echo $fuser_id; ?>">
-                        <div class="infos-popup-image" style="background:url(<?php echo $fuser_foto; ?>) no-repeat center center;background-size:cover;">
+                        <div class="infos-popup-image <?php if($idUx==$fuser_id){echo 'userPhotoProfile'; } ?>" style="background:url(<?php echo $fuser_foto; ?>) no-repeat center center;background-size:cover;">
                             <img src="images/10.jpg" style="visibility:hidden;">
                         </div>
                         <div class="infos-popup-infos" >
@@ -196,7 +196,7 @@
 
 
                 <div class="admin-user-module">
-                    <div class="user-module-photo" style="background:url(<?php echo $fuser_foto; ?>) no-repeat center center;background-size:cover;">
+                    <div class="user-module-photo <?php if($idUx==$fuser_id){echo 'userPhotoProfile'; } ?>" style="background:url(<?php echo $fuser_foto; ?>) no-repeat center center;background-size:cover;">
                         <img src="images/35.png" style="visibility:hidden;">
                     </div>
                     <div class="user-module-text">
@@ -211,7 +211,7 @@
                     <!-- PERFIL DA PESSOA -->
 
                     <div class="post-profile-infos-popup" style="display:none;" id="prof<?php echo $fuser_id; ?>">
-                        <div class="infos-popup-image" style="background:url(<?php echo $fuser_foto; ?>) no-repeat center center;background-size:cover;">
+                        <div class="infos-popup-image <?php if($idUx==$fuser_id){echo 'userPhotoProfile'; } ?>" style="background:url(<?php echo $fuser_foto; ?>) no-repeat center center;background-size:cover;">
                             <img src="images/10.jpg" style="visibility:hidden;">
                         </div>
                         <div class="infos-popup-infos">
@@ -260,6 +260,7 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.autosize.min.js"></script>
         <script src="js/script.js"></script>
+        <script src="js/asyncUpload.js"></script>
         <script>
             
             function postTitulo(){
