@@ -10,6 +10,7 @@
 		    	alert('O arquivo escolhido não é uma imagem');
 		    }else{
 		    	//Upload
+		    	showLoad();
 		    	var nomeArquivo = file.name;
 		    	var fileReader = new FileReader();
 		    	fileReader.readAsDataURL(file);
@@ -22,6 +23,7 @@
 
 							$.post('includes/savePhotoPost.php', objPost, function(data) {
 								//APENAS PARA VERIFICAR SUCESSO NO PHP
+								hideLoad();
 								var dataSplit = data.split(':');
 								if(dataSplit[1] == 'successfully') {
 									var idx = dataSplit[0];
@@ -50,7 +52,7 @@
 		    var name = file.name;
 		    var size = file.size;
 		    var type = file.type;
-
+		    	showLoad();
 		    	//Upload
 		    	var nomeArquivo = file.name;
 		    	var fileReader = new FileReader();
@@ -64,6 +66,7 @@
 
 							$.post('includes/saveFilePost.php', objPost, function(data) {
 								//APENAS PARA VERIFICAR SUCESSO NO PHP
+								hideLoad();
 								var dataSplit = data.split(':');
 								if(dataSplit[1] == 'successfully') {
 									var idx = dataSplit[0];
@@ -133,6 +136,7 @@
 			$('#fe_type').val(types);
 			if($('#post-area-middle-textarea').val()!=''){
 				$('#fe_texto').val($('#post-area-middle-textarea').val());
+				showLoad();
 							$.post('includes/savePost.php', $('#formEnvios').serialize(), function(data) {
 								var dataSplit = data.split(':');
 								if(dataSplit[1] == 'successfully') {
@@ -145,6 +149,7 @@
 									$('#post-area-tags ul').html('');
 									changeReferenceState=false;changeReference();
 									$('#post-area-middle-textarea').val('');
+									hideLoad();
 									carregaTags();
 									carregaPosts();
 								} else {
@@ -185,6 +190,7 @@
 		}
 
 		function curtiu(id){
+			showLoad();
 			$.get('includes/curtiuLikes.php?id='+id).done(function(susexo){
 				susexo = susexo.split(':');
 				if(susexo[0]=='curtiu'){
@@ -193,6 +199,7 @@
 					$('#likesObj'+id+' img').attr('src','images/18.png');
 				}
 				$('#likesObj'+id+' p').html(susexo[1]+' users liked');
+				hideLoad();
 			});
 		}
 
@@ -200,8 +207,10 @@
 		var iniMPople = 0;
 		function morePeople(){
 			iniMPople += 8;
-			$('includes/generateMorePeople.php',{inicio:iniMPople},function(simn){
+			showLoad();
+			$.post('includes/generateMorePeople.php',{inicio:iniMPople},function(simn){
 				$('#morePhotosButton').before(simn);
+				hideLoad();
 			});
 		}
 
@@ -221,8 +230,10 @@
                                     }
                                 }
                             }
+                            showLoad();
                             $.post('includes/generatePosts.php',{filtro:fillt}).done(function(alm){
                                 $('#allPosts').html(alm);
                                 numEPo = 12;
+                                hideLoad();
                             });
                         }

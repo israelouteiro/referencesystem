@@ -17,15 +17,18 @@ var gotoStep2 = function(){
 	}
 
 	function logFacebook(){
+		 
 		 FB.login(statusChangeCallback, {scope: 'public_profile,email'});
 	}
 
 	function getUserFInformation() {
 	    console.log('getUserFInformation');
+	    showLoad();
 	    FB.api('/me', function(response) {
 	    	$('#new_name').val(response.name);
 	    	$('#new_email').val(response.email);
 			$('#facebookId').val(response.id);
+			hideLoad();
 	    });
 	}
 

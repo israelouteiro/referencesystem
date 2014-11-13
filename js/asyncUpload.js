@@ -9,6 +9,7 @@ $('#editProfilePhoto').bind('change',function(e){
 		    	alert('O arquivo escolhido não é uma imagem');
 		    }else{
 		    	//Upload
+		    	showLoad();
 		    	var nomeArquivo = file.name;
 		    	var fileReader = new FileReader();
 		    	fileReader.readAsDataURL(file);
@@ -22,7 +23,7 @@ $('#editProfilePhoto').bind('change',function(e){
 							$.post('includes/savePhoto.php', objPost, function(data) {
 					
 								var fileName = nomeArquivo;
-								
+								hideLoad();
 								//APENAS PARA VERIFICAR SUCESSO NO PHP
 								var dataSplit = data.split(':');
 								if(dataSplit[1] == 'successfully') {

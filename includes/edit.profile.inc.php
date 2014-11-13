@@ -15,7 +15,7 @@
       #  $user_idFacebook
 
 ?>
-<div id="edit-profile-wrapper"><!-- candidate to object -->
+<div id="edit-profile-wrapper" style="display:none;"><!-- candidate to object -->
     <div id="edit-profile-img">
         <div id="edit-profile-img-wrap">
             <img src="images/21.png">

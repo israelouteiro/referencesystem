@@ -272,9 +272,11 @@
                 if($('#imgs_toex').val()==''){
                     alert('Selecione pelo menos 1 post para exportar');
                 }else{
+                    showLoad();
                     $.post('arquivos/geraPDF.php',{imgs_toex:$('#imgs_toex').val()}).done(function(suss){
                         $('#fakeModal').html(suss);
                         $('#fakeButton').click();
+                        hideLoad();
                     });
                 }
             }

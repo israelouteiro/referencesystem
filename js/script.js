@@ -3,13 +3,13 @@
 // var UO_OPTION_WIDTH = 300;
 // var UO1_PHOTOS_WIDTH = 660;
 var changeReferenceState = false;
-var editProfileState = true;
+var editProfileState = false;
 var showProfileInfos = false;
 
 $(document).ready(function() {
     
     changeReference();
-    setEditProfile();
+    //setEditProfile();
     // setPhotosLeft();
     setPostMenu();
     setProfileRight();
@@ -152,4 +152,16 @@ function setEditProfile() {
         $('#edit-profile-wrapper').hide();
         editProfileState = false;
     }
+}
+
+function showLoad(){
+    loadHtml = '<div id="loadera" style="position:fixed;top:0;left:0;width:100%;height:100%; background:rgba(255,255,255,.8);z-index:1000;">'+
+                    '<div style="position:absolute;top:50%;left:50%;width:50px;height:50px;">'+
+                        '<img src="images/loading.gif" width="100%">'+
+                    '</div>'+
+                '</div>';
+    $('body').prepend(loadHtml);
+}
+function hideLoad(){
+    $('#loadera').remove();
 }

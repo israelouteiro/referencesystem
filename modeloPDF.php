@@ -35,7 +35,7 @@
                                     $srcPhoto = mysql_result($fotosDestePost,$a,"source");
 
                                 ?>
-                                    <div class="item <?php if(true){echo 'active';}?>" >
+                                    <div class="item <?php if($a==0){echo 'active';}?>" >
                                       <img src="arquivos/<?php echo $srcPhoto; ?>" alt="" width="100%" >
                                     </div>
                                 <?php } ?>
