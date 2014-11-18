@@ -10,7 +10,7 @@
 		    	alert('O arquivo escolhido não é uma imagem');
 		    }else{
 		    	//Upload
-		    	showLoad();
+		    	showLoad("Sending photo: "+name);
 		    	var nomeArquivo = file.name;
 		    	var fileReader = new FileReader();
 		    	fileReader.readAsDataURL(file);
@@ -31,7 +31,11 @@
 								} else {
 									alert(data);
 								}
-								
+								$('#selectPicture').val('');
+							}).fail(function(){
+								alert('Error in connection retry');
+								hideLoad();
+								$('#selectPicture').val('');
 							});
 
 					}; 
@@ -52,7 +56,7 @@
 		    var name = file.name;
 		    var size = file.size;
 		    var type = file.type;
-		    	showLoad();
+		    	showLoad("Sending file: "+name);
 		    	//Upload
 		    	var nomeArquivo = file.name;
 		    	var fileReader = new FileReader();
@@ -74,7 +78,11 @@
 								} else {
 									alert(data);
 								}
-								
+								$('#selectFile').val('');
+							}).fail(function(){
+								alert('Error in connection retry');
+								hideLoad();
+								$('#selectFile').val('');
 							});
 
 					}; 
@@ -136,7 +144,7 @@
 			$('#fe_type').val(types);
 			if($('#post-area-middle-textarea').val()!=''){
 				$('#fe_texto').val($('#post-area-middle-textarea').val());
-				showLoad();
+				showLoad("Saving post");
 							$.post('includes/savePost.php', $('#formEnvios').serialize(), function(data) {
 								var dataSplit = data.split(':');
 								if(dataSplit[1] == 'successfully') {
@@ -155,6 +163,9 @@
 								} else {
 									alert(data);
 								}
+							}).fail(function(){
+								alert('Error in connection retry');
+								hideLoad();
 							});
 			}else{
 				alert('Digite algo em sua postagem');
@@ -172,6 +183,9 @@
 						}else{
 							alert(foiz);
 						}
+					}).fail(function(){
+						alert('Error in connection retry');
+						hideLoad();
 					});
 				}
 		}
@@ -180,17 +194,23 @@
 			$.get('includes/generateComentes.php?id='+id).done(function(susexo){
 				$('#lista_comentartio'+id).html(susexo);
 				recarregaBadgeComentos(id);
+			}).fail(function(){
+				alert('Error in connection retry');
+				hideLoad();
 			});
 		}
 
 		function recarregaBadgeComentos(id){
 			$.get('includes/generateBComentes.php?id='+id).done(function(susexo){
 				$('#bComm'+id).html(susexo+' comments');
+			}).fail(function(){
+				alert('Error in connection retry');
+				hideLoad();
 			});
 		}
 
 		function curtiu(id){
-			showLoad();
+			showLoad("Loading");
 			$.get('includes/curtiuLikes.php?id='+id).done(function(susexo){
 				susexo = susexo.split(':');
 				if(susexo[0]=='curtiu'){
@@ -200,6 +220,9 @@
 				}
 				$('#likesObj'+id+' p').html(susexo[1]+' users liked');
 				hideLoad();
+			}).fail(function(){
+				alert('Error in connection retry');
+				hideLoad();
 			});
 		}
 
@@ -207,9 +230,12 @@
 		var iniMPople = 0;
 		function morePeople(){
 			iniMPople += 8;
-			showLoad();
+			showLoad("Loading more people");
 			$.post('includes/generateMorePeople.php',{inicio:iniMPople},function(simn){
 				$('#morePhotosButton').before(simn);
+				hideLoad();
+			}).fail(function(){
+				alert('Error in connection retry');
 				hideLoad();
 			});
 		}
@@ -230,10 +256,13 @@
                                     }
                                 }
                             }
-                            showLoad();
+                            showLoad("Filtering posts");
                             $.post('includes/generatePosts.php',{filtro:fillt}).done(function(alm){
                                 $('#allPosts').html(alm);
                                 numEPo = 12;
                                 hideLoad();
-                            });
+                            }).fail(function(){
+								alert('Error in connection retry');
+								hideLoad();
+							});
                         }

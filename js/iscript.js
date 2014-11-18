@@ -23,7 +23,7 @@ var gotoStep2 = function(){
 
 	function getUserFInformation() {
 	    console.log('getUserFInformation');
-	    showLoad();
+	    showLoad("Getting facebook user informations");
 	    FB.api('/me', function(response) {
 	    	$('#new_name').val(response.name);
 	    	$('#new_email').val(response.email);

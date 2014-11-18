@@ -9,23 +9,44 @@
     if(isset($_FILES['fileUp']['name'])){
         $nomeFoto = $_FILES['fileUp']['name'];
         if(move_uploaded_file($_FILES['fileUp']['tmp_name'], 'images/01.jpg')){
-            echo '<script>alert("Imagem de capa alterada com sucesso");setTimeout(function(){location.href=("index.php");},500);</script>';
+            echo '<script>alert("Imagem de capa alterada com sucesso, atualiza a pagina para que a imagem antiga saia do cache");setTimeout(function(){location.href=("index.php");},500);</script>';
         }
     }
 
                 if(isset($_POST['confirma_pe'])){
                     $idcp = addslashes($_POST['confirma_pe']);
                     mysql_query("UPDATE usuarios SET ativo='sim' WHERE id='$idcp' ");
+
+                    $us = mysql_query("SELECT * FROM usuarios WHERE id='$idcp' ");
+                    if(haveResults($us)){
+                        $em = mysql_result($us,0,'email');
+                    $menny = montaEmailMCL("Your registration has been activated.","Visit",URLSite);
+                    mandaEmail($menny,"Asset register",$em);
+                    }
                 }
 
                 if(isset($_POST['remove_pe'])){
                     $idcp = addslashes($_POST['remove_pe']);
                     mysql_query("UPDATE usuarios SET ativo='naaaa' WHERE id='$idcp' ");
+
+                    $us = mysql_query("SELECT * FROM usuarios WHERE id='$idcp' ");
+                    if(haveResults($us)){
+                        $em = mysql_result($us,0,'email');
+                    $menny = montaEmailM("Your registration has been activated.");
+                    mandaEmail($menny,"Your registration was denied",$em);
+                    }
                 }
 
                 if(isset($_POST['deonfirma_pe'])){
                     $idcp = addslashes($_POST['deonfirma_pe']);
                     mysql_query("UPDATE usuarios SET ativo='nao' WHERE id='$idcp' ");
+
+                    $us = mysql_query("SELECT * FROM usuarios WHERE id='$idcp' ");
+                    if(haveResults($us)){
+                        $em = mysql_result($us,0,'email');
+                    $menny = montaEmailM("Your registration was denied by an administrator.");
+                    mandaEmail($menny,"You was excluded",$em);
+                    }
                 }
 ?>
 <!DOCTYPE html>
@@ -52,12 +73,12 @@
                     <table>
                         <tr>
                             <td>
-                                <textarea placeholder="Lorem ipsum dolor" id="admin-title-input" onkeyup="if(event.keyCode==13){postTitulo(); }"><?php if(getConfig('titulo')){echo getConfig('titulo');} ?></textarea>
+                                <textarea placeholder="Lorem ipsum dolor" id="admin-title-input" onkeyup="if(event.keyCode==13){postTitulo(); }" style="overflow:hidden;"><?php if(getConfig('titulo')){echo getConfig('titulo');} ?></textarea>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <textarea type="text" placeholder="Text" id="admin-text-input" onkeyup="if(event.keyCode==13){postLegenda(); }"><?php if(getConfig('legenda')){echo getConfig('legenda');} ?></textarea>
+                                <textarea type="text" placeholder="Text" id="admin-text-input" onkeyup="if(event.keyCode==13){postLegenda(); }" style="overflow:hidden;"><?php if(getConfig('legenda')){echo getConfig('legenda');} ?></textarea>
                             </td>
                         </tr>
                     </table>
@@ -269,6 +290,7 @@
                 }else{
                     $.post('includes/gravaTitulo.php',{valor:$('#admin-title-input').val()})
                     .done(function(retornous){
+                        alert('Titulo alterado com sucesso');
                         location.href=('admin.php');
                     });
                 }
@@ -280,6 +302,7 @@
                 }else{
                     $.post('includes/gravaLegenda.php',{valor:$('#admin-text-input').val()})
                     .done(function(retornous){
+                        alert('Legenda alterada com sucesso');
                         location.href=('admin.php');
                     });
                 }

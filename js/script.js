@@ -154,10 +154,13 @@ function setEditProfile() {
     }
 }
 
-function showLoad(){
+function showLoad(textoFeedback){
     loadHtml = '<div id="loadera" style="position:fixed;top:0;left:0;width:100%;height:100%; background:rgba(255,255,255,.8);z-index:1000;">'+
                     '<div style="position:absolute;top:50%;left:50%;width:50px;height:50px;">'+
                         '<img src="images/loading.gif" width="100%">'+
+                    '</div>'+
+                    '<div style="position:absolute;top:65%;left:0;width:100%;height:200px;text-align:center;">'+
+                        '<p style="font-size:20px;">'+textoFeedback+'</p>'+
                     '</div>'+
                 '</div>';
     $('body').prepend(loadHtml);

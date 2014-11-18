@@ -9,8 +9,9 @@ $('#editProfilePhoto').bind('change',function(e){
 		    	alert('O arquivo escolhido não é uma imagem');
 		    }else{
 		    	//Upload
-		    	showLoad();
+		    	
 		    	var nomeArquivo = file.name;
+		    	showLoad("Sending photo: "+nomeArquivo);
 		    	var fileReader = new FileReader();
 		    	fileReader.readAsDataURL(file);
 				fileReader.onload = (function(file) {
@@ -33,7 +34,11 @@ $('#editProfilePhoto').bind('change',function(e){
 								} else {
 									alert(data);
 								}
-								
+								$('#editProfilePhoto').val('');
+							}).fail(function(){
+								alert('Error in connection retry');
+								hideLoad();
+								$('#editProfilePhoto').val('');
 							});
 
 					}; 

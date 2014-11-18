@@ -1,22 +1,28 @@
 function addTag(){
 	var nTag = $('#valorTags').val();
 	if(nTag!=''){
-		showLoad();
+		showLoad("Adding tags");
 		$.post('includes/addTag.php', { nome: nTag }).done(function(r){
 			if(r=='sucesso'){
 				$('#valorTags').val('');
 				hideLoad();
 				carregaTags();
 			}
+		}).fail(function(){
+			alert('Error in connection retry');
+			hideLoad();
 		});
 	}
 }
 
 function carregaTags(){
-	showLoad();
+	showLoad("Loading tags");
 	valores = ($('#fe_tags').val());
 	$.post('includes/getTags.php',{ jaTags : valores }).done(function(ve){
 		$('#listaTags').html(ve);
+		hideLoad();
+	}).fail(function(){
+		alert('Error in connection retry');
 		hideLoad();
 	});
 }
@@ -76,28 +82,37 @@ $(document).ready(function(e){
 });
 
 function garregaPosts(inic){
-	showLoad();
+	showLoad("Loading posts");
 	$.get('includes/generatePosts.php?in='+inic).done(function(alm){
 		$('#allPosts').append(alm);
 		numEPo = inic +12;
+		hideLoad();
+	}).fail(function(){
+		alert('Error in connection retry');
 		hideLoad();
 	});
 }
 
 function carregaPosts(){
 	$('#allPosts').html('');
-	showLoad();
+	showLoad("Loading posts");
 	$.get('includes/generatePosts.php').done(function(alm){
 		$('#allPosts').html(alm);
 		numEPo = 12;
+		hideLoad();
+	}).fail(function(){
+		alert('Error in connection retry');
 		hideLoad();
 	});
 }
 
 function removePost(idx){
-	showLoad();
+	showLoad("Deleting post");
 	$.post('includes/removePost.php',{id:idx},function(so){
 		hideLoad();
 		carregaPosts();
+	}).fail(function(){
+		alert('Error in connection retry');
+		hideLoad();
 	});
 }

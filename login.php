@@ -87,6 +87,16 @@ $error = "";
                                             cargo='$new_ocupation', pais='$new_pais', estado='$new_estado', cidade='$new_cidade', empresa='$new_company', sobre='$new_sobre', ativo='nao'  ");
                     if($gravado){
                         $successo_new = "Email successfully registered, contact the group administrator to request its activation";
+
+         $menny = montaEmailM("you have registered successfully and receive a new email when your registration is enabled by the administrator");
+         mandaEmail($menny,"Successfully registered",$new_email);
+
+
+
+          $menny = montaEmailM("Go to activate it","Visit",URLSite);
+         mandaEmail($menny,"Just a new user register",'raphaella@racionalize.com.br');
+         mandaEmail($menny,"Just a new user register",'israel@racionalize.com.br');
+
                     }else{
                         $error_new = "Error, please try again later";
                     }

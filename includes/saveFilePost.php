@@ -25,7 +25,7 @@ include "conexao.php";
 		$encodedData = str_replace(' ','+',$data[1]);
 		$decodedData = base64_decode($encodedData);
 		
-		$randomName =  str_replace("áàãâéêíóôõúüçÁÀÃÂÉÊÍÓÔÕÚÜÇ ", "aaaaeeiooouucAAAAEEIOOOUUC_",$name);
+		$randomName =  str_replace("áàãâéêíóôõúüçÁÀÃÂÉÊÍÓÔÕÚÜÇ ", "aaaaeeiooouucAAAAEEIOOOUUC_",addslashes($name));
 		
 		$nomePhoto = $randomName;
 		

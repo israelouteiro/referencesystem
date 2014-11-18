@@ -51,7 +51,7 @@
                     <ul>
                         <?php
                         # $quser = mysql_query("SELECT * FROM ( SELECT * FROM usuarios ORDER BY rand() LIMIT 8 ) T1 ORDER BY nome ");
-                        $quser = mysql_query(" SELECT * FROM usuarios ORDER BY nome ASC LIMIT 8 ");
+                        $quser = mysql_query(" SELECT * FROM usuarios WHERE ativo='sim' ORDER BY nome ASC LIMIT 8 ");
                          if(haveResults($quser)){
                             for($i=0;$i<mysql_num_rows($quser);$i++){ 
                                 $fu = mysql_result($quser,$i,'foto');
@@ -73,7 +73,7 @@
                                 </li>
                             <?php }}?>
 
-                        <li><img src="images/01.png" id="morePhotosButton" onclick="morePeople();"></li>
+                        <li><img src="images/01.png" id="morePhotosButton" onclick="location.href=('allusers.php');//morePeople();"></li>
                     </ul>
                 </div>
             </div>
