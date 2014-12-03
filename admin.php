@@ -4,13 +4,23 @@
     include "includes/isLoggedAdmin.php";
     include "includes/conexao.php";
     include "includes/queryUsuario.php";
+	
+	/*
+	ini_set('memory_limit','128M');
+	ini_set('max_execution_time','36000');
+	ini_set('post_max_size','128M');
+	ini_set('upload_max_filesize','128M');
+	ini_set('post_max_filesize','128M');
+	*/
 
 
     if(isset($_FILES['fileUp']['name'])){
         $nomeFoto = $_FILES['fileUp']['name'];
         if(move_uploaded_file($_FILES['fileUp']['tmp_name'], 'images/01.jpg')){
             echo '<script>alert("Imagem de capa alterada com sucesso, atualiza a pagina para que a imagem antiga saia do cache");setTimeout(function(){location.href=("index.php");},500);</script>';
-        }
+        }else{
+			echo '<script>alert("Ocorreu um erro ao subir o arquivo. O tamanho maximo para arquivos neste servidor é: '.ini_get('upload_max_filesize').'b.");</script>';
+		}
     }
 
                 if(isset($_POST['confirma_pe'])){
@@ -272,7 +282,7 @@
                 <div class="clear"></div>
             </div><!-- end of active users wrapper -->
         </div><!-- end of container -->
-        <form enctype="multipart/form-data" action="" method="post" id="formUpIm">
+        <form enctype="multipart/form-data" action="" method="post" id="formUpIm"onsubmit="showLoad('Enviando imagem, por favor aguarde.');">
             <input type="file" style="visibility:hidden;" name="fileUp" id="fileUp" onchange="$('#formUpIm').submit()">            
         </form>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

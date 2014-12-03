@@ -5,6 +5,7 @@ ob_start();
 		session_set_cookie_params((60*30*1024),'/','.'.str_replace('www','',$_SERVER['HTTP_HOST']),true,true);
 include "conexao.php";
 
+
 		$idUx = $_SESSION['loggedU']['id'];
 		$dataHora = date('Y-m-d H:i:s');
 		$ip = $_SERVER['REMOTE_ADDR'];
