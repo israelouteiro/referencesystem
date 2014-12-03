@@ -11,11 +11,26 @@
         $hottestPosts = mysql_query("SELECT * FROM postes WHERE texto LIKE '%$search%' ORDER BY dataHora DESC");
         $expressaoProcurada = $_POST['valorBusca'];
         $tipo = 'busca';
+
+
+        $pTags = mysql_query("SELECT * FROM tags WHERE nome like '%$search%' ");
+        $queryTaaag = "";
+        if(haveResults($pTags)){
+            for($i=0;$i<mysql_num_rows($pTags);$i++){
+                $tgs_fkpos = mysql_result($pTags,$i,'id');
+                if(($i+1)<mysql_num_rows($pTags)){
+                    $queryTaaag .= " fk_tag='$tgs_fkpos' OR ";
+                }else{
+                    $queryTaaag .= " fk_tag='$tgs_fkpos' ";
+                }
+            }
+        }
+
     }
 
-    if(isset($_GET['tag'])){
+    if(isset($_GET['tag']) || !empty($queryTaaag) ){
         $tag = $_GET['tag'];
-        $t4G = mysql_query("SELECT * FROM tags_postes WHERE fk_tag='$tag' ");
+        $t4G = !empty($queryTaaag) ? mysql_query("SELECT * FROM tags_postes WHERE $queryTaaag ") : mysql_query("SELECT * FROM tags_postes WHERE fk_tag='$tag' ");
         $likeT4G = "";
         if(haveResults($t4G)){
             $likeT4G = " WHERE ";
@@ -28,8 +43,8 @@
                 }
             }
             $hottestPosts = mysql_query("SELECT * FROM postes $likeT4G ORDER BY dataHora DESC");
-            $expressaoProcurada = getTag($tag);
-            $tipo = 'tag';
+            $expressaoProcurada = !empty($queryTaaag) ? $expressaoProcurada : getTag($tag);
+            $tipo = !empty($queryTaaag) ? 'btag': 'tag';
         }
     }
 ?>
@@ -114,6 +129,8 @@
                                     $post_tipo = mysql_result($hottestPosts,$i,"tipo");
                                     $post_fk_usuario = mysql_result($hottestPosts,$i,"fk_usuario");
 
+                                    $post_texto = linkifyYouTubeURLsSmall($post_texto);
+
                                 ?>
                         <div class="col-sm-4 col-md-4" id="export<?php echo $post_id; ?>">
                         <section class="hottest-posts-module">
@@ -174,7 +191,7 @@
                                         ?>
                                     </ul>
                                 </div>
-                                <p><?php echo $post_texto; ?></p>
+                                <p class="postTexto"><?php echo $post_texto; ?></p>
                                 <div class="posts-module-liked">
                                     <ul>
                                         <li><img src="images/07.png"></li>
@@ -209,6 +226,7 @@
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.autosize.min.js"></script>
+        <script src="js/linkfy.js"></script>
         <script src="js/script.js"></script>
         <script src="js/asyncUpload.js"></script>
         <script>
@@ -320,7 +338,12 @@
 
 
 
-
+<script>
+    function linkas(){
+        $('.postTexto').linkify();
+    }
+    setTimeout(linkas,500);
+</script>
 
     </body>
 </html>

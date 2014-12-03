@@ -54,6 +54,8 @@ if(haveResults($posts)){
         $post_tipo = mysql_result($posts,$ixi,"tipo");
         $post_fk_usuario = mysql_result($posts,$ixi,"fk_usuario");
 
+        $post_texto = linkifyYouTubeURLs($post_texto);
+
         $usuarioPostante = mysql_query("SELECT * FROM usuarios WHERE id='$post_fk_usuario' ");
         if(haveResults($usuarioPostante)){
 
@@ -210,7 +212,7 @@ if(haveResults($posts)){
                                     <?php }}} ?>
                             </ul>
                         </div>
-                        <p><?php echo $post_texto; ?></p>
+                        <p class="postTexto"><?php echo $post_texto; ?></p>
 
                         <?php $arAnIt = mysql_query("SELECT * FROM anexos WHERE fk_poste='$post_id' AND tipo='arquivo' ");
                             if(haveResults($arAnIt)){
@@ -408,7 +410,7 @@ if(haveResults($posts)){
                                     <?php }}} ?>
                             </ul>
                         </div>
-                        <p><?php echo $post_texto; ?></p>
+                        <p class="postTexto"><?php echo $post_texto; ?></p>
 
 
                         <?php $arAnIt = mysql_query("SELECT * FROM anexos WHERE fk_poste='$post_id' AND tipo='arquivo' ");
@@ -521,3 +523,9 @@ if(haveResults($posts)){
 }
 
 ?>
+<script>
+    function linkas(){
+        $('.postTexto').linkify();
+    }
+    setTimeout(linkas,500);
+</script>

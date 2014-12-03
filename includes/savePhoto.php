@@ -31,11 +31,12 @@ include "conexao.php";
 		
 		if(file_put_contents($uploaddir.$randomName, $decodedData)) {
 			//salvaImagem($uploaddir.$nomePhoto, 480);
+			$gravou = mysql_query("UPDATE usuarios SET foto='$randomName' WHERE id='$idUx' ");
 			echo $randomName.":successfully";
 		}else {
-			echo "Algo deu errado, a imagem pode ter sido corrompida.";
+			echo "Algo deu errado, a imagem pode ter sido corrompida ou é grande demais.";
 		}
 		
-		$gravou = mysql_query("UPDATE usuarios SET foto='$randomName' WHERE id='$idUx' ");
+		
 		
 ?>

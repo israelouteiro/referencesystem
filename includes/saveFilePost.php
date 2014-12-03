@@ -5,8 +5,6 @@ ob_start();
 		session_set_cookie_params((60*30*1024),'/','.'.str_replace('www','',$_SERVER['HTTP_HOST']),true,true);
 include "conexao.php";
 
-
-
 		$idUx = $_SESSION['loggedU']['id'];
 		$dataHora = date('Y-m-d H:i:s');
 		$ip = $_SERVER['REMOTE_ADDR'];
@@ -27,7 +25,7 @@ include "conexao.php";
 		$encodedData = str_replace(' ','+',$data[1]);
 		$decodedData = base64_decode($encodedData);
 		
-		$randomName =  str_replace("áàãâéêíóôõúüçÁÀÃÂÉÊÍÓÔÕÚÜÇ ", "aaaaeeiooouucAAAAEEIOOOUUC_",addslashes($name));
+		$randomName =  str_replace("áàãâéêíóôõúüçÁÀÃÂÉÊÍÓÔÕÚÜÇ ", "aaaaeeiooouucAAAAEEIOOOUUC_", addslashes($name));
 		
 		$nomePhoto = $randomName;
 		
@@ -46,7 +44,7 @@ include "conexao.php";
 				echo "Erro no MySQL";
 			}
 		}else {
-			echo "Algo deu errado, o arquivo pode ter sido corrompido.";
+			echo "Algo deu errado, o arquivo pode ter sido corrompido ou é grande demais.";
 		}
 		
 ?>

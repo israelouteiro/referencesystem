@@ -30,7 +30,7 @@ $('#editProfilePhoto').bind('change',function(e){
 								if(dataSplit[1] == 'successfully') {
 									$('.userPhotoProfile').css('background','url(arquivos/'+dataSplit[0]+') no-repeat center center');
 									$('.userPhotoProfile').css('background-size','cover');
-									setEditProfile();
+									//setEditProfile();
 								} else {
 									alert(data);
 								}

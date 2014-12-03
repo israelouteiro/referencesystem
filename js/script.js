@@ -18,6 +18,10 @@ $(document).ready(function() {
     $('.post-comment-textarea').autosize();
     $('#edit-profile-col-right-textarea').autosize();
     $('#modal-textarea').autosize();
+
+    $('.coverImage').css('background','../images/01.jpg?'+ Math.floor((Math.random() * 1000) + 100) );
+    $('.coverImage').css('background-repeat','no-repeat' );
+    $('.coverImage').css('background-position','center center' );
     
     /* more comments */
    // $('.more-comment-container').hide();

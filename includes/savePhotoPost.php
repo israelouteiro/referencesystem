@@ -41,7 +41,7 @@ include "conexao.php";
 				echo "Erro no MySQL";
 			}
 		}else {
-			echo "Algo deu errado, a imagem pode ter sido corrompida.";
+			echo "Algo deu errado, a imagem pode ter sido corrompida ou é grande demais.";
 		}
 		
 		

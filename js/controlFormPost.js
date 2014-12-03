@@ -67,7 +67,6 @@
 
 						var image = this.result;
 						var objPost = {name : nomeArquivo, value : image};
-
 							$.post('includes/saveFilePost.php', objPost, function(data) {
 								//APENAS PARA VERIFICAR SUCESSO NO PHP
 								hideLoad();

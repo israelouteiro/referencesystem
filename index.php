@@ -199,9 +199,10 @@
                         #$hottestPosts = mysql_query("SELECT * FROM likes GROUP BY fk_poste LIMIT 3");
                         $hottestPosts = mysql_query("SELECT *, COUNT(fk_poste) FROM likes GROUP BY fk_poste ORDER BY COUNT(fk_poste) DESC LIMIT 0,3");
                         if(haveResults($hottestPosts)){
-                            for($i=0;$i<mysql_num_rows($hottestPosts);$i++){ 
+       
+                            for($vvv=0;$vvv<mysql_num_rows($hottestPosts);$vvv++){ 
 
-                                $fk_hotpost = mysql_result($hottestPosts,$i,'fk_poste');
+                                $fk_hotpost = mysql_result($hottestPosts,$vvv,'fk_poste');
                                 $hotposte_atual = mysql_query("SELECT * FROM postes WHERE id='$fk_hotpost' ");
                                 if(haveResults($hotposte_atual)){
 
@@ -211,6 +212,7 @@
                                     $post_tipo = mysql_result($hotposte_atual,0,"tipo");
                                     $post_fk_usuario = mysql_result($hotposte_atual,0,"fk_usuario");
 
+                                    $post_texto = linkifyYouTubeURLsSmall($post_texto);
                                 ?>
                         
                         <section class="hottest-posts-module">
@@ -279,7 +281,7 @@
                                         ?>
                                     </ul>
                                 </div>
-                                <p><?php echo $post_texto; ?></p>
+                                <p class="postTexto"><?php echo $post_texto; ?></p>
                                 <div class="posts-module-liked">
                                     <ul>
                                         <li><img src="images/07.png"></li>
@@ -360,10 +362,18 @@
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.autosize.min.js"></script>
+        <script src="js/linkfy.js"></script>
         <script src="js/script.js"></script>
         <script src="js/asyncUpload.js"></script>
         <script src="js/controlTags.js"></script>
         <script src="js/controlFormPost.js"></script>
+
+        <script>
+            function linkas(){
+                $('.postTexto').linkify();
+            }
+            setTimeout(linkas,500);
+        </script>
     </body>
 </html>
 
