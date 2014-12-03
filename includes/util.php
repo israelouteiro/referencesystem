@@ -214,7 +214,7 @@ function locationHref($url){
             )                 # End negative lookahead assertion.
             [?=&+%\w.-]*        # Consume any URL (query) remainder.
             ~ix', 
-            '<br><iframe width="420" height="345" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe><br>',
+            '<br><br><div class="vid-wrapper"><iframe width="420" height="345" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe></div><br>',
             $text);
         return $text;
     }
@@ -242,7 +242,7 @@ function locationHref($url){
             )                 # End negative lookahead assertion.
             [?=&+%\w.-]*        # Consume any URL (query) remainder.
             ~ix', 
-            '<br><iframe width="210" height="172" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe><br>',
+            '<br><br><div class="vid-wrapper"><iframe width="210" height="172" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe></div><br>',
             $text);
         return $text;
     }

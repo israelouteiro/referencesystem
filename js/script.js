@@ -19,9 +19,12 @@ $(document).ready(function() {
     $('#edit-profile-col-right-textarea').autosize();
     $('#modal-textarea').autosize();
 
-    $('.coverImage').css('background','../images/01.jpg?'+ Math.floor((Math.random() * 1000) + 100) );
-    $('.coverImage').css('background-repeat','no-repeat' );
-    $('.coverImage').css('background-position','center center' );
+    /*$.get('includes/fcapa.php').done(function(oto){
+        alert(oto);
+        $('.coverImage').css('background', '../arquivos/'+oto );
+        $('.coverImage').css('background-repeat','no-repeat' );
+        $('.coverImage').css('background-position','center center' );
+    });*/
     
     /* more comments */
    // $('.more-comment-container').hide();
@@ -83,6 +86,15 @@ $(document).ready(function() {
        // alert('Edit Profile'); // replace this code
     })
     */
+
+    setInterval(function(){
+        $.get('includes/vLog.php').done(function(log){
+            if(log!='good'){
+                location.href=('index.php');
+            }
+        });
+    },(5*60*1000));
+
 });
 
 $(window).resize(function() {

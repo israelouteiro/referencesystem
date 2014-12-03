@@ -1,12 +1,15 @@
-function addTag(){
-	var nTag = $('#valorTags').val();
+
+function addTagx(valor){
+	var nTag = valor;
 	if(nTag!=''){
 		showLoad("Adding tags");
 		$.post('includes/addTag.php', { nome: nTag }).done(function(r){
-			if(r=='sucesso'){
+			r = r.split(':')
+			if(r[0]=='sucesso'){
 				$('#valorTags').val('');
 				hideLoad();
 				carregaTags();
+				selecionaTag(r[1],nTag);
 			}
 		}).fail(function(){
 			alert('Error in connection retry');

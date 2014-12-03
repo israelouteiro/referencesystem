@@ -16,7 +16,15 @@
 
     if(isset($_FILES['fileUp']['name'])){
         $nomeFoto = $_FILES['fileUp']['name'];
-        if(move_uploaded_file($_FILES['fileUp']['tmp_name'], 'images/01.jpg')){
+
+        $getMime = explode('.', $nomeFoto);
+        $mime = end($getMime);
+        $randomName = substr_replace(sha1(microtime(true)), '', 12).'.'.$mime;
+
+
+
+        if(move_uploaded_file($_FILES['fileUp']['tmp_name'], 'arquivos/'.$randomName )){
+            setConfig('fcapa',$randomName);
             echo '<script>alert("Imagem de capa alterada com sucesso, atualiza a pagina para que a imagem antiga saia do cache");setTimeout(function(){location.href=("index.php");},500);</script>';
         }else{
 			echo '<script>alert("Ocorreu um erro ao subir o arquivo. O tamanho maximo para arquivos neste servidor é: '.ini_get('upload_max_filesize').'b.");</script>';
@@ -75,6 +83,16 @@
             <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+        <style>
+        .coverImage {
+            min-height: 350px;
+            overflow: auto;
+            background: url('arquivos/<?php echo getConfig('fcapa');?>') no-repeat top center;
+            background-size: cover;
+            color: #fff;
+            padding: 0px 28px;
+        } 
+        </style>
     </head>
     <body>
         <div class="container">

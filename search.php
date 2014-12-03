@@ -43,9 +43,10 @@
                 }
             }
             $hottestPosts = mysql_query("SELECT * FROM postes $likeT4G ORDER BY dataHora DESC");
-            $expressaoProcurada = !empty($queryTaaag) ? $expressaoProcurada : getTag($tag);
-            $tipo = !empty($queryTaaag) ? 'btag': 'tag';
+            
         }
+        $expressaoProcurada = !empty($queryTaaag) ? $expressaoProcurada : getTag($tag);
+        $tipo = !empty($queryTaaag) ? 'btag': 'tag';
     }
 ?>
 <!DOCTYPE html>
@@ -58,12 +59,34 @@
         <!-- Bootstrap -->
         <link href="css/bootstrap.css" rel="stylesheet">
         <link href="css/main.css" rel="stylesheet">
+        <link href="suggest/css/jquery.coolautosuggest.css" rel="stylesheet"/>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.autosize.min.js"></script>
+        <script src="js/linkfy.js"></script>
+        <script src="js/script.js"></script>
+        <script src="js/asyncUpload.js"></script>
+
+        <script src="suggest/js/jquery.coolautosuggest.js"></script>
+        <script src="suggest/js/jquery.coolfieldset.js"></script>
+        <style>
+        .coverImage {
+            min-height: 350px;
+            overflow: auto;
+            background: url('arquivos/<?php echo getConfig('fcapa');?>') no-repeat top center;
+            background-size: cover;
+            color: #fff;
+            padding: 0px 28px;
+        } 
+        </style>
     </head>
     <body>
         <div class="container">
@@ -106,7 +129,20 @@
             <div class="plataforma-col plataforma-col-right">
                 <div class="plataforma-search">
                     <form method="post" action="search.php">
-                        <input type="text" name="valorBusca" placeholder="Content search">
+                        <input type="text" name="valorBusca" id="valorB" placeholder="Content search">
+                        <script language="javascript" type="text/javascript">
+                            $("#valorB").coolautosuggest({
+                                    url:"suggest/tags.php?chars="+document.getElementById('valorB').value,
+                                    //qshowThumbnail:true,
+                                    //showDescription:true,
+                                    onSelected:function(result){
+                                    // Check if the result is not null
+                                        escolheu = $('#valorB').val();
+                                        location.href=('search.php?tag='+result.id);
+                                    }
+                            });
+                        </script>
+    
                         <input type="image" src="images/06.png">
                     </form>
                 </div>
@@ -221,14 +257,8 @@
         <form id="formExport">
             <input type="hidden" name="imgs_toex" id="imgs_toex">
         </form>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.autosize.min.js"></script>
-        <script src="js/linkfy.js"></script>
-        <script src="js/script.js"></script>
-        <script src="js/asyncUpload.js"></script>
+        
+        
         <script>
             function addToExport(idfs){
                 //fazer lista das publicações p/ exportar
