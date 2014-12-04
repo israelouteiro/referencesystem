@@ -1,5 +1,4 @@
-
-		$('#selectPicture').bind('change',function(e){
+		$(document).on('change','#selectPicture',function(e){
 
 		    var file = this.files[0];
 		    var name = file.name;
@@ -49,8 +48,7 @@
 
 
 
-
-		$('#selectFile').bind('change',function(e){
+		$(document).on('change','#selectFile',function(e){
 
 		    var file = this.files[0];
 		    var name = file.name;

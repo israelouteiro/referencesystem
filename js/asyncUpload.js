@@ -1,5 +1,4 @@
-$('#editProfilePhoto').bind('change',function(e){
-
+$(document).on('change','#editProfilePhoto',function(e){
 		    var file = this.files[0];
 		    var name = file.name;
 		    var size = file.size;

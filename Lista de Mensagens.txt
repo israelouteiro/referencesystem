@@ -29,3 +29,67 @@ $success = "Instructions to recover your password have been sent to your email";
 'If you quit now your hash will expire'
 $success = "Password changed";
 $error = "Error, try forgot again";
+
+
+
+
+///////admin.php
+Imagem de capa alterada com sucesso, atualiza a pagina para que a imagem antiga saia do cache
+Ocorreu um erro ao subir o arquivo. O tamanho maximo para arquivos neste servidor é:
+
+Your registration has been activated.
+Visit
+Asset register
+
+Your registration has been activated.
+Your registration was denied
+
+Your registration was denied by an administrator.
+You was excluded
+
+Titulo alterado com sucesso
+Legenda alterada com sucesso
+
+
+
+
+//js/asyncUpload.js
+
+O arquivo escolhido não é uma imagem
+Sending photo: 
+Error in connection retry
+
+
+
+
+//js/controleFormPost
+
+O arquivo escolhido não é uma imagem
+Sending photo: 
+Sending file: 
+Error in connection retry
+Saving post
+Digite algo em sua postagem
+Filtering posts
+
+
+//js/controlTags.js
+
+Adding tags
+Error in connection retry
+Loading posts
+Deleting post
+
+
+//js/iscript.js
+Getting facebook user informations
+
+
+//includes/save*.php
+
+Erro no MySQL
+Algo deu errado, o arquivo pode ter sido corrompido ou é grande demais.
+
+"Algo deu errado, a imagem pode ter sido corrompida ou é grande demais.";
+
+echo "Algo deu errado, a imagem pode ter sido corrompida ou é grande demais.";
