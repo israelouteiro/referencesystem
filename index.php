@@ -379,6 +379,8 @@
             <input type="hidden" name="fe_anexos" id="fe_anexos" value="">
             <input type="hidden" name="fe_type" id="fe_type" value="">
             <input type="hidden" name="fe_texto" id="fe_texto" value="">
+            <input type="hidden" name="fe_isedit" id="fe_isedit" value="">
+            <input type="hidden" name="fe_fkposte" id="fe_fkposte" value="">
         </form>
 
 

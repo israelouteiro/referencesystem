@@ -103,6 +103,7 @@
 				$('#post-area-attaches ul').append('<li onclick="removeFromList('+idx+');$(this).remove();"><img src="images/38.png"> '+fileName+' <img src="images/36.png"></li>');
 			}
 		}
+
 		function removeFromList(idx){
 			valor = $('#fe_anexos').val();
 			ind = valor.indexOf(','+idx+',');
@@ -263,3 +264,9 @@
 								hideLoad();
 							});
                         }
+    
+    function editPost(idx){
+    	$.post("includes/getEditPost.php",{id:idx}).done(function(realdate){
+    		$('body').append(realdate);
+    	});
+    }

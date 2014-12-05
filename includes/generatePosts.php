@@ -192,6 +192,13 @@ if(haveResults($posts)){
 
                             ?>
                             <div class="post-profile-flag">
+                                
+                                <?php if($havePower){ ?>
+                                    <span>
+                                        <img src="images/edit_blue.png" style="cursor:pointer;margin-right:15px;" onclick="editPost('<?php echo $post_id; ?>');"  width="20">
+                                    </span>
+                                <?php } ?> 
+
                                 <img src="images/14.png" <?php if($havePower){ ?>style="cursor:pointer;"  
                                 onmouseover="$(this).attr('src','images/34.png');" 
                                 onmouseout="$(this).attr('src','images/14.png');" onclick="removePost('<?php echo $post_id; ?>');" <?php } ?> >
@@ -392,6 +399,13 @@ if(haveResults($posts)){
 
                             ?>
                             <div class="post-profile-flag">
+
+                                <?php if($havePower){ ?>
+                                    <span>
+                                        <img src="images/edit_orange.png" style="cursor:pointer;margin-right:15px;" onclick="editPost('<?php echo $post_id; ?>');"  width="20">
+                                    </span>
+                                <?php } ?> 
+
                                 <img src="images/15.png" <?php if($havePower){ ?>style="cursor:pointer;"  
                                 onmouseover="$(this).attr('src','images/34.png');" 
                                 onmouseout="$(this).attr('src','images/15.png');" onclick="removePost('<?php echo $post_id; ?>');" <?php } ?>>

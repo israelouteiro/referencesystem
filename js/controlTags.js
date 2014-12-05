@@ -44,6 +44,18 @@ function selecionaTag(idx,nomex){
 	//dropbox
 	carregaTags();
 }
+function selecionaTags(idx,nomex){
+	
+	if($('#fe_tags').val()==''){
+		$('#fe_tags').val(''+idx);
+	}else{
+		$('#fe_tags').val($('#fe_tags').val()+','+idx);
+	}
+
+	$('#post-area-tags ul').append('<li onclick="removeFromListTag('+idx+');$(this).remove();">#'+nomex+' <img src="images/36.png"></li>');
+
+	//dropbox
+}
 
 
 		function removeFromListTag(idx){

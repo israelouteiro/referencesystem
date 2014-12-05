@@ -168,7 +168,7 @@
                                     $post_texto = linkifyYouTubeURLsSmall($post_texto);
 
                                 ?>
-                        <div class="col-sm-4 col-md-4" id="export<?php echo $post_id; ?>">
+                        <div class="col-sm-4 col-md-4" id="export<?php echo $post_id; ?>" style="max-height: 500px;min-height: 257px;">
                         <section class="hottest-posts-module">
                             <div class="hottest-posts-module-image">
 
