@@ -18,7 +18,7 @@ include "conexao.php";
 				echo 'sim:successfully';
 				
 		}else{
-			echo 'Erro no MySQL';
+			echo 'Error on MySQL';
 		}
 
 		

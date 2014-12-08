@@ -25,9 +25,9 @@
 
         if(move_uploaded_file($_FILES['fileUp']['tmp_name'], 'arquivos/'.$randomName )){
             setConfig('fcapa',$randomName);
-            echo '<script>alert("Imagem de capa alterada com sucesso, atualiza a pagina para que a imagem antiga saia do cache");setTimeout(function(){location.href=("index.php");},500);</script>';
+            echo '<script>alert("The new background picture has successful changed. Please load this page again.");setTimeout(function(){location.href=("index.php");},500);</script>';
         }else{
-			echo '<script>alert("Ocorreu um erro ao subir o arquivo. O tamanho maximo para arquivos neste servidor é: '.ini_get('upload_max_filesize').'b.");</script>';
+			echo '<script>alert("Something wrong happened during the upload.");</script>';
 		}
     }
 
@@ -314,11 +314,11 @@
             
             function postTitulo(){
                 if($('#admin-title-input').val()==''){
-                    alert('Digite algo no titulo');
+                    alert('Type something in the title first');
                 }else{
                     $.post('includes/gravaTitulo.php',{valor:$('#admin-title-input').val()})
                     .done(function(retornous){
-                        alert('Titulo alterado com sucesso');
+                        alert('Your Title has been changed');
                         location.href=('admin.php');
                     });
                 }
@@ -326,11 +326,11 @@
 
             function postLegenda(){
                 if($('#admin-text-input').val()==''){
-                    alert('Digite algo na legenda');
+                    alert('Type something in the subtitle first');
                 }else{
                     $.post('includes/gravaLegenda.php',{valor:$('#admin-text-input').val()})
                     .done(function(retornous){
-                        alert('Legenda alterada com sucesso');
+                        alert('Your subtitle has been changed');
                         location.href=('admin.php');
                     });
                 }

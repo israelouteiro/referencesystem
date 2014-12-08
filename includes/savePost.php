@@ -34,7 +34,7 @@ include "conexao.php";
 					}
 					echo 'sim:successfully';
 			}else{
-				echo 'Erro no MySQL';
+				echo 'Error on MySQL';
 			}
 
 		}else{
@@ -54,7 +54,7 @@ include "conexao.php";
 					echo 'sim:successfully';
 				}
 			}else{
-				echo 'Erro no MySQL';
+				echo 'Error on MySQL';
 			}
 		}
 

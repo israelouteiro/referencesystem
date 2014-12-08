@@ -34,7 +34,7 @@ include "conexao.php";
 			$gravou = mysql_query("UPDATE usuarios SET foto='$randomName' WHERE id='$idUx' ");
 			echo $randomName.":successfully";
 		}else {
-			echo "Algo deu errado, a imagem pode ter sido corrompida ou é grande demais.";
+			echo "Something went wrong. The image might be too big.";
 		}
 		
 		

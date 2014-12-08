@@ -33,13 +33,13 @@ $error = "";
 
                 $isAtivo = mysql_query("SELECT * FROM usuarios WHERE email='$email' AND ativo='sim' ");
                 if(haveResults($isAtivo)){
-                    $error = "A senha digitada está incorreta";
+                    $error = "Wrong password";
                 }else{
-                    $error = "Conta não ativa, contacte o administrador do grupo";
+                    $error = "this account is not allowed to access, please contact the group admin";
                 }
 
             }else{
-                $error = "Email não cadastrado no grupo";
+                $error = "The email address you entered isn't part of the group. Please check the address again.";
             }
         }
     }
@@ -55,9 +55,9 @@ $error = "";
             $foi = mysql_query("INSERT INTO convidados SET email='$emailConvite',dataHora_convite='$now',dataHora_uconvite='$now' ");
         }
 
-         $menny = montaEmailMCL("Congratulations you have been invited to participate in the trading system of references to go and do the registration:","Click Here", URLSite);
+         $menny = montaEmailMCL("Hello, you’re invited to join the reference system exchange. Click and register your email.","Click Here", URLSite);
          mandaEmail($menny,"Congratulations you have been invited to reference system",$emailConvite);
-         $success = "The invitation was sent to the email: ".$emailConvite;
+         $success = "The invitation was sent to your email: ".$emailConvite;
     }
     $error_new = "";
     $successo_new = "";
@@ -79,30 +79,39 @@ $error = "";
             if($new_repass == $new_pass){
                 $emailJa = mysql_query("SELECT * FROM usuarios WHERE email='$new_email' ");
                 if(haveResults($emailJa)){
-                    $error_new = "Already registered mail";
+                    $error_new = "Someone already has that username.";
                 }else{
                     $agora = date("Y-m-d H:i:s");
                     $senhas = sha1($new_pass);
                     $gravado = mysql_query("INSERT INTO usuarios SET nome='$new_nome', email='$new_email', senha='$senhas', data_cadastro='$agora', permissao='comum', id_facebook='$id_facebook',
                                             cargo='$new_ocupation', pais='$new_pais', estado='$new_estado', cidade='$new_cidade', empresa='$new_company', sobre='$new_sobre', ativo='nao'  ");
                     if($gravado){
-                        $successo_new = "Email successfully registered, contact the group administrator to request its activation";
+                        $successo_new = "Email successfully registered, contact the group administrator to request the activation";
 
          $menny = montaEmailM("you have registered successfully and receive a new email when your registration is enabled by the administrator");
          mandaEmail($menny,"Successfully registered",$new_email);
 
 
 
-          $menny = montaEmailM("Go to activate it","Visit",URLSite);
-         mandaEmail($menny,"Just a new user register",'raphaella@racionalize.com.br');
-         mandaEmail($menny,"Just a new user register",'israel@racionalize.com.br');
+                     ///Alertar admins do novo usuario registrado
+                     $ad_mins = mysql_query("SELECT * FROM usuarios WHERE permissao='' AND ativo='sim' ");
+                     if(haveResults($ad_mins)){
+                        $menny = montaEmailM("Turn it on","Go",URLSite);
+                        for($i=0;$i<mysql_num_rows($ad_mins);$i++){
+                            $ealvo = mysql_result($ad_mins,$i,"email");
+                            mandaEmail($menny, "New registered user", $ealvo);
+                        }
+                     }
+          
+
+
 
                     }else{
                         $error_new = "Error, please try again later";
                     }
                 }
             }else{
-                $error_new = "Password and confirmation password do not match";
+                $error_new = "The email or password you entered is incorrect";
             }
     }
 ?>

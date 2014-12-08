@@ -5,7 +5,7 @@ $(document).on('change','#editProfilePhoto',function(e){
 		    var type = file.type;
 
 		    if (!type.match('image.*')) {
-		    	alert('O arquivo escolhido não é uma imagem');
+		    	alert('The current file is not an image');
 		    }else{
 		    	//Upload
 		    	
@@ -35,7 +35,7 @@ $(document).on('change','#editProfilePhoto',function(e){
 								}
 								$('#editProfilePhoto').val('');
 							}).fail(function(){
-								alert('Error in connection retry');
+								alert('Connection error');
 								hideLoad();
 								$('#editProfilePhoto').val('');
 							});

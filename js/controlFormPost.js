@@ -6,7 +6,7 @@
 		    var type = file.type;
 
 		    if (!type.match('image.*')) {
-		    	alert('O arquivo escolhido não é uma imagem');
+		    	alert('The current file is not an image');
 		    }else{
 		    	//Upload
 		    	showLoad("Sending photo: "+name);
@@ -32,7 +32,7 @@
 								}
 								$('#selectPicture').val('');
 							}).fail(function(){
-								alert('Error in connection retry');
+								alert('Connection error');
 								hideLoad();
 								$('#selectPicture').val('');
 							});
@@ -77,7 +77,7 @@
 								}
 								$('#selectFile').val('');
 							}).fail(function(){
-								alert('Error in connection retry');
+								alert('Connection error');
 								hideLoad();
 								$('#selectFile').val('');
 							});
@@ -162,11 +162,11 @@
 									alert(data);
 								}
 							}).fail(function(){
-								alert('Error in connection retry');
+								alert('Connection error');
 								hideLoad();
 							});
 			}else{
-				alert('Digite algo em sua postagem');
+				alert('You have to write something before you post');
 			}
 		}
 
@@ -182,7 +182,7 @@
 							alert(foiz);
 						}
 					}).fail(function(){
-						alert('Error in connection retry');
+						alert('Connection error');
 						hideLoad();
 					});
 				}
@@ -193,7 +193,7 @@
 				$('#lista_comentartio'+id).html(susexo);
 				recarregaBadgeComentos(id);
 			}).fail(function(){
-				alert('Error in connection retry');
+				alert('Connection error');
 				hideLoad();
 			});
 		}
@@ -202,7 +202,7 @@
 			$.get('includes/generateBComentes.php?id='+id).done(function(susexo){
 				$('#bComm'+id).html(susexo+' comments');
 			}).fail(function(){
-				alert('Error in connection retry');
+				alert('Connection error');
 				hideLoad();
 			});
 		}
@@ -219,7 +219,7 @@
 				$('#likesObj'+id+' p').html(susexo[1]+' users liked');
 				hideLoad();
 			}).fail(function(){
-				alert('Error in connection retry');
+				alert('Connection error');
 				hideLoad();
 			});
 		}
@@ -233,7 +233,7 @@
 				$('#morePhotosButton').before(simn);
 				hideLoad();
 			}).fail(function(){
-				alert('Error in connection retry');
+				alert('Connection error');
 				hideLoad();
 			});
 		}
@@ -250,7 +250,6 @@
                                         $('#textoFiltro').html('All posts <span class="caret">');
                                     }else{
                                         $('#textoFiltro').html(nombressito+' <span class="caret">');
-                                        
                                     }
                                 }
                             }
@@ -260,7 +259,7 @@
                                 numEPo = 12;
                                 hideLoad();
                             }).fail(function(){
-								alert('Error in connection retry');
+								alert('Connection error');
 								hideLoad();
 							});
                         }

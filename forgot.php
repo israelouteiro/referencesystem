@@ -26,15 +26,15 @@ $success = "";
                     $hOnB = mysql_query("UPDATE usuarios SET hashs='$hashU' WHERE id='$idEsquecido' ");
                     if($hOnB){
                         //enviar senha para o email
-                        $menny = montaEmailMCL("Visit for registering a new password","Click Here", URLSite."recover.php?h=".$hashU);
-                        mandaEmail($menny,"Recover your password on Refence System",$email);
-                        $success = "Instructions to recover your password have been sent to your email";
+                        $menny = montaEmailMCL("Recover your password on Reference System","Click Here", URLSite."recover.php?h=".$hashU);
+                        mandaEmail($menny,"Recover your password on Reference System",$email);
+                        $success = "We'll send you an email with a link so you can create a new password.";
                     }
                 }else{
-                    $error = "Conta não ativa, contacte o administrador do grupo";
+                    $error = "this account is not allowed to access, please contact the group admin";
                 }
             }else{
-                $error = "Email não cadastrado no grupo";
+                $error = "The email address you entered isn't part of the group. Please check the address again.";
             }
     }
 

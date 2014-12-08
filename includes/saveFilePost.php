@@ -38,13 +38,13 @@ include "conexao.php";
 				if(haveResults($gravado)){
 					echo mysql_result($gravado,0,'id').":successfully";
 				}else{
-					echo "Erro no MySQL:".$randomName;
+					echo "Error on MySQL:".$randomName;
 				}
 			}else{
-				echo "Erro no MySQL";
+				echo "Error on MySQL";
 			}
 		}else {
-			echo "Algo deu errado, o arquivo pode ter sido corrompido ou é grande demais.";
+			echo "Something went wrong. The file might be too large.";
 		}
 		
 ?>

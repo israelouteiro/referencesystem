@@ -35,13 +35,13 @@ include "conexao.php";
 				if(haveResults($gravado)){
 					echo mysql_result($gravado,0,'id').":successfully";
 				}else{
-					echo "Erro no MySQL";
+					echo "Error on MySQL";
 				}
 			}else{
-				echo "Erro no MySQL";
+				echo "Error on MySQL";
 			}
 		}else {
-			echo "Algo deu errado, a imagem pode ter sido corrompida ou é grande demais.";
+			echo "Something went wrong. The image might be too big.";
 		}
 		
 		

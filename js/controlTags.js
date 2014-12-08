@@ -12,7 +12,7 @@ function addTagx(valor){
 				selecionaTag(r[1],nTag);
 			}
 		}).fail(function(){
-			alert('Error in connection retry');
+			alert('Connection error');
 			hideLoad();
 		});
 	}
@@ -25,7 +25,7 @@ function carregaTags(){
 		$('#listaTags').html(ve);
 		hideLoad();
 	}).fail(function(){
-		alert('Error in connection retry');
+		alert('Connection error');
 		hideLoad();
 	});
 }
@@ -103,7 +103,7 @@ function garregaPosts(inic){
 		numEPo = inic +12;
 		hideLoad();
 	}).fail(function(){
-		alert('Error in connection retry');
+		alert('Connection error');
 		hideLoad();
 	});
 }
@@ -116,7 +116,7 @@ function carregaPosts(){
 		numEPo = 12;
 		hideLoad();
 	}).fail(function(){
-		alert('Error in connection retry');
+		alert('Connection error');
 		hideLoad();
 	});
 }
@@ -127,7 +127,7 @@ function removePost(idx){
 		hideLoad();
 		carregaPosts();
 	}).fail(function(){
-		alert('Error in connection retry');
+		alert('Connection error');
 		hideLoad();
 	});
 }

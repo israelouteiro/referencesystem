@@ -21,7 +21,7 @@ $existMail = mysql_query("SELECT * FROM usuarios WHERE hashs='$hax' AND hashs !=
                     $mostraForm = true;
                 }
             }else{
-                $success = "This hash already used or invalid";
+                $success = "This is not a valid hash or is already been used by other user";
             }
 
 
@@ -37,7 +37,7 @@ $existMail = mysql_query("SELECT * FROM usuarios WHERE hashs='$hax' AND hashs !=
         if($alterou){
             $success = "Password changed";
         }else{
-            $success = "Error, try forgot again";
+            $success = "Error.  Try to recover your password again ";
         }
 
     }
@@ -100,7 +100,7 @@ $existMail = mysql_query("SELECT * FROM usuarios WHERE hashs='$hax' AND hashs !=
                             <input type="password" name="password" class="form-control" id="exampleInputEmail1" placeholder="<?php if(!empty($error)){ echo $error;}else{echo 'Password';}?>">
                         </div>
                         <div class="text-center">
-                            <button type="button" class="btn btn-info" onclick="if(window.confirm('If you quit now your hash will expire')){location.href=('login.php');}">Back</button>
+                            <button type="button" class="btn btn-info" onclick="if(window.confirm('If you leave now your hash will expire')){location.href=('login.php');}">Back</button>
                             <button type="submit" class="btn btn-info">Submit</button>
                         </div>
                     </form>
