@@ -188,15 +188,15 @@ $error = "";
             </div>
             <div class="login-wrapper">
                 <div class="login-title">
-                    <p>Recived an email inviting you?</p>
+                    <p>Received some e-mail inviting you to this group?</p>
                 </div>
                 <div class="login-form">
                     <div class="text-center">
-                        <button class="btn btn-success" data-toggle="modal" data-target="#enjoy-group">Enjoy group</button>
+                        <button class="btn btn-success" data-toggle="modal" data-target="#enjoy-group">Join the group</button>
                     </div>
                 </div>
                 <div id="login-text-wrapper">
-                    <div id="login-text" <?php if(!empty($success)){echo 'style="color:#38a0c9;"';}?> ><img src="images/23.png"> <?php if(!empty($success)){echo $success; }else{echo "Invite someone to enjoy the group";}?></div>
+                    <div id="login-text" <?php if(!empty($success)){echo 'style="color:#38a0c9;"';}?> ><img src="images/23.png"> <?php if(!empty($success)){echo $success; }else{echo "Invite someone to join the group";}?></div>
                 </div>
                 <div class="login-form">
                     <form class="form-inline" role="form" action="" method="post">
